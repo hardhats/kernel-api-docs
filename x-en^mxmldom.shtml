@@ -1,0 +1,244 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OIT)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 09/15/11-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: $$EN^MXMLDOM</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: $$EN^MXMLDOM">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Seucurity Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$EN^MXMLDOM,$$EN,MXMLDOM,xml,extensible markup language,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">$$EN^MXMLDOM</A>(): XML&#8212;Initial Processing, Build In-memory Image</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B>  XML,
+	<B>Integration Agreement:</B>  &nbsp;3561</P> 
+	<H4><A NAME="description">Description</A></H4> 
+    <P>This extrinsic function performs initial processing of the XML document. The client
+    application must first call this entry point to build the in-memory image
+    of the document before the remaining methods can be applied. The return
+    value is a handle to the document instance that was created and is used by
+    the remaining API calls to identify a specific document instance. The
+    parameters for this entry point are listed by type, requirement (yes or
+    no), and description. </P> 
+    <H4><A NAME="format">Format</A></H4> 
+    <PRE>  $$EN^MXMLDOM(doc[,opt])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>doc:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%">
+          <P>(required) This string is either a closed reference to a global root
+          containing the document or a filename and path reference identifying
+          the document on the host system. If a global root is passed, the
+          document either <i>must</i> be stored in standard VA FileMan
+          word-processing format or may occur in sequentially numbered nodes
+          below the root node. Thus, if the global reference is
+          &quot;^XYZ&quot;, the global must be of one of the following
+          formats:</P>
+          <UL>
+            <LI>
+              ^XYZ(1,0) = &quot;LINE 1&quot;
+              <BR>
+              <BR>
+              ^XYZ(2,0) = &quot;LINE 2&quot; ...
+            </LI>
+          </UL>
+          <P>Or</P>
+          <UL>
+            <LI>
+              ^XYZ(1) = &quot;LINE 1&quot;
+              <BR>
+              <BR>
+              ^XYZ(2) = &quot;LINE 2&quot; ...
+            </LI>
+          </UL>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>opt:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%">
+          <P>(optional) This string is a list of option flags that control parser
+          behavior. Recognized option flags are:</P>
+          <UL>
+            <LI>
+              W&#8212;Do not report warnings to the client.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              V&#8212;Do not validate the document. If specified, the parser
+              only checks for conformance.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              1&#8212;Terminate parsing on encountering a validation error. (By
+              default, the parser terminates only when a conformance error is encountered.)
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              0&#8212;Terminate parsing on encountering a warning.
+            </LI>
+          </UL>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>returns:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"
+		    WIDTH="85%"> 
+		  <P>Returns:</P>
+          <UL>
+            <LI>
+              Non-zero Handle of Document Instance&#8212;Parsing completed successfully.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              ZeroHandle of Document Instance.
+            </LI>
+          </UL>
+          <P>This handle is passed to all other API methods to indicate which 
+          document instance is being referenced. This allows for multiple 
+          document instances to be processed concurrently.</P> 
+        </TD> 
+	  </TR> 
+	</TABLE> 
+	<P></P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"> 
+	  <TR> 
+	    <TD ALIGN="CENTER"
+	        VALIGN="TOP"
+	        COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->September 15, 2011<!--webbot bot="Timestamp" endspan i-checksum="37982" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this Web site, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-en^mxmldom.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+		</TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

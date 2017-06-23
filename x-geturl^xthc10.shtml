@@ -1,0 +1,360 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 10/18/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Toolkit APIs: $$GETURL^XTHC10</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel Toolkit APIs: $$GETURL^XTHC10">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$GETURL^XTHC10,$$GETURL,XTHC10,http,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">$$GETURL^XTHC10</A>(): Return URL Data Using HTTP</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Toolkit&#8212;HTTP Client 
+	Helper,
+	<B>Integration Agreement:</B> 5553</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>The Kernel Toolkit Hypertext Transfer Protocol (HTTP) Client Helper software 
+	release adds a new tool in a set of Infrastructure software tools that 
+	developers can use. HTTP is a fast and reliable way for an application to 
+	collect data from another source. Kernel Toolkit Patch XT*7.3*123 allows VistA to tap into this information and retrieve Web data.</P>
+    <P>This code was developed by another VistA application that had a pressing need 
+    for this capability. The Kernel Toolkit development team is providing it as 
+    generic tool so that other developers may use its functionality for their needs. For example:</P>
+    <ul>
+	  <li>
+	    KIDS: Uses it to get the checksums from FORUM of patches that are sent in a Host File System (HFS) file.
+	    <br>
+	    <br>
+      </li>
+	  <li>
+	    Pharmacy: Uses it to request the printing of FDA data sheets.
+	  </li>
+    </ul>
+    <P>This extrinsic function returns the HTTP status code and description for the input URL using 
+	the HTTP Client Helper 1.0 software. 
+	This API was introduced with Kernel Toolkit Patch XT*7.3*123.<br>
+	<br>
+	<b>NOTE:</b> XTHC* routines are part of the HTTP Client Helper application for 
+	developers.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  $$GETURL^XTHC10(url[,xt8flg][,xt8rdat][,.xt8rhdr][,xt8sdat][,.xt8shdr])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>url:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(required) Universal Resource Locator (URL): http://host:port/path</P>
+        </TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>xt8flg:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(optional) Timeout and flags to control processing. If the value of this parameter starts from a number then this number is used as a value of the timeout (in seconds). Otherwise, the default value of 5 seconds is used.</P>
+        </TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B><a name="xt8rdat">xt8rdat</a>:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(optional) Closed root of the variable where the message body is returned. Data is stored in consecutive nodes. If a line is longer than 245 characters, only 245 characters are stored in the corresponding node. After that, overflow sub-nodes are created. For example:</P>
+		  <PRE>@XT8DATA@(1)=&quot;&lt;html&gt;&quot;
+@XT8DATA@(2)=&quot;&lt;head&gt;&lt;Title&gt;VistA&lt;/title&gt;&lt;/head&gt;&quot;
+@XT8DATA@(3)=&quot;&lt;body&gt;&quot;
+@XT8DATA@(4)=&quot;&lt;p&gt;&quot;
+@XT8DATA@(5)=&quot;Beginning of a very long line&quot; 
+@XT8DATA@(5,1)=&quot;Continuation #1 of the long line&quot; 
+@XT8DATA@(5,2)=&quot;Continuation #2 of the long line&quot; 
+@XT8DATA@(5,...)=...
+@XT8DATA@(6)=&quot;&lt;/p&gt;&quot;</PRE>
+        </TD>
+      </TR>
+      <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>.xt8rhdr:</B>
+	    </TD>
+	    <TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(optional) Reference to a local variable where the parsed headers are returned. Header names are converted to uppercase; the values are left "as is". The root node contains the status line. For example:</P><PRE>XT8HDR="HTTP/1.0 200 OK"
+XT8HDR("CACHE-CONTROL")="private"
+XT8HDR("CONNECTION")="Keep-Alive"
+XT8HDR("CONTENT-LENGTH")="2690"
+XT8HDR("CONTENT-TYPE")="text/html"
+XT8HDR("DATE")="Fri, 26 Sep 2003 16:04:10 GMT"
+XT8HDR("SERVER")="GWS/2.1"</PRE></TD></TR><TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>xt8sdat:</B>
+	    </TD>
+	    <TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(optional) Closed root of a variable containing the body of the request message. Data should be formatted as described in the 
+		  <a href="#xt8rdat"
+		     title="xtT8rdat Input Parameter">xtT8rdat</a> parameter.</P><P><b>NOTE:</b> If this parameter is defined (i.e., not empty) and the referenced array contains data, then the POST request is generated. Otherwise, the GET request is sent.</P></TD></TR><TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>.xt8shdr:</B>
+	    </TD>
+	    <TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(optional) Reference to a local variable containing header values, which will be added to the request.</P></TD></TR></TABLE><H4><A NAME="output">Output</A></H4><TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>Returns:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%"> 
+	      <P>Return values:</P><ul>
+	        <li>
+	          &lt;0&#8212;Error Descriptor (see the $$ERROR^XTERROR) <br>
+	          <br>
+	        </li>
+	        <li>
+	          &gt;0&#8212;HTTP Status Code^Description         
+	        </li>
+	      </ul>
+	      <P>The most common HTTP status codes include:</P><table border="1"
+	             width="100%">
+	        <tr>
+	          <th width="10%"
+	              align="left"
+	              valign="bottom">
+	            Status Code
+	          </th>
+	          <th align="left"
+	              valign="bottom">
+	            Description
+	          </th>
+	        </tr>
+	        <tr>
+	          <td align="left"
+	              valign="top">
+	            200
+	          </td>
+	          <td align="left"
+	              valign="top">
+	            OK.
+	          </td>
+	        </tr>
+	        <tr>
+	          <td align="left"
+	              valign="top">
+	            301
+	          </td>
+	          <td align="left"
+	              valign="top">
+	            Moved Permanently.
+	            <br>
+	            <br>
+	            The application should either automatically update the URL with the new one from the Location response header or instruct the user on how to do this.
+	          </td>
+	        </tr>
+	        <tr>
+	          <td align="left"
+	              valign="top">
+	            302
+	          </td>
+	          <td align="left"
+	              valign="top">
+	            Moved Temporarily.
+	            <br>
+	            <br>
+	            The application should continue using the original URL.
+	            <br>
+	            <br>
+	            <b>NOTE:</b> You will not see this code for GET requests. They are redirected automatically.
+	          </td>
+	        </tr>
+	        <tr>
+	        <td align="left"
+	            valign="top">
+	          303
+	        </td>
+	        <td align="left"
+	            valign="top">
+	          See Other.
+	          <br>
+	          <br>
+	          The resource has moved to another URL given by the Location response header, and should be automatically retrieved by the client using the GET method. This is often used by a CGI script to redirect the client to an existing file.
+	          <br>
+	          <br>
+	          <b>NOTE:</b> You will not see this status code, because it is handled automatically inside the function.
+	        </td>
+	      </tr>
+	      <tr>
+	        <td align="left"
+	            valign="top">
+	          400
+	        </td>
+	        <td align="left"
+	            valign="top">Bad Request.
+	        </td>
+	      </tr>
+	      <tr>
+	        <td align="left"
+	            valign="top">
+	          404
+	        </td>
+	        <td align="left"
+	            valign="top">
+	          Not Found.
+	        </td>
+	      </tr>
+	      <tr>
+	        <td align="left"
+	            valign="top">
+	          500
+	        </td>
+	        <td align="left"
+	            valign="top">
+	          Server Error.
+	          <br>
+	          <br>
+	          An unexpected server error. The most common cause is a server-side script that has bad syntax, fails, or otherwise cannot run correctly.
+	        </td>
+	      </tr>
+	    </table>
+	      <P><b>REF:</b> For more details, see 
+	      <a href="http://www.faqs.org/rfcs/rfc1945.html"
+	         title="RFC1945 - Hypertext Transfer Protocol -- HTTP/1.0">http://www.faqs.org/rfcs/rfc1945.html</a>
+	      </P>
+	    </TD>
+	  </TR>
+	</TABLE>
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-geturl^xthc10.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY></HTML>

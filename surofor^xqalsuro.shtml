@@ -1,0 +1,217 @@
+<HTML> 
+  <HEAD>
+<!--VHA Veteran Health Information Technology-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 11/13/07-->
+<!--Revised by Thom Blom, 11/04/09-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: SUROFOR^XQALSURO</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: SUROFOR^XQALSURO">
+    <META NAME="keywords"
+	      CONTENT="Security and Other Common Services (S&OCS),Infrastructure and Security Services,Information Infrastructure Service,S&OCS,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,SUROFOR^XQALSURO,SUROFOR,XQALSURO,alerts,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">SUROFOR^XQALSURO</A>(): Return a Surrogate's List of 
+	Users</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Alerts,
+	<B>Integration Agreement:</B> 3213</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This API returns a list of users for which the user, as defined by the 
+	xqauser input parameter, is acting as a surrogate.</P>
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  SUROFOR^XQALSURO(xqauser,.xqalist)</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%"><B>xqauser:</B>
+	    </TD> 
+		<TD VALIGN="TOP" WIDTH="85%">
+		  <P>(required) This is the Internal Entry Number (IEN, DUZ value) in 
+          the NEW PERSON file (#200) for the specified user.</P>
+	    </TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>xqalist:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%">
+		  <P>(required) Passed by reference; it contains the name of the output array.</P>
+	    </TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+		<TD VALIGN="TOP"
+		    WIDTH="15%">
+		  <B>xqalist</B>
+		</TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"
+		    WIDTH="85%"> 
+		  <P>The output contains the list of current and future surrogates for 
+			the specified user. The data in the list includes the following:</P>
+		  <ul>
+		    <li>
+		      User's internal entry number (DUZ)
+		      <br>
+			  <br>
+            </li>
+			<li>
+			  User's name
+			  <br>
+			  <br>
+            </li>
+			<li>
+			  Start and end dates for the surrogate period
+			</li>
+		  </ul>
+			<P>Set to a number equal to the count of the total number of 
+          surrogates returned in the list:
+          <BR>
+          <BR>
+          &nbsp;&nbsp;&nbsp;&nbsp;XQALIST(n)
+          <BR>
+          <BR>
+          Where <B>n</B> is a sequential integer starting with 1. Each entry in the 
+          array contains IEN^Name^Start Date/Time^End Date/Time.</P>
+	    </TD> 
+	  </TR> 
+	</TABLE> 
+	 <H4><A NAME="example">Example</A></H4> 
+	 <PRE>&gt;<b>S XQAUSER=DUZ</b>
+&gt;<B>D SUROFOR^XQALSURO(XQAUSER,.USERLIST)</B>
+
+Returns:
+
+USERLIST=count
+USERLIST(1)=IEN2^NEWPERSON,USER2^STARTDATETIME^ENDDATETIME
+USERLIST(2)=3^NAME,USER3^3050407.1227^3050406
+
+><b>ZW USERLIST</b>
+USERLIST=2
+USERLIST(1)="5206652^PERSON,FIRST^3071113.141547^3071113.142"
+USERLIST(2)="5206656^PERSON,SECOND^3071114^3071114.08"</PRE> 
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"> 
+	  <TR> 
+	    <TD ALIGN="CENTER"
+	        VALIGN="TOP"
+	        COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/SUROFOR^XQALSURO.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

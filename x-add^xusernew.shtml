@@ -1,0 +1,256 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 07/25/07-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: $$ADD^XUSERNEW</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: $$ADD^XUSERNEW">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$ADD^XUSERNEW,$$add,xusernew,name standardization,supported">
+	 <LINK REL="StyleSheet"
+	       TYPE="text/css"
+	       HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY>
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">$$ADD^XUSERNEW</A>(): Add New User</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Signon/Security,
+	<B>Integration Agreement:</B> 10053</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This extrinsic function adds new entries to the NEW PERSON file (#200).
+	It was modified with Kernel Patch XU*8.0*134. After prompting for the user's
+	name, it parses the input into its component parts, and then prompts for each
+	name component separately, presenting the parsed input as defaults. It then
+	prompts for the default identifiers for the NEW PERSON file (#200) entry in the
+	following order:</P> 
+	<OL> 
+	  <LI>
+	    INITIALS (#1)
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    SSN (#9)
+	    <BR>
+	    <BR>
+	  </LI> 
+      <LI>
+        SEX (#4)
+      </LI> 
+	</OL> 
+	<P>If the user of this function has the XUSPF200 security key, entry of the
+	SSN is not required. The default identifiers can be locally modified by
+	modifying the NEW PERSON IDENTIFIERS field in the KERNEL SYSTEM PARAMETERS file
+	(#8989.3).
+	<BR>
+	<BR>
+	To prompt for additional fields during this call, you pass a
+	DR string containing the field(s) for which you wish to prompt as a parameter
+	to this function. If the person adding the entry enters a caret (&quot;<B>^</B>&quot;) 
+    to exit out before filling
+	in all the identifiers and requested fields, the entry will be removed from the
+	NEW PERSON file (#200), and <B>-1</B> will be returned.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  $$ADD^XUSERNEW([dr_string][,keys])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>dr_string:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>(optional) Additional fields to ask when adding the new user, in
+		  the format for a DR string as used in a standard DIC call. <BR><BR>NOTE: For
+		  information about DIC, please refer to the
+		  <A HREF="http://vista.med.va.gov/fileman/docs/pm/cl_dic.shtml" CLASS="bodylink"
+		     TITLE="VA FileMan Classic ^DIC Call HTML Documentation">VA FileMan documentation for information about DIC</A>.</P></TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP">
+	      <B>keys:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2"> 
+		  <P>(optional) A comma-delimited string of keys to assign to the newly created user.</P>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>returns:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>Returns a value similar in format to the value of "Y" returned from a standard DIC call:</P>
+		  <UL>
+		    <LI>
+		      -1&#151;User neither existed nor could be added.
+		      <BR>
+		      <BR>
+		    </LI>
+			<LI>
+			  N^S&#151;User already exists in the file; N is the internal
+			  number of the entry in the file, and S is the value of the .01 field for that
+			  entry.
+			  <BR>
+			  <BR>
+			</LI>
+			<LI>
+			  N^S^1&#151;N and S are defined as above, and the 1 indicates
+			  the user has just been added to the file.
+			</LI>
+		  </UL>
+		  <P>NOTE: For information about DIC, please refer to the
+		  <A HREF="http://vista.med.va.gov/fileman/docs/pm/cl_dic.shtml"
+		     CLASS="bodylink"
+		     TITLE="VA FileMan Classic ^DIC Call HTML Documentation">VA FileMan documentation for information about DIC</A>.</P>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="example">Example 1</A></H4> 
+	<P>To add a new user, asking default fields for new entry:</P> 
+	<TABLE WIDTH="100%" BORDER="1">
+	  <TR>
+	    <TD>
+	      <PRE>&gt;<B>S X=$$ADD^XUSERNEW</B>
+
+Enter NEW PERSON's name (Family,Given Middle Suffix): <B>KRNUSER,TWO E</B>
+  Are you adding 'KRNUSER,TWO E' as a new NEW PERSON (the 1602ND)? No// <B>Y &lt;Enter&gt;</B> (Yes)
+Checking SOUNDEX for matches.
+No matches found.
+Name components.
+FAMILY (LAST) NAME: KRNUSER// <B>&lt;Enter&gt;</B> 
+GIVEN (FIRST) NAME: TWO// <B>&lt;Enter&gt;</B>
+MIDDLE NAME: E// <B>&lt;Enter&gt;</B>
+SUFFIX: <B>&lt;Enter&gt;</B>
+Now for the Identifiers.
+INITIAL: <B>TEK</B>
+SSN: <B>000222222</B>
+SEX: <B>M &lt;Enter&gt;</B>  MALE
+&gt;<B>W X</B>
+1000118^KRNUSER,TWO E^1
+&gt;</PRE>
+        </TD>
+	  </TR>
+	</TABLE> 
+	<H4>Example 2</H4> 
+	<P>To add a new user, specifying a key to add:</P> 
+	<PRE>&gt;<B>S X=$$ADD^XUSERNEW("","PROVIDER")</B></PRE> 
+	<H4>Example 3</H4> 
+	<P>To add a new user, specifying additional fields to ask, plus two keys to add:</P> 
+	<PRE>&gt;<B>S X=$$ADD^XUSERNEW("5;13;53","PSMGR,PSNARC")</B></PRE> 
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%" SUMMARY="This table for layout purposes only"
+	      CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+<!--Bottom Navigation Links-->
+          <!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this Web site, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-add^xusernew.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

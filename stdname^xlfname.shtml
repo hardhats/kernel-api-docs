@@ -1,0 +1,546 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 08/15/07-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Name Standardization APIs: STDNAME^XLFNAME</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: STDNAME^XLFNAME">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,STDNAME^XLFNAME,stdname,xlfname,name standardization,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">STDNAME^XLFNAME</A>(): Name Standardization Routine</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Name Standardization,
+	<B>Integration Agreement:</B> 3065</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This API parses a name and converts it into the following standard format:</P> 
+	<BLOCKQUOTE>Family_name,Given_name&lt;space&gt;Middle_name&lt;space&gt;Suffix(es)</BLOCKQUOTE>
+    <P>A name in standard format is entirely in uppercase, and contains no
+	Arabic numerals. The Family_name (last name) portion of a standard name appears
+	to the left of the comma and contains no spaces and no punctuation except
+	hyphens (<B>-</B>). The other parts of a standard name (the portion to the
+	right of the comma) contain no punctuation except for hyphens and spaces. NMI
+	and NMN are not used for the Middle_name.
+	<BR>
+	<BR>
+	STDNAME^XLFNAME optionally
+	returns in an array the component parts of the name. It also optionally returns
+	information in an array about possible problems encountered during the
+	conversion of the name to standard form and the parsing of the name into its
+	component parts.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  STDNAME^XLFNAME(.name,flags,.audit)</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"
+	       SUMMARY="This table is for formatting purposes only"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>.name:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>(required) NAME is the name to be converted to standard format. It
+		  is assumed that the name is in the general format:</P> 
+		  <BLOCKQUOTE>Family_name,Given_name(s) Middle_name Suffix(es)</BLOCKQUOTE> 
+		  <P>If the "F" flag is not used, and the name contains no comma, it is
+		  assumed the name is in the general format:</P> 
+		  <BLOCKQUOTE>Given_name(s) Middle_name Family_name Suffix(es)</BLOCKQUOTE> 
+		  <P>The standard form of the name is returned in the NAME variable. If
+		  the "C" flag is passed in, the components of the name are returned in nodes
+		  descendent from NAME. (See "
+		  <A HREF="#output"
+		     TITLE="STDNAME^XLFNAME Output"
+			 CLASS="bodylink">Output</A>".)</P>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>flags:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>(optional) Flags to control processing. Possible values are:</P> 
+		  <UL> 
+		    <LI>
+		      C&#151;Return name components in the NAME array. (See
+			  <A HREF="#output"
+			     TITLE="STDNAME^XLFNAME Output"
+				 CLASS="bodylink">Output</A>.)
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  F&#151;If the name passed in the NAME input parameter does not
+			  contain a comma, assume it is the Family Name only. For example, if the name
+			  input is "ST JAMES", return the name as "STJAMES" instead of
+			  "JAMES,ST".
+			  <BR>
+			  <BR>
+			</LI> 
+		    <LI>
+		      G&#151;Do not return AUDIT("GIVEN") even if the Given Name is missing.
+		      <BR>
+		      <BR>
+		    </LI> 
+			<LI>
+			  P&#151;Remove text in parentheses <B>( )</B>, brackets <B>[]</B>, or braces <B>{ }</B> from the name. If such text is actually removed,
+			  return AUDIT("STRIP").
+			</LI> 
+		  </UL>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>.audit:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>(optional) If provided, this is an array that STDNAME^XLFNAME
+		  returns if there are any ambiguities or possible problems in standardizing the
+		  name or parsing the name into component parts. (See "
+		  <A HREF="#output"
+			 TITLE="STDNAME^XLFNAME Output"
+			 CLASS="bodylink">Output</A>".)</P>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"
+	       SUMMARY="This table is for formatting purposes only"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>name:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>This parameter is set to the name that was input converted to
+		  standard format.
+		  <BR>
+		  <BR>
+		  If the Flags input parameter contains a "C", the
+		  component parts of the name are returned in the NAME array:</P> 
+		  <BLOCKQUOTE>NAME("FAMILY) = Family (Last) Name<BR>NAME("GIVEN") =
+		  Given (First) Name(s)<BR>NAME("MIDDLE") = Middle Name<BR>NAME("SUFFIX") = Suffix(es) </BLOCKQUOTE>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>audit:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>If this parameter is set to the original name that was passed in
+		  the Name parameter. In addition, if there were any problems in the
+		  interpretation of the Name being standardized, descendents of Audit are set:</P> 
+		  <BLOCKQUOTE>AUDIT("<I>subscript</I>") = ""</BLOCKQUOTE> 
+		  <P>where "<I>subscript</I>" can be any one of the following:</P> 
+		  <UL> 
+		    <LI>
+		      AUDIT("FAMILY")&#151;The Family Name starts with ST. (The
+			  period and space are removed from the Family Name. For example, the name "ST.
+			  JOHN" is converted to "STJOHN".)
+			  <BR>
+			  <BR>
+			</LI> 
+		    <LI>
+		      AUDIT("GIVEN")&#151;Returned if there is no Given Name and the
+			  "G" flag is not passed in.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("MIDDLE")&#151;Returned if there are three or more names
+			  between the first comma and the Suffix(es). (All name parts except the last are
+			  assumed to be part of the Given Name. Only the last part is assumed to be the
+			  Middle Name.)
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("NM")&#151;Returned if NMI or NMN appears to be used as
+			  the Middle Name. (NMI and NMN are removed from the standard name, and the
+			  Middle Name component is returned as null.)
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("NOTE")&#151;Returned if the name appears to contain a
+			  note or flag that may not actually be part of the name. For example, the name
+			  starts with "C-" or "EEE," or has "FEE" at the end.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("NUMBER")&#151;Returned if a name part (other than a
+			  valid numeric Suffix) contains a number.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("PERIOD")&#151;Returned if periods were
+			  removed.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("PUNC")&#151;Returned if punctuation was
+			  removed.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("SPACE")&#151;Returned if spaces were removed from the
+			  Family Name.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  AUDIT("STRIP")&#151; Returned if text in parentheses <B>( )</B>, brackets <B>[ ]</B>, or braces <B>{ }</B> were removed from the Name.
+			  (This is done only if the "P" flag is passed.)<BR><BR></LI> 
+			<LI>
+			  AUDIT("SUFFIX")&#151;Returned if:
+			  <BR>
+			  <BR> 
+			  <UL> 
+			    <LI>
+			      Suffix(es) are found immediately to the left of the 1st comma.
+			      <BR>
+			      <BR>
+			    </LI> 
+				<LI>
+				  I, V, or X, and nothing else except valid suffixes, appear
+				  immediately after the Given Name. (It is interpreted as the Middle
+				  Name.)
+				  <BR>
+				  <BR>
+				</LI> 
+				<LI>
+				  The name immediately after the Given Name appears to be a
+				  non-numeric suffix (except I, V, and X), and everything after that also appear
+				  to be suffixes. (It is assumed there are a Given Name and Suffix(es), but no
+				  Middle Name.)
+				  <BR>
+				  <BR>
+				</LI> 
+				<LI>
+				  M.D. or M D is found at the end of the name, or before any
+				  valid suffixes at the end of the name. (It is assumed that M and D are initials
+				  in the Given or Middle Name rather than a Suffix.)
+				  <BR>
+				  <BR>
+				</LI> 
+				<LI>
+				  The name part before any recognizable suffixes is more than
+				  one character in length and does not contain any vowels or Y. It is interpreted
+				  as a suffix.
+				  <BR>
+				  <BR>
+				</LI> 
+				<LI>
+				  Suffix is found between commas immediately after the Family Name.
+				</LI> 
+			  </UL>
+			</LI> 
+		  </UL>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="details">Details</A></H4> 
+	<h5>Standard Name</h5>
+	<P>In forming the standard name, the following changes are made:</P> 
+	<OL> 
+	  <LI>
+	    The name is converted to uppercase.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    In the Family Name:
+	    <BR>
+	    <BR> 
+		<OL STYLE="list-style-type: lower-alpha"> 
+		  <LI>
+		    Semicolons (<B>;</B>) and colons (<B>:</B>) are converted to
+		    hyphens (<B>-</B>).<BR><BR>Spaces and all other punctuation except hyphens are removed.
+		    <BR>
+		    <BR>
+		  </LI> 
+		  <LI>
+		    Spaces and all other punctuation except hyphens are removed.
+		    <BR>
+		    <BR>
+		  </LI> 
+		</OL>
+	  </LI> 
+	  <LI>
+	    In the other name parts (Given Name, Middle Name, and Suffix).
+		<BR>
+		<BR> 
+		<OL STYLE="list-style-type: lower-alpha"> 
+		  <LI>
+		    Semicolon, colons, commas (<B>,</B>), and periods (<B>.</B>) are
+		    converted to spaces.<BR><BR>Spaces and all other punctuation except hyphens are removed.
+		    <BR>
+		    <BR>
+		  </LI> 
+		  <LI>
+		    All punctuation except hyphens and spaces are removed.
+		    <BR>
+		    <BR>
+		  </LI> 
+		</OL>
+      </LI> 
+	  <LI>
+	    Hyphens and spaces at the beginning and end of the name are removed.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    Two or more consecutive hyphens/spaces are replaced with a single hyphen/space.
+		<BR>
+		<BR>
+      </LI> 
+	  <LI>
+	    Any suffixes immediate preceding the comma are moved to the end.
+	    <BR>
+	    <BR>
+	  </LI> 
+		<LI>
+		  The suffixes indicating birth positions 1st, 2nd, 3rd, ..., 10th are
+		  converted to their Roman numeral equivalents I, II, III, &#133; X.
+		  <BR>
+		  <BR>
+	  </LI>
+      <LI>
+        DR immediately after the comma (or if there is no comma, at the
+		beginning of the name), is assumed to be a suffix and moved to the end of the name.
+		<BR>
+		<BR>
+      </LI> 
+	  <LI>
+	    Any suffixes between two commas immediate after the Family Name are
+		moved to the end of the name.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    NMI or NMN used as a Middle Name is deleted.
+	  </LI> 
+	</OL> 
+	<h5>Component Parts Name</h5>
+	<P>In forming the component parts of the name, only the following changes are made:</P> 
+	<OL start="11"> 
+	  <LI>
+	    The name component is converted to uppercase.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    In the Family Name, semicolons (<B>;</B>) and colons (<B>:</B>) are
+		converted to hyphens (<B>-</B>).
+		<BR>
+		<BR>
+      </LI> 
+	  <LI>
+	    In the other name parts (Given Name, Middle Name, and Suffix),
+		semicolons, colons, and commas (<B>,</B>) are converted to spaces.
+		<BR>
+		<BR>
+	  </LI>
+      <LI>
+        Hyphens and spaces at the beginning and end of the name are removed.
+        <BR>
+        <BR>
+      </LI> 
+	  <LI>
+	    Two or more consecutive hyphens/spaces are replaced with a single hyphen/space.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    A Middle Name of NMI or NMN is changed to null.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    Spaces after periods are removed.
+	    <BR>
+	    <BR>
+	  </LI> 
+	  <LI>
+	    Accent graves (<B>`</B>) and carets (<B>^</B>) are removed.
+	  </LI> 
+	</OL> 
+	<P>In parsing the name into its component parts, if the name contains a
+	comma or the "F" flag is passed, STDNAME^XLFNAME looks for suffixes immediately
+	to the left of the first comma, and at the very end of the name. The suffixes
+	it recognizes are 1ST through 10TH, JR, SR, DR, MD, ESQ, DDS, RN, ARNP, DO, 
+	PA, and Roman
+	numerals I through X.<br>
+	<br>
+	(<b>NOTE:</b> The ARNP, DO, and PA suffixes were added with Kernel Patch 
+	XU*8.0*535.)</P>
+<P>If a name part before any recognizable suffixes is more
+	than one character in length, and contains no vowel or 'Y', it is also assumed
+	to be a suffix. The Name Standardization looks for the DR suffix immediately
+	after the first comma, and for any suffix between two commas immediately after
+	the Family Name. The portion of the name to the left of the comma, less any
+	suffixes, is assumed to be the Family Name.</P>
+<P>After STDNAME^XLFNAME
+	accounts for all Suffixes, it looks at the portion of the name after the comma.
+	It assumes that the first space-delimited piece is the Given Name. If any other
+	pieces are left, the last one (rightmost) is assumed to be the Middle Name, and
+	anything else is appended to the end of the Given Name.</P>
+<P>If the name
+	contains no comma, and the "F" flag is not passed, STDNAME^XLFNAME looks for
+	suffixes at the very end of the name. The last space-delimited piece before any
+	suffixes is assumed to be the Family Name. The first space-delimited piece is
+	assumed to be the Given Name. If any other pieces are left, the last one
+	(rightmost) is assumed to be the Middle Name, and anything else is appended to
+	the end of the Given Name.</P> 
+	<H4><A NAME="example">Example</A></H4> 
+	<P>In this example, the MYNAME variable is set to the name to be
+	standardized. The "C" flag indicates that the name components should be
+	returned in the MYNAME array, and the "P" flag indicates that parenthetical
+	text should be removed from the name. STDNAME^XLFNAME sets MYAUD to original
+	name passed in and sets nodes in the MYAUD array to flag changes and possible
+	problems.</P> 
+	<PRE>&gt;<B>S MYNAME=&quot;KRNUSER,FIFTY A. B. 2ND (TEST)"</B>
+&gt;<B>D STDNAME^XLFNAME(.MYNAME,"CP",.MYAUD)</B>
+
+&gt;<B>ZW MYNAME</B>
+MYNAME=KRNUSER,FIFTY A B II
+MYNAME("FAMILY&quot;)=KRNUSER
+MYNAME("GIVEN&quot;)=FIFTY A.
+MYNAME("MIDDLE")=B.
+MYNAME("SUFFIX")=2ND
+
+&gt;<B>ZW MYAUD</B>
+MYAUD=KRNUSER,FIFTY A. B. 2ND (TEST)
+MYAUD("MIDDLE")=""
+MYAUD("PERIOD")=""
+MYAUD("SPACE")=""
+MYAUD("STRIP")=""</PRE> 
+	<P>STDNAME^XLFNAME returned the standard form of the name in MYNAME as
+	KRNUSER,FIFTY A B II. It interpreted FIFTY A. as the given (first) name and B.
+	as the middle name. Since this may not be correct, MYAUD("MIDDLE") is set.
+	Periods were removed and spaces were removed to form the standard name,
+	therefore MYAUD("PERIOD") and MYAUD("SPACE") were set. Finally, since the
+	parenthetical text (TEST) was removed, MYAUD("STRIP") was set.</P> 
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+	    <TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->October 18, 2011<!--webbot bot="Timestamp" endspan i-checksum="30158" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/stdname^xlfname.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+		</TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

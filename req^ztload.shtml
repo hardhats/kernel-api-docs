@@ -1,0 +1,437 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 05/27/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: REQ^%ZTLOAD</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: REQ^%ZTLOAD">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,REQ^%ZTLOAD,REQ,%ZTLOAD,taskman,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">REQ^%ZTLOAD</A>: Requeue a Task</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> TaskMan,
+	<B>Integration Agreement:</B> 10063</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This API unschedules, edits, and reschedules a task. Unscheduling
+	ensures the task is not pending but does not stop it from running. Editing is
+	limited to the API, start time, description, and I/O device. Rescheduling is
+	optional. However, if the task is not rescheduled, it is vulnerable to the Task
+	File Cleanup option. The entire procedure is referred to as
+	requeuing.
+	<BR>
+	<BR>
+	<B>CAUTION: Because requeuing does not involve stopping a
+	running task, it is possible to wind up with the same task running in two
+	different partitions if the algorithm is not designed carefully. This is not
+	supported by TaskMan; thus, programmers should use requeuing very carefully.
+	Queuing a new task is usually a better way to accomplish the same
+	goals.</B>
+	<BR>
+	<BR>
+	NOTE: Tasks can reschedule themselves through use of the ZTREQ output variable.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  REQ^%ZTLOAD</PRE> 
+    <P>Make sure to perform the following steps before calling this API:</P>
+    <OL>
+      <LI>
+        NEW all non-namespaced variables.
+        <BR>
+        <BR>
+      </LI>
+      <LI>
+        Set all input variables.
+        <BR>
+        <BR>
+      </LI>
+      <LI>
+        Call the API.
+      </LI>
+    </OL>
+	<H4><A NAME="input_parameters">Input Variables</A></H4>
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>ZTSK:</B>
+		</TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%">
+		  <P>(required) The task number of the task to edit. It must be defined
+		  on the current volume set for the edit to succeed. It is strongly recommended
+		  that this task not be currently running.</P>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP">
+	      <B>ZTDESC:</B>
+		</TD> 
+		<TD VALIGN="TOP" COLSPAN="2"> 
+		  <P>(optional) New description for the task. It should describe the
+		  task and name the software application that created the task.</P>
+		</TD> 
+	  </TR>
+	  <TR>
+	    <TD VALIGN="TOP">
+	      <B>ZTDTH:</B>
+		</TD>
+		<TD VALIGN="TOP" COLSPAN="2">
+		  <P>(optional) New start time for the task. Pass this as a date and
+		  time in VA FileMan or $HOROLOG format. If not passed, the original start time
+		  is used again. If passed as "@", the task will not be rescheduled.
+		  <BR>
+		  <BR>
+		  The ZTDH input variable can also be passed as a rescheduling code. This code is a
+		  number followed by an "S" (seconds), an "H" (hours), or a "D" (days). This code
+		  represents an interval of time (e.g., "60S" is 60 seconds) that is added to the
+		  current time (for seconds or hours) or the original start time (for days) to
+		  produce the new start time.</P>
+		</TD>
+	  </TR>
+	  <TR>
+	    <TD VALIGN="TOP">
+	      <B>ZTIO:</B>
+		</TD>
+		<TD VALIGN="TOP" COLSPAN="2">
+		  <P>(optional) New I/O device for the task. It is used to set 
+          <A HREF="zis.shtml#iop_zis"
+             TITLE="IOP Variable in ^%ZIS"
+             CLASS="bodylink">IOP</A> in the 
+          <A HREF="zis.shtml"
+             CLASS="bodylink"
+             TITLE="^%ZIS API">^%ZIS</A> 
+          API, and
+		  can take all of  
+          <A HREF="zis.shtml#iop_zis"
+             TITLE="IOP Variable in ^%ZIS"
+             CLASS="bodylink">IOP</A>'s format specification strings. If the ZTIO 
+          variable is set to
+		  "<B>@</B>", the task is rescheduled for no I/O device. If it is not passed, the
+		  originally requested I/O device is used.</P>
+          <UL>
+            <LI>
+              ZTIO(&quot;H&quot;)&#8212;If not set, it is set to the value of the 
+              <A HREF="zis.shtml#hfsio_zis"
+                 TITLE="IO(" Variable in ^%ZIS"
+                 CLASS="bodylink" "HFSIO"")>IO(&quot;HFSIO&quot;)</A> variable in the 
+          <A HREF="zis.shtml"
+             CLASS="bodylink"
+             TITLE="^%ZIS API">^%ZIS</A> 
+              API.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              ZTIO(&quot;P&quot;)&#8212;If not set, it is set to the value of 
+              the 
+              <A HREF="zis.shtml#iopar_zis"
+                 TITLE="%ZIS(" Variable in ^%ZIS"
+                 CLASS="bodylink" "IOPAR"")>IOPAR</A> variable in the 
+          <A HREF="zis.shtml"
+             CLASS="bodylink"
+             TITLE="^%ZIS API">^%ZIS</A> 
+              API.
+            </LI>
+          </UL>
+		</TD>
+	  </TR>
+	  <TR>
+	    <TD VALIGN="TOP">
+	      <B>ZTRTN:</B>
+		</TD>
+		<TD VALIGN="TOP" COLSPAN="2">
+		  <P>(optional) API for TaskMan to use for the task. If it is not
+		  passed, the original API is used.</P>
+		</TD>
+	  </TR>
+	  <TR>
+	    <TD VALIGN="TOP">
+	      <B>ZTSAVE:</B>
+		</TD>
+		<TD VALIGN="TOP" COLSPAN="2">
+		  <P>(optional) Input variable array. An array whose nodes specify
+		  input variables to the task beyond the usual set all tasks receive. It is set
+		  up in the same format as the ZTSAVE input variable for the ^%ZTLOAD API.</P>
+		</TD>
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output Variable</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>ZTSK(0):</B>
+		</TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>Returns:</P> 
+		  <UL>
+		    <LI>
+		      1&#151;Task is defined.
+			  <BR>
+			  <BR>
+			</LI>
+			<LI>
+			  0&#151;Task is not defined or ZTDTH was passed in a bad format.
+			</LI>
+		  </UL>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="example">Example</A></H4> 
+	<P>This example is a job that consists of gathering 
+    information and then printing it. Assume that the gathering takes a few 
+    hours. We do not want the device that the user selects to be tied up for 
+    that time, so we divide the job into two tasks. The first task gathers the 
+    information and the second task prints it. We use the 
+    <A HREF="zis.shtml"
+       CLASS="bodylink"
+       TITLE="^%ZIS API">^%ZIS</A> 
+    API to select the device, the ^%ZTLOAD API to queue the print task, and the 
+    ^%ZTLOAD API to schedule the gather task. We use the 
+    <A HREF="req^ztload.shtml"
+       CLASS="bodylink"
+       TITLE="REQ^ZTLOAD API">REQ^ZTLOAD</A> 
+    API to schedule the print task when the gather task finishes.<BR>
+    <BR>
+    <B>NOTE:</B> This process is made easier by using the
+    <A HREF="x-qq^xutmdevq.shtml"
+       CLASS="bodylink"
+       TITLE="$$QQ^XUTMDEVQ API">$$QQ^XUTMDEVQ</A> and 
+    <A HREF="x-reqq^xutmdevq.shtml"
+       CLASS="bodylink"
+       TITLE="$$REQQ^XUTMDEVQ API">$$REQQ^XUTMDEVQ</A> APIs.</P>
+	<P><B>Sample Code:</B></P>
+    <PRE>ARHBQQ   ;SFVAMC/GB - Demo of 'gather' and 'print' in 2 tasks ;1/19/06  08:31
+         ;;1.1
+ZTLOAD   ;
+         N ARH,ARHZTSK,X,ZTSAVE,%ZIS,ZTSK,ZTDTH,ZTRTN,ZTDESC,ZTIO,POP
+         W !,"Queue the second task (the print task) first.",!
+         ;Let's deal with the second task first.
+         ;The user doesn't know it, but he's actually queuing the second task,
+         ;the "print" portion of the job.  The only question the user will be
+         ;asked is to select the device.
+         ;
+         S %ZIS="QM"
+         S IOP="Q" ;Force queuing.
+         D ^%ZIS Q:POP  ; Select Device
+         W !,"Finished with %ZIS."
+         ;
+         S ZTDTH="@" ;Don't schedule the task to run, we'll do it later
+         ;If we didn't need to set ZTDTH, we could use EN^XUTMDEVQ, but that
+         ;API 'new's ZTDTH, so we can't set it.
+         ;
+         ;BTW, Did you know that there's a 5th parameter in EN^XUTMDEVQ?
+         ;Usually, EN^XUTMDEVQ will 'new' ZTSK, so you can't get to it.
+         ;If you put "1" as the 5th parameter, ZTSK will exist when EN returns.
+         ;D EN^XUTMDEVQ("PRINT^ARHBQQ","ARHB Print",.ZTSAVE,.%ZIS,1)
+         ;
+         S ZTRTN="PRINT^ARHBQQ"
+         S ZTDESC="ARHB Print"
+         D ^%ZTLOAD
+         D HOME^%ZIS
+         W !,"ZTSK=",$G(ZTSK)
+         Q:'$D(ZTSK)
+         S ARHZTSK=ZTSK
+         ;
+         N ZTSAVE,%ZIS,ZTSK,ZTDTH,ZTRTN,ZTDESC,ZTIO,IOP
+         W !,"Now queue the first task (the gather task).",!
+         ;Now queue the first task, the "gather" portion of the job.
+         ;Since we don't need a device,
+         ;the user will only be asked when to start the task.
+         ;(I wasn't able to get EN^XUTMDEVQ to work for me.  I tried setting
+         ;IOP="Q;" to let it know that it should be queued and it didn't need
+         ;a device, but it did nothing, and returned a null ZTSK.)
+         F I="ARHZTSK" S ZTSAVE(I)="" ; Save the ZTSK of the "print" task.
+         S ZTIO="" ; We don't need a device.
+         S IOP="Q" ; Force queuing.
+         S ZTRTN="GATHER^ARHBQQ"
+         S ZTDESC="ARHB Gather"
+         D ^%ZTLOAD
+         D HOME^%ZIS
+         W !,"ZTSK=",$G(ZTSK)
+         Q
+GATHER   ;
+         N ARHJ
+         S ZTREQ="@"
+         S ARHJ="ARHB-QQ"_"-"_$J_"-"_$H ; namespace + unique ID
+         K ^XTMP(ARHJ) ; Use ^XTMP to pass a lot of data between tasks.
+         S ^XTMP(ARHJ,0)=$$FMADD^XLFDT(DT,1)_U_DT ; Save-thru and create dates.
+         S ^XTMP(ARHJ)="HI MOM!" ; Pretend this is a lot of data.
+         D SPRINT
+         Q
+SPRINT   ; Now schedule the "print" task to run.
+         N ZTSK,ZTDTH,I,ZTRTN,ZTDESC,ZTIO,ZTSAVE ; Very important to NEW the
+         ; input variables to REQ^%ZTLOAD, otherwise they retain the values of
+         ; the currently running task, and you could unintentionally change the
+         ; "print" task to rerun the "gather" task.
+         F I="ARHJ" S ZTSAVE(I)="" ; Let the "print" task know the "$J" value.
+         S ZTSK=ARHZTSK
+         S ZTDTH=$H
+         D REQ^%ZTLOAD
+         ;Instead of the above 8 lines we could have simply:
+         ;S X=$$REQQ^XUTMDEVQ(ARHZTSK,$H,"ARHJ")
+         Q
+PRINT    ;
+         S ZTREQ="@"
+         U IO ; Don't need this if invoked using a ^XUTMDEVQ API.
+         W !,"The secret message is: '",$G(^XTMP(ARHJ)),"'"
+         K ^XTMP(ARHJ)
+         Q</PRE>
+    <HR>
+	<P><B>Code Execution:</B></P> 
+    <PRE>VAH><B>D ZTLOAD^ARHBQQ</B>
+     
+Queue the second task (the print task) first.
+QUEUE TO PRINT ON
+DEVICE: HOME// <B>P-MESS</B>
+
+ 1 P-MESSAGE-ENGWO-HFS-VXD   HFS FILE ==> MAILMESSAGE
+ 2 P-MESSAGE-HFS-VXD   HFS FILE ==> MAILMESSAGE
+Choose 1-2> <B>2 &lt;Enter&gt;</B>  P-MESSAGE-HFS-VXD  HFS FILE ==> MAILMESSAGE
+
+Subject: <B>MY PRINT</B>
+
+     Select one of the following:
+
+          M         Me
+          P         Postmaster
+
+From whom: Postmaster// <B>&lt;Enter&gt;</B>
+Send mail to: KRNUSER,ONE// <B>&lt;Enter&gt;</B>  KRNUSER,ONE
+Select basket to send to: IN// <B>&lt;Enter&gt;</B>
+And Send to: <B>&lt;Enter&gt;</B>
+Finished with %ZIS.
+ZTSK=2921497
+Now queue the first task (the gather task).
+
+Requested Start Time: NOW// <B>&lt;Enter&gt;</B>  (JAN 25, 2005@11:30:35)
+ZTSK=2921499</PRE> 
+	<HR> 
+	<P><B>Output:</B></P>
+    <PRE>Subj: MY PRINT  [#28881111] 01/25/05@11:30  2 lines
+From: POSTMASTER (Sender: BEUSCHEL,GARY - COMPUTER SPECIALIST)  In 'IN' 
+basket.
+Page 1  *New*
+-------------------------------------------------------------------------------
+
+The secret message is: 'HI MOM!'
+
+Enter message action (in IN basket): Ignore//</PRE>
+    <P>&nbsp;</P>
+    <HR COLOR="003399"> 
+    <TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+      <TR> 
+	    <TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm" TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/req^ztload.shtml"
+		     TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+	      <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

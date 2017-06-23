@@ -1,0 +1,257 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 05/27/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: SETUP^XUSRB</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: SETUP^XUSRB">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,SETUP^XUSRB,SETUP,XUSRB,signon security,controlled subscription,controlled,subscription">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">SETUP^XUSRB</A>: VistALink-Set Up User's Partition in M</H3> 
+	<P><B>Reference Type:</B> Controlled Subscription, <B>Category:</B> Signon/Security, <B>Integration Agreement:</B> 4054</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This API sets up a VistALink user's partition in M prior to signon.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  SETUP^XUSRB(ret)</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>ret:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%">
+		  <P>(required) Name of the subscripted return array. In every API 
+          that is used as an RPC, the first parameter is the return array.</P>
+        </TD> 
+	  </TR> 
+	</TABLE> 
+    <P>Make sure to perform the following steps before calling this API:</P>
+    <OL>
+      <LI>
+        NEW all non-namespaced variables.
+        <BR>
+        <BR>
+      </LI>
+      <LI>
+        Set all input variables.
+        <BR>
+        <BR>
+      </LI>
+      <LI>
+        Call the API.
+      </LI>
+    </OL>
+	<H4>Input Variables</H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"
+	       ID="table1"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>XWBTIP:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%">
+		  (required) The Internet Protocol (IP) address of the client 
+          workstation.
+        </TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP">
+	      <B>XWBCLMAN:</B>
+	    </TD> 
+		<TD VALIGN="TOP"> 
+		  (optional) The client workstation name.
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP">
+	      <B>XWBVER:</B>
+	    </TD> 
+		<TD VALIGN="TOP"> 
+		  (optional) This is the version of the RPC Broker software on the 
+          client workstation.
+        </TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>RET():</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"
+		    WIDTH="85%"> 
+		  <P>Returns a subscripted output array:</P> 
+		  <UL>
+		    <LI>
+		      RET(0)&#151;Server name
+		      <BR>
+		      <BR>
+		    </LI>
+			<LI>
+			  RET(1)&#151;Volume
+			  <BR>
+			  <BR>
+			</LI>
+			<LI>
+			  RET(2)&#151;UCI
+			  <BR>
+			  <BR>
+			</LI>
+			<LI>
+			  RET(3)&#151;Device
+			  <BR>
+			  <BR>
+			</LI>
+			<LI>
+			  RET(4)&#151;# Attempts
+			  <BR>
+			  <BR>
+			</LI>
+			<LI>
+			  RET(5)&#151;Skip signon-screen
+			  <BR>
+              <BR>
+            </LI>
+            <LI>
+              RET(6)&#8212;Domain name
+            </LI>
+		  </UL>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+	    <TD ALIGN="CENTER"
+	        VALIGN="TOP"
+	        COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/setup^xusrb.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

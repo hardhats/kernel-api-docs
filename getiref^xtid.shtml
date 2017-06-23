@@ -1,0 +1,311 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 09/20/07-->
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: GETIREF^XTID</TITLE>
+    <META NAME="subject" CONTENT="Toolkit APIs: GETIREF^XTID">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,GETIREF^XTID,GETIREF,XTID,data standardization,supported">
+    <LINK REL="StyleSheet" TYPE="text/css" HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">GETIREF^XTID</A>(): Get IREF</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Toolkit&#8212;VHA Unique ID 
+    (VUID),
+	<B>Integration Agreement:</B> 4631</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This API searches and returns a list of terms/concepts for a 
+    given VHA Unique ID (VUID; i.e., &quot;vuid&quot; input parameter). Filtering of the 
+    list is applied when the following optional input parameters are defined:</P>
+    <UL>
+      <LI>
+        file
+        <BR>
+        <BR>
+      </LI>
+      <LI>
+        field
+        <BR>
+        <BR>
+      </LI>
+      <LI>
+        master
+      </LI>
+    </UL>
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  GETIREF^XTID([file][,field],vuid,array[,master])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+    <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
+      <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>file:</B>
+	    </TD> 
+		<TD VALIGN="TOP" WIDTH="85%">
+		  <P>(optional) VistA file/subfile number where term/concept is defined:</P>
+          <UL>
+            <LI>
+              Defined&#8212;If defined, the search is limited to those 
+              term/concepts that exist in that file and have the VUID assigned 
+              to the &quot;vuid&quot; input parameter.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              Not Defined&#8212;If not defined, the search will include 
+              term/concepts that have the VUID assigned to the &quot;vuid&quot; input 
+              parameter and may exist in both file terms and in SET OF CODES 
+              terms.
+            </LI>
+          </UL>
+        </TD>
+      </TR> 
+      <TR> 
+        <TD VALIGN="TOP" WIDTH="15%">
+          <B>field:</B>
+        </TD> 
+	    <TD VALIGN="TOP" WIDTH="85%">
+	      <P>(optional) Field number in the &quot;file&quot; input parameter where 
+          term/concept is defined:</P>
+          <UL>
+            <LI>
+              Defined&#8212;The search will find those terms/concepts that have 
+              the VUID assigned to the &quot;vuid&quot; input parameter and will be 
+              limited to those terms/concepts that exist in the given 
+              file/field combination.
+              <BR>
+              <UL>
+                <LI>
+                  Entered as .01, it represents the terms defined in the file 
+                  entered in the &quot;file&quot; input parameter.
+                  <BR>
+                  <BR>
+                </LI>
+                <LI>
+                  Otherwise, the field number entered must be a SET OF CODES 
+                  data type field in the file entered in the &quot;file&quot; input 
+                  parameter.
+                </LI>
+              </UL>
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              Not Defined&#8212;The search will find those terms/concepts that 
+              have the VUID assigned to the &quot;vuid&quot; input parameter and will be 
+              limited to those terms/concepts found in the file defined in the 
+              &quot;file&quot; input parameter.
+              <BR>
+              <BR>
+            </LI>
+          </UL>
+        </TD> 
+      <TR> 
+        <TD VALIGN="TOP" WIDTH="15%">
+          <B>vuid:</B>
+        </TD> 
+	    <TD VALIGN="TOP" WIDTH="85%">
+	      <P>(required) The VHA Unique ID (VUID), which is specified in order to limit the search.</P>
+        </TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>array:</B>
+	    </TD> 
+	    <TD VALIGN="TOP" WIDTH="85%">
+	      <P>(required) The name of the array (local or global) where results 
+          of the search will be stored.</P>
+        </TD> 
+	  </TR> 
+	  <TR> 
+        <TD VALIGN="TOP" WIDTH="15%">
+          <B>master:</B>
+        </TD> 
+	    <TD VALIGN="TOP" WIDTH="85%">
+	      <P>(optional) Flag to limit the search of terms based on the value 
+          of the MASTER ENTRY FOR VUID field:</P>
+          <UL>
+            <LI>
+              0&#8212;Include all terms.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              1&#8212;Include only those terms designated as MASTER ENTRY FOR VUID.
+            </LI>
+          </UL>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+    <H4><A NAME="output">Output</A></H4>
+    <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+		  <B>array:</B>
+		</TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>Returns the given array populated as follows:</P>
+          <UL>
+            <LI>
+              @TARRAY=&lt;list count&gt;
+              <BR>
+              @TARRAY@(&lt;file#&gt;,&lt;field#&gt;,&lt;internal reference&gt;)=&lt;status info&gt;
+              <BR>
+              <BR>
+              where the &lt;status info&gt; is defined as follows:
+              <BR>
+              <BR>
+              &lt;internal value&gt;^&lt;VA FileMan effective date/time&gt;^&lt;external 
+              value&gt;^&lt;master entry?&gt;
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              Empty Array&#8212;Unpopulated array when no entries are found.
+              <BR>
+              <BR>
+              @TARRAY=&lt;list count&gt;
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              Error Array&#8212;When an error occurs, the array is populated as follows:
+              <BR>
+              <BR>
+              @TARRAY(&quot;ERROR&quot;)=&quot;&lt;error message&gt;&quot;
+            </LI>
+          </UL>
+        </TD> 
+	  </TR>
+    </TABLE> 
+	<H4><A NAME="example">Example 1</A></H4> 
+	<PRE>&gt;<B>N array S array=&quot;MYARRAY&quot;</B>
+
+&gt;<B>S file=16000009,field=.01,vuid=12343,master=0</B>
+
+&gt;<B>D GETIREF^XIID(file,field,vuid,array,master)</B>
+
+&gt;<B>ZW MYARRAY</B>
+
+MYARRAY=2
+MYARRAY(16000009,.01,&quot;1,&quot;)=1^3050202.153242^ACTIVE^0
+MYARRAY(16000009,.01,&quot;3,&quot;)=0^3050215.07584^INACTIVE^1</PRE> 
+	 <H4>Example 2 </H4> 
+	 <P>When no entries are found, the named array is populated as follows:</P>
+	 <PRE>&gt;<B>ZW MYARRAY</B>
+
+MYARRAY=0</PRE> 
+	 <H4>Example 3</H4> 
+     <P>When an error occurs, the named array is populated as follows:</P>
+	 <PRE>&gt;<B>ZW MYARRAY</B>
+
+MYARRAY(&quot;ERROR&quot;)=&lt;error message&gt;</PRE> 
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%" SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/getiref^xtid.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

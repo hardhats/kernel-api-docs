@@ -1,0 +1,257 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 12/14/05-->
+	 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+	 <TITLE>Kernel APIs: $$HLNAME^XLFNAME</TITLE>
+	 <META NAME="subject" CONTENT="Kernel APIs: $$HLNAME^XLFNAME">
+	 <META NAME="keywords"
+	  CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$HLNAME^XLFNAME,$$hlname,xlfname,name standardization,supported">
+	 <LINK REL="StyleSheet" TYPE="text/css" HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+     <!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan
+     -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655"
+     --><P></P> 
+	  
+	 <!-- Content -->
+	 <H3><A NAME="navskip">$$HLNAME^XLFNAME</A>(): Convert Name to HL7 Formatted
+		Name</H3> 
+	 <P><B>Reference Type:</B> Supported, <B>Category:</B> Name Standardization,
+		<B>Integration Agreement:</B> 3065</P> 
+	 <H4><A NAME="description">Description</A></H4> 
+	 <P>This extrinsic function converts an input name to an HL7 formatted
+		name.</P> 
+	 <H4><A NAME="format">Format</A></H4> 
+	 <PRE>  $$HLNAME^XLFNAME([.]name[,flags][,delim])</PRE> 
+	 <H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	 <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	  BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080"> 
+		<TR> 
+		  <TD VALIGN="TOP" WIDTH="15%"><B>[.]name:</B></TD> 
+		  <TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+			 <P>(required) The component parts of the name to be converted: </P> 
+			 <BLOCKQUOTE>NAME("FAMILY) = Family (Last) Name
+				(required)<BR>NAME("GIVEN") = Given (First) Name(s)
+				(optional)<BR>NAME("MIDDLE") = Middle Name(s) (optional)<BR>NAME("SUFFIX") =
+				Suffix(es) (optional)<BR>NAME("PREFIX") = Prefix (optional)<BR>NAME("DEGREE") =
+				Degree (optional)</BLOCKQUOTE> 
+			 <P>Alternatively, this array can contain the file number, IENS, and
+				field number of the field that contains the name. If the name has a
+				corresponding entry in the NAME COMPONENTS file (#20), then the name components
+				are obtained from that entry. Otherwise, the name is obtained directly from the
+				file, record, and field specified, and the name components are obtained by
+				making a call to the
+				<A HREF="stdname^xlfname.shtml" TITLE="STDNAME^XLFNAME API"
+				CLASS="bodylink">STDNAME^XLFNAME(): Name Standardization Routine API</A>.</P> 
+			 <BLOCKQUOTE>NAME("FILE") = Source file number
+				(required)<BR>NAME("IENS") = IENS of entry in the source file
+				(required)<BR>NAME("FIELD") = Source field number (required) </BLOCKQUOTE> 
+			 <P>Another alternative is to pass in the unsubscripted NAME parameter
+				the name to be converted. $$HLNAME^XLFNAME obtains the components parts of that
+				name by making a call to the
+				<A HREF="stdname^xlfname.shtml" TITLE="STDNAME^XLFNAME API"
+				CLASS="bodylink">STDNAME^XLFNAME(): Name Standardization Routine API</A>. This
+				alternative is recommended only for names that do not have associated entries
+				on the NAME COMPONENTS file (#20).</P> </TD> 
+		</TR> 
+		<TR> 
+		  <TD VALIGN="TOP"><B>flags:</B></TD> 
+		  <TD VALIGN="TOP" COLSPAN="2"> 
+			 <P>(optional) Flags to controls processing. Possible values are: </P>
+			 
+			 <UL> 
+				<LI>L#&#151;Truncate the returned name to a maximum Length of #
+				  characters, where # is an integer between 1 and 256.<BR><BR></LI> 
+				<LI>S&#151;Return the name components in the HL7 formatted name in
+				  Standardized form.</LI> 
+			 </UL> </TD> 
+		</TR> 
+		<TR> 
+		  <TD VALIGN="TOP"><B>delim:</B></TD> 
+		  <TD VALIGN="TOP" COLSPAN="2"> 
+			 <P>(optional) The delimiter to use in the HL7 string (default =
+				"<B>^</B>").</P></TD> 
+		</TR> 
+	 </TABLE> 
+	 <H4><A NAME="output">Output</A></H4> 
+	 <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	 BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080"> 
+		<TR> 
+		  <TD VALIGN="TOP" WIDTH="15%"><B>returns:</B></TD> 
+		  <TD VALIGN="TOP" WIDTH="85%"> 
+			 <P>Returns the converted name in HL7 format.</P> </TD> 
+		</TR> 
+	 </TABLE> 
+	 <H4><A NAME="details">Details</A></H4> 
+	 <P>If the L# flag is used, and the resulting name is longer than <B>#</B>,
+		the following pruning algorithm is performed to shorten the name:</P> 
+	 <OL> 
+		<LI>Truncate Middle Name from the right-most position until only the
+		  initial character is left;<BR><BR></LI> 
+		<LI>Drop suffix;<BR><BR></LI> 
+		<LI>Truncate Given Name from the right-most position until only the
+		  initial character is left;<BR><BR></LI> 
+		<LI>Truncate Family Name from the right-most position;<BR><BR></LI> 
+		<LI>Truncate the name from the right.<BR><BR></LI> 
+	 </OL> 
+	 <H4><A NAME="example">Example 1</A></H4> 
+	 <P>Suppose the MYNAME array contains the following elements:</P> 
+	 <PRE>MYNAME("PREFIX") = "MR."
+MYNAME("GIVEN") = &quot;SIXTY"
+MYNAME("MIDDLE") = "K."
+MYNAME("FAMILY") = &quot;KRNUSER"
+MYNAME("SUFFIX") = "JR"
+MYNAME("DEGREE") = "PHD"</PRE> 
+	 <P>Then calls to the $$HLNAME^XLFNAME API will return the name as
+		follows:</P> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(.MYNAME)</B>
+
+&gt;<B>W X</B>
+KRNUSER^SIXTY^K.^JR^MR.^PHD</PRE> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(.MYNAME,"","~")</B>
+
+&gt;<B>W X</B>
+KRNUSER~SIXTY~K.~JR~MR.~PHD</PRE> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(.MYNAME,"S","~")</B>
+
+&gt;<B>W X</B>
+KRNUSER~SIXTY~K~JR~MR~PHD</PRE> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(.MYNAME,"L12S")</B>
+
+&gt;<B>W X</B>
+KRNUSER^SI^K</PRE> 
+	 <H4>Example 2</H4> 
+	 <P>If an entry in the NAME COMPONENTS stores the components of a name
+		stored in the NAME field (#.01) of record number 32 in the NEW PERSON file
+		(#200), and the data in the corresponding record in the NAME COMPONENT file
+		(#20) is:</P> 
+	 <PRE>FILE = 200
+FIELD = .01
+IENS = "32,"
+PREFIX = "MR."
+GIVEN NAME = &quot;SIXTY"
+MIDDLE NAME = "K."
+FAMILY NAME = &quot;KRNUSER"
+SUFFIX = "JR"
+DEGREE = "PHD"</PRE> 
+	 <P>You can set:</P> 
+	 <PRE>MYNAME("FILE") = 200
+MYNAME("FIELD") = .01
+MYNAME("IENS") = "32,"</PRE> 
+	 <P>Then call the $$HLNAME^XLFNAME API, as in Example 1, to return the name
+		in various formats.</P> 
+	 <H4>Example 3</H4> 
+	 <P>Convert a name passed by value to HL7 format:</P> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(&quot;KRNUSER,SIXTY HOWARD II"</B>
+
+&gt;<B>W X</B>
+KRNUSER^SIXTY^HOWARD^II</PRE> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(&quot;KRNUSER,SIXTY HOWARD II","S")</B>
+
+&gt;<B>W X</B>
+KRNUSER^SIXTY^HOWARD^II</PRE> 
+	 <PRE>&gt;<B>S X=$$HLNAME^XLFNAME(&quot;KRNUSER,SIXTY HOWARD II","SL10","~")</B>
+
+&gt;<B>W X</B>
+KRNUSER~S~H</PRE> 
+	 <P>&nbsp;</P> <HR COLOR="003399"> 
+	 <TABLE WIDTH="100%" SUMMARY="This table for layout purposes only"
+	  CLASS="white"> 
+		<TR> 
+		  <TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+			 <!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+             <!--webbot bot="Timestamp"
+             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+				<BR><BR>If you have questions, need more information, or are having
+				accessibility problems with this website, please contact us by E-Mail:
+				<A
+				 HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-hlname^xlfname.shtml"
+				 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+				510-768-6800, or FAX: 510-768-6850.</P> 
+			 <P>&nbsp; </P></TD> 
+		</TR> 
+	 </TABLE> </BODY>
+</HTML>

@@ -1,0 +1,459 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 11/15/06-->
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: EN^MXMLPRSE</TITLE>
+    <META NAME="subject" CONTENT="Kernel APIs: EN^MXMLPRSE">
+    <META NAME="keywords"
+	     CONTENT="Infrastructure and Seucurity Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,EN^MXMLPRSE,EN,MXMLPRSE,xml,extensible markup language,supported">
+    <LINK REL="StyleSheet" TYPE="text/css" HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">EN^MXMLPRSE</A>(): XML&#8212;Event Driven API</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B>  XML,
+	<B>Integration Agreement:</B>  &nbsp;4149</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This API&nbsp;is based on the well-established Simple API for XML (SAX)
+    interface employed by many XML parsers. This API has a single method.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+    <PRE>  EN^MXMLPRSE(doc[,cbk][,opt])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>doc:</B>
+	    </TD> 
+		<TD VALIGN="TOP" WIDTH="85%">
+          <P>(required) This string is either a closed reference to a global root
+          containing the document or a filename and path reference identifying
+          the document on the host system. If a global root is passed, the
+          document either must be stored in standard VA FileMan
+          word-processing format or may occur in sequentially numbered nodes
+          below the root node. Thus, if the global reference is
+          &quot;^XYZ&quot;, the global must be of one of the following
+          formats:</P>
+          <UL>
+            <LI>
+              ^XYZ(1,0) = &quot;LINE 1&quot;
+              <BR>
+              <BR>
+              ^XYZ(2,0) = &quot;LINE 2&quot; ...
+            </LI>
+          </UL>
+          <P>Or</P>
+          <UL>
+            <LI>
+              ^XYZ(1) = &quot;LINE 1&quot;
+              <BR>
+              <BR>
+              ^XYZ(2) = &quot;LINE 2&quot; ...
+            </LI>
+          </UL>
+	    </TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>cbk:</B>
+	    </TD> 
+		<TD VALIGN="TOP" WIDTH="85%">
+          <P>(optional) This is a local array, passed by reference that contains a
+          list of parse events and the entry points for the handlers of those
+          events. The format for each entry is:
+          <BR>
+          <BR>
+          &nbsp;&nbsp;&nbsp;&nbsp; CBK(&lt;<I>event type</I>&gt;) =
+          &lt;<I>entry point</I>&gt;
+          <BR>
+          <BR>
+          The entry point must reference a valid entry point in an existing M
+          routine and should be of the format <I>tag^routine</I>. The entry should not contain any formal parameter
+          references. The application developer is responsible for ensuring
+          that the actual entry point contains the appropriate number of
+          formal parameters for the event type. For example, client
+          application might register its STARTELEMENT event handler as
+          follows:
+          <BR>
+          <BR>
+          &nbsp;&nbsp;&nbsp;&nbsp; CBK(&quot;STARTELEMENT&quot;) = &quot;STELE^CLNT&quot;
+          <BR>
+          <BR>
+          The actual entry point in the CLNT routine must include two formal
+          parameters as in the following example:
+          <BR>
+          <BR>
+          &nbsp;&nbsp;&nbsp;&nbsp; STELE(ELE,ATR) &lt;handler code&gt;
+          <BR>
+          <BR>
+          For the types of supported events and their required parameters, see
+          the &quot;<A HREF="#details" CLASS="BODYLINK" TITLE="Details">Details</A>&quot; topic.</P>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>opt:</B>
+	    </TD> 
+		<TD VALIGN="TOP" WIDTH="85%">
+          <P>(optional) This string is a list of option flags that control parser
+          behavior. Recognized option flags are:</P>
+          <UL>
+            <LI>
+              W&#8212;Do not report warnings to the client.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              V&#8212;Validate the document. If not specified, the parser
+              only checks for conformance.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              1&#8212;Terminate parsing on encountering a validation error. (By
+              default, the parser terminates only when a conformance error is
+              encountered.)
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              0&#8212;Terminate parsing on encountering a warning.
+            </LI>
+          </UL>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP" WIDTH="15%">
+	      <B>returns:</B>
+	    </TD> 
+		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
+		  <P>Returns the XML parsed string.</P> 
+        </TD> 
+	  </TR> 
+    </TABLE> 
+	<H4><A NAME="details">Details</A></H4> 
+    <P>The VistA XML Parser recognizes the following event types:</P>
+    <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%">
+      <TR>
+        <TD WIDTH="33%">
+          <B>Event Types</B>
+        </TD>
+        <TD WIDTH="33%">
+          <B>Parameter(s)</B>
+        </TD>
+        <TD WIDTH="34%">
+          <B>Description</B>
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>STARTDOCUMENT</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          None
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          Notifies the client that document parsing has commenced.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>ENDDOCUMENT</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          None
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          Notifies the client that document parsing has completed.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>DOCTYPE</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          ROOT
+          <BR>
+          PUBID
+          <BR>
+          SYSID
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          Notifies the client that a DOCTYPE declaration has been
+          encountered. The name of the document root is given by <I>ROOT</I>. The public and system identifiers of the external document type
+          definition are given by <I>PUBID</I>
+          and <I>SYSID</I>, respectively.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>STARTELEMENT</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          NAME
+          <BR>
+          ATTRLIST
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          An element (tag) has been encountered. The name of the
+          element is given in <I>NAME</I>.
+          The list of attributes and their values is provided in the local array
+          <I>ATTRLST</I> in the format:
+          <BR>
+          <BR>
+          &nbsp;&nbsp;&nbsp;&nbsp; ATTRLST(&lt;name&gt;) = &lt;value&gt;
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>ENDELEMENT</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          NAME
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          A closing element (tag) has been encountered. The name
+          of the element is given in <I>NAME</I>.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>CHARACTERS</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          TEXT
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          Non-markup content has been encountered. <I>TEXT</I>
+          contains the text. Line breaks within the original document are
+          represented as carriage return/line feed character sequences. The
+          parser does not necessarily pass an entire line of the original
+          document to the client with each event of this type.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>PI</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          TARGET
+          <BR>
+          TEXT
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          The parser has encountered a processing
+          instruction. <I>TARGET</I> is the target application for the processing instruction. <I>TEXT</I> is a local array containing the parameters for the instruction.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>EXTERNAL</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          SYSID
+          <BR>
+          PUBID
+          <BR>
+          GLOBAL
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          The parser has encountered an external entity
+          reference whose system and public identifiers are given by <I>SYSID</I> and <I>PUBID</I>,
+          respectively. If the event handler elects to retrieve the entity
+          rather than allowing the parser to do so, it should pass the global
+          root of the retrieved entity in the <I>GLOBAL</I> parameter. If the event handler wishes to suppress retrieval
+          of the entity altogether, it should set both <I>SYSID</I>
+          and <I>PUBID</I> to null.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>NOTATION</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          NAME
+          <BR>
+          SYSID
+          <BR>
+          PUBIC
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          The parser has encountered a notation
+          declaration. The notation name is given by <I>NAME</I>.
+          The system and public identifiers associated with the notation are
+          given by <I>SYSID</I> and <I>PUBIC</I>, respectively.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>COMMENT</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          TEXT
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          The parser has encountered a comment. <I>TEXT</I>
+          is the text of the comment.
+        </TD>
+      </TR>
+      <TR>
+        <TD WIDTH="33%" VALIGN=TOP>
+          <B>ERROR</B>
+        </TD>
+        <TD WIDTH="33%" VALIGN=TOP>
+          ERR
+        </TD>
+        <TD WIDTH="34%" VALIGN=TOP>
+          <P>The parser has encountered an error during the processing of a
+          document. <I>ERR</I> is a local
+          array containing information about the error. The format is:</P>
+          <P>ERR(&quot;SEV&quot;) = Severity of the error where zero (0) is a warning, 1 is a
+          validation error, and 2 is a conformance error.&nbsp;</P>
+          <UL>
+            <LI>
+              ERR(&quot;MSG&quot;) = Brief text description of the error.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              ERR(&quot;ARG&quot;) = The token value the triggered the error
+              (optional).
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              ERR(&quot;LIN&quot;) = The number of the line being processed
+              when the error occurred.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              ERR(&quot;POS&quot;) = The character position within the line
+              where the error occurred.
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              ERR(&quot;XML&quot;) = The original document text of the line
+              where the error occurred.
+            </LI>
+          </UL>
+        </TD>
+      </TR>
+    </TABLE>
+	<H4><A NAME="example">Example</A></H4>
+    <P>A sample client of the event-driven API is provided in the routine
+    MXMLTEST. This routine has an entry point EN(DOC,OPT), where DOC and OPT
+    are the same parameters as described above in for the parser entry
+    point. This sample application simply prints a summary of the parsing
+    events as they occur.</P>
+    <P></P>
+    <HR COLOR="003399"> 
+    <TABLE WIDTH="100%" SUMMARY="This table for layout purposes only"> 
+	  <TR> 
+	    <TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+           TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+           <!--webbot bot="Timestamp"
+           S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		   <BR>
+		   <BR>
+		   If you have questions, need more information, or are having
+		   accessibility problems with this Web site, please contact us by E-Mail:
+		   <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/en^mxmlprse.shtml"
+		      TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		   510-768-6800, or FAX: 510-768-6850.</P> 
+	      <P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

@@ -1,0 +1,264 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 09/15/11-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: $$CREATE^XUSAP</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: $$CREATE^XUSAP">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$CREATE^XUSAP,$$CREATE,XUSAP,application proxy user,application proxy,proxy,user,controlled subscription">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P>  
+<!-- Content -->
+    <H3><A NAME="navskip">$$CREATE^XUSAP</A>(): Create Application Proxy User</H3> 
+	<P><B>Reference Type:</B> Controlled Subscription, <B>Category:</B> 
+    Signon/Security, <B>Integration Agreement:</B> 4677</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>Released with Kernel Patch XU*8.0*361, this extrinsic function is a non-interactive API to create an 
+    Application Proxy User to support J2EE middle-tier applications. The Application Proxy User 
+    represents an application and <I>not</I> an end-user.</P>
+    <P><b>CAUTION:</b> If the user running this extrinsic function does <i>not</i> 
+	hold the XUMGR security key, it returns an error upon the filing of the 
+	Application Proxy as the User Class.</P>
+    <P>The Application Proxy User is a special category of user account that gets 
+    created in the 
+    NEW PERSON file (#200)&nbsp;and can execute authorized RPCs. The Application 
+    Proxy User created <I>must</I> adhere to the following criteria:</P>
+    <UL>
+      <LI>
+        The name added to the NEW PERSON file (#200) <I>must</I> be unique.
+        <BR>
+        <BR>
+     </LI>
+     <LI>
+       It <I>must</I> have a user class of &quot;Application Proxy,&quot; as defined 
+       in the USER CLASS file (#201) and pointed to by the USER CLASS field 
+       (#9.5) in the NEW PERSON file (#200).
+       <BR>
+       <BR>
+     </LI>
+     <LI>
+       It <I>must not</I> have an Access or Verify code assigned to it.
+       <BR>
+       <BR>
+     </LI>
+     <LI>
+       It <I>must not</I> have a Primary menu assigned to it.
+       <BR>
+       <BR>
+     </LI>
+     <LI>
+       It <I>must</I> have one or more Secondary menu options assigned to it.
+       <BR>
+       <BR>
+     </LI>
+     <LI>
+       The RPCs that the menu options reference <I>must</I> have the APP 
+       PROXY ALLOWED field (#.11) in the REMOTE PROCEDURE file (#8994) set to 
+       &quot;YES.&quot;
+     </LI>
+    </UL>
+    <H4><A NAME="format">Format</A></H4> 
+    <PRE>  $$CREATE^XUSAP(proxyusername[,filemanaccesscode][,options])</PRE> 
+    <H4><A NAME="input_parameters">Input Parameters</A></H4> 
+    <TABLE BORDER="1"
+           CELLPADDING="5"
+           BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+      <TR> 
+        <TD VALIGN="TOP"
+            WIDTH="15%"><B>proxyusername:</B>
+        </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%">
+		  <P>(required) This is the name of the Application Proxy User. 
+          This name <I>must</I> be unique and should be namespaced.</P>
+        </TD> 
+	  </TR> 
+	  <TR>
+	    <TD VALIGN="TOP">
+	      <B>filemanaccesscode:</B>
+	    </TD> 
+		<TD VALIGN="TOP"> 
+	      <P>(optional) This is the VA FileMan Access code. It <I>cannot</I> 
+          be an at-sign (&quot;<B>@</B>&quot;).
+          <BR>
+          <BR>
+          <B>NOTE:</B> For more information, please refer to the <I>VA FileMan 
+          Advanced User Manual</I>.</P> 
+        </TD> 
+	  </TR>
+	  <TR> 
+	    <TD VALIGN="TOP">
+	      <B>options:</B>
+	    </TD> 
+		<TD VALIGN="TOP"> 
+		  <P>(optional) This is the name of a single option name (e.g., 
+          XUS FATKAAT PROXY LOGON) or an array of options, such as XUOPT(&quot;XMUSER&quot;)=1. 
+          Applications can only access the Remote Procedure Calls (RPCs) 
+          contained in the options provided in this input parameter. RPCs 
+          are tied to &quot;B&quot;-type options.</P> 
+        </TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>returns:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"
+		    WIDTH="85%"> 
+	      <P>Returns:</P>
+          <UL>
+            <LI>
+              IEN of entry created in NEW PERSON file (#200)&#8212;Successful; writes new Application Proxy User to the 
+              NEW PERSON file (#200).
+              <BR>
+              <BR>
+            </LI>
+            <LI>
+              &quot;0^Name In Use&quot;&#8212;Unsuccessful; Application Proxy User of that name 
+				already exists in the NEW PERSON file (#200).
+              <BR>
+              <BR>
+            </LI>
+             <LI>
+               -1&#8212;Unsuccessful; could not create Application Proxy 
+               User OR error in call to UPDATE^DIE.
+               <BR>
+               <BR>
+               <B>NOTE:</B> For more information on UPDATE^DIE-related error, 
+               users should check ^TMP(&quot;DIERR&quot;,$J).
+            </LI>
+          </UL>
+        </TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="example">Example</A></H4> 
+	<P>The following example shows a <I>successful</I> creation of an 
+    Application Proxy User:</P>
+	<PRE>&gt;<B>IF $$CREATE^XUSAP("FATKAAT,PROXY","","XUS FATKAAT PROXY LOGON")&gt;0 W !,"Proxy Created"</B>
+
+Proxy Created</PRE>
+    <P></P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"> 
+	  <TR> 
+	     <TD ALIGN="CENTER"
+	         VALIGN="TOP"
+	         COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->September 15, 2011<!--webbot bot="Timestamp" endspan i-checksum="37982" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-create^xusap.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+	      <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>

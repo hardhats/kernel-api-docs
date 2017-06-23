@@ -1,0 +1,212 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 10/18/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Toolkit APIs: $$DECODE^XTHCUTL</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel Toolkit APIs: $$DECODE^XTHCUTL">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">$$DECODE^XTHCUTL</A>(): Decodes a String</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Toolkit&#8212;HTTP Client 
+	Helper,
+	<B>Integration Agreement:</B> 5555</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>The Kernel Toolkit Hypertext Transfer Protocol (HTTP) Client Helper software 
+	release adds a new tool in a set of Infrastructure software tools that 
+	developers can use. HTTP is a fast and reliable way for an application to 
+	collect data from another source. Kernel Toolkit Patch XT*7.3*123 allows VistA to tap into this information and retrieve Web data.</P>
+    <P>This code was developed by another VistA application that had a pressing need 
+    for this capability. The Kernel Toolkit development team is providing it as 
+    generic tool so that other developers may use its functionality for their needs. For example:</P>
+    <ul>
+	  <li>
+	    KIDS: Uses it to get the checksums from FORUM of patches that are sent in a Host File System (HFS) file.
+	    <br>
+	    <br>
+      </li>
+	  <li>
+	    Pharmacy: Uses it to request the printing of FDA data sheets.
+	  </li>
+    </ul>
+    <P>This extrinsic function returns a decoded string using the HTTP Client 
+	Helper 1.0 software. This API was introduced with Kernel Toolkit Patch XT*7.3*123.
+	<br>
+	<br>
+	<b>NOTE:</b> XTHC* routines are part of the HTTP Client Helper application for 
+	developers.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  $$DECODE^XTHCUTL(string)</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>string:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%"> 
+		  <P>(required) Input string to be decoded.</P>
+        </TD> 
+	  </TR> 
+	  </TABLE><H4><A NAME="output">Output</A></H4><TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>Returns:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    WIDTH="85%"> 
+	      <P>Returns decoded string. It replaces the following characters:</P>
+		  <ul>
+		    <li>
+		      &amp;lt; with &lt;
+		    </li>
+			<li>
+			  &amp;gt; with &gt;
+			</li>
+			<li>
+			  &amp;amp; with &amp;
+			</li>
+			<li>
+			  &amp;nbsp; with &quot; &quot;
+			</li>
+			<li>
+			  &amp;apos; with '
+			</li>
+			<li>
+			  &amp;quot; with &quot;
+			</li>
+			<li>
+			  &amp;#65; with A
+			</li>
+		  </ul>
+	    </TD>
+	  </TR>
+	</TABLE>
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY></HTML>

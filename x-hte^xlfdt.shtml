@@ -1,0 +1,292 @@
+<HTML> 
+  <HEAD>
+<!--VHA OI Health Systems Design & Development (HSD&D)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 11/04/09-->
+    <META HTTP-EQUIV="Content-Type"
+	      CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: $$HTE^XLFDT</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel APIs: $$HTE^XLFDT">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$HTE^XLFDT,$$HTE,XLFDT,date functions,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+	<H3><A NAME="navskip">$$HTE^XLFDT</A>(): Convert $H to External Format</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Date Functions,
+	<B>Integration Agreement:</B> 10103</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>This extrinsic function converts a $H formatted input date to an 
+    external formatted date.</P> 
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>  $$HTE^XLFDT(x[,y])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>x:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"
+		    WIDTH="85%">
+		  <P>(required) $H date (in quotes).</P>
+		</TD> 
+	  </TR> 
+	  <TR> 
+	    <TD VALIGN="TOP">
+	      <B>y:</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"> 
+		  <P>(optional) Affects output as follows:</P> 
+		  <UL> 
+		    <LI>
+		      If null, '$D(y), return the written-out format.
+		      <BR>
+		      <BR>
+		    </LI> 
+		    <LI>
+		      If '$D(y) then return standard VA FileMan format.
+		      <BR>
+		      <BR>
+		    </LI> 
+		    <LI>
+		      If +y = 1 then return standard VA FileMan format.
+		      <BR>
+		      <BR>
+		    </LI> 
+			<LI>
+			  If +y = 2 then return MM/DD/YY@HH:MM:SS format.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If +y = 3 then return DD/MM/YY@HH:MM:SS format.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If +y = 4 then return YY/MM/DD@HH:MM:SS format.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If +y = 5 then return MM/DD/YYYY@HH:MM:SS format.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If +y = 6 then return DD/MM/YYYY@HH:MM:SS format.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If +y = 7 then return YYYY/MM/DD@HH:MM:SS format.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If y contains a "D" then date only.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If y contains an "F" then output with leading spaces.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If y contains an "M" then only output "HH:MM&quot;.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If y contains a "P" then output "HH:MM:SS am/pm".
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If y contains an "S" then force seconds in the output.
+			  <BR>
+			  <BR>
+			</LI> 
+			<LI>
+			  If y contains a "Z" then output with leading zeroes.
+			</LI> 
+		  </UL>
+		</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TD VALIGN="TOP"
+	        WIDTH="15%">
+	      <B>returns</B>
+	    </TD> 
+		<TD VALIGN="TOP"
+		    COLSPAN="2"
+		    WIDTH="85%"> 
+		  <P>Returns the external format of a $H date.</P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+	<H4><A NAME="example">Example 1</A></H4> 
+	<P>Return the date in the following format: Standard external format.</P> 
+	<PRE>&gt;<B>S X=$$HTE^XLFDT("54786,40523")</B>
+
+&gt;<B>W X</B>
+Dec 31, 1990@11:15:23</PRE> 
+	 <H4>Example 2</H4> 
+	 <P>Return the date in the following format: MM/DD/YY@HH:MM:SS.</P> 
+	 <PRE>&gt;<B>S X=$$HTE^XLFDT("54786,40523",2)</B>
+
+&gt;<B>W X</B>
+12/31/90@11:15:23</PRE> 
+	 <H4>Example 3</H4> 
+	 <P>Return the date in the following format: MM/DD/YY@HH:MM:SS, omitting the
+		seconds.</P> 
+	 <PRE>&gt;<B>S X=$$HTE^XLFDT("57386,33723","2M")</B>
+
+&gt;<B>W X</B>
+2/12/98@09:22</PRE> 
+	 <H4>Example 4</H4> 
+	 <P>Return the date in the following format: MM/DD/YYYY@HH:MM:SS.</P> 
+	 <PRE>&gt;<B>S X=$$HTE^XLFDT("57351,27199",5)</B>
+
+&gt;<B>W X</B>
+1/8/1998@07:33:19</PRE> 
+	 <H4>Example 5</H4> 
+	 <P>Return the date in the following format: DD/MM/YYYY@HH:MM:SS.</P> 
+	 <PRE>&gt;<B>S X=$$HTE^XLFDT("57351,27199",6)</B>
+
+<B>W X</B>
+8/1/1998@07:33:19</PRE> 
+	 <H4>Example 6</H4> 
+	 <P>Return the date in the following format: YYYY/MM/DD@HH:MM:SS.</P> 
+	 <PRE>&gt;<B>S X=$$HTE^XLFDT("57351,27199",7)</B>
+
+<B>W X</B>
+1998/1/8@07:33:19</PRE> 
+    <P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	        SUMMARY="This table for layout purposes only"
+	        CLASS="white"> 
+	  <TR> 
+	    <TD ALIGN="CENTER"
+	        VALIGN="TOP"
+	        COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+          TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-hte^xlfdt.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P> 
+		  <P>&nbsp;</P>
+	    </TD> 
+	  </TR> 
+    </TABLE>
+  </BODY>
+</HTML>
