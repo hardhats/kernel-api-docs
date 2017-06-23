@@ -33,11 +33,11 @@
 <!-- Left hand navigation links -->
       <TR> 
 	    <TD>
-		  <A HREF="http://vista.med.va.gov/"
+		  <A HREF="/"
 		     TARGET="_top"
-			 TITLE="VistA Office of Information & Technology Logo: Return to Home Page">
+			 TITLE="Return to home page">
 		  <IMG SRC="images/vista_logo1.jpg"
-			   ALT="VistA Office of Information & Technology Logo: Return to Home Page"
+			   ALT="Return to home page"
 			   WIDTH="122"
 			   HEIGHT="68"
 			   BORDER="0"></A>
@@ -54,16 +54,10 @@
 	    <TD>
 		  <UL>
             <LI>
-              <A HREF="http://vista.med.va.gov/kernel/index.asp"
+              <A HREF="/kernel/KRNmain.html"
                  TARGET="_top"
 		         TITLE="Kernel: Return to Home Page"
 		         CLASS="navbarlink">Kernel Home Page</A>
-		    </li>
-            <LI>
-		      <a href="http://vista.med.va.gov/kernel/index.asp#toolkit"
-		         TARGET="_top"
-		         TITLE="Toolkit: Return to Home Page"
-		         CLASS="navbarlink" >Toolkit Home Page</a>
 		    </li>
             <LI>
 			  <A HREF="api_intro.shtml"
