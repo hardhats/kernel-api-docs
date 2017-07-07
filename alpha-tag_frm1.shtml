@@ -26,7 +26,7 @@
 <!-- Left hand navigation links -->
       <TR> 
 	    <TD>
-		  <A HREF="http://vista.med.va.gov/"
+      <A HREF="/kernel/KRNmain.html"
 		     TARGET="_top"
 			 TITLE="VistA Office of Information & Technology Logo: Return to Home Page">
 		  <IMG SRC="images/vista_logo1.jpg"
@@ -46,32 +46,20 @@
 	  <TR> 
 	    <TD>
 		  <UL>
-            <LI>
-              <A HREF="http://vista.med.va.gov/kernel/index.asp"
-                 TARGET="_top"
-		         TITLE="Kernel: Return to Home Page"
-		         CLASS="navbarlink">Kernel Home Page</A>
-		    </li>
-            <LI>
-		      <a href="http://vista.med.va.gov/kernel/index.asp#toolkit"
-		         TARGET="_top"
-		         TITLE="Toolkit: Return to Home Page"
-		         CLASS="navbarlink" >Toolkit Home Page</a>
-		    </li>
-            <LI>
+      <LI>
+         <A HREF="/kernel/KRNmain.html"
+             TARGET="_top"
+         TITLE="Kernel: Return to Home Page"
+         CLASS="navbarlink">Kernel Home Page</A>
+      </li>
+      <LI>
 			  <A HREF="api_intro.shtml"
 			     TARGET="display"
 			     CLASS="navbarlink"
 				 TITLE="APIs Introduction">APIs Introduction</A>
 			</li>
-            <LI>
-			  <A HREF="../xindex/index.shtml"
-			     TARGET="_top"
-			     CLASS="navbarlink"
-				 TITLE="XINDEX: Return to Home Page">XINDEX Home Page</A>
-			</li>
-          </UL>
-        </TD> 
+      </UL>
+      </TD> 
 	  </TR> 
 	  <TR ALIGN="CENTER"> 
 	    <TD>
@@ -315,6 +303,20 @@
                   Conversion (Domain Name to IP Addresses)</TD> 
 				</TR> 
 				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="aesdecr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: $$AESDECR^XUSHSH(): Returns Plaintext String Value for AES Encrypted Ciphertext Entry API."
+				                     class="navbarlink">$$AESDECR^XUSHSH()</A><BR>AES Decrypt</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="aesencr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: $$AESENCR^XUSHSH(): Returns AES Encrypted Ciphertext for String Entry API."
+				                     class="navbarlink">$$AESENCR^XUSHSH()</A><BR>AES Encrypt</TD> 
+				</TR>
+				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
 				  <TD></TD> 
@@ -462,6 +464,20 @@
 					 CLASS="navbarlink">$$AVJ^%ZOSV</A><BR>
                    Number of Available Jobs</TD> 
 				</TR> 
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="b64decd^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns Decoded Value for a Base64 String Entry API."
+				                     class="navbarlink">$$B64DECD^XUSHSH()</A><BR>Base64 Decode</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="b64encd^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns Base64 Encoded Value for a String Entry API."
+				                     class="navbarlink">$$B64ENCD^XUSHSH()</A><BR>Base64 Encode</TD> 
+				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
@@ -2957,6 +2973,20 @@
 					<a TARGET="display" TITLE="Toolkit API: RPLCVALS^XTIDTRM, Usage: Get Field Values of Final Replacement Term (Term/Concept), Category: Toolkit&#8212;Data Standardization" CLASS="navbarlink" href="http://vhaispwww5.vha.med.va.gov/kernel/apis/x-RPLCVALS^XTIDTRM.shtml">$$RPLCVALS^XTIDTRM</a><br>
 					 Get Field Values of Final Replacement Term (Term/Concept)</TD> 
 				</tr>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="rsadecr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns Plaintext String Value for RSA Encrypted Ciphertext Entry API."
+				                     class="navbarlink">$$RSADECR^XUSHSH()</A><BR>RSA Decrypt</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="rsaencr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns RSA Encrypted Ciphertext for String Entry API."
+				                     class="navbarlink">$$RSAENCR^XUSHSH()</A><BR>RSA Encrypt</TD> 
+				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
@@ -3228,6 +3258,13 @@
 					 TITLE="Toolkit API: $$SETVUID^XTID, Usage: Set VUID (Term/Concept), Category: Toolkit&#8212;VHA Unique ID (VUID)" 
 					 CLASS="navbarlink">$$SETVUID^XTID</A><BR>
                   Set VUID (Term/Concept)</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="shahash^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns SHA Hash for a String Entry API."
+				                     class="navbarlink">$$SHAHASH^XUSHSH()</A><BR>SHA Hash</TD> 
 				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"

@@ -46,28 +46,16 @@
 	    <TD>
 		  <UL>
             <LI>
-              <A HREF="http://vista.med.va.gov/kernel/index.asp"
+              <A HREF="/kernel/KRNmain.html"
                  TARGET="_top"
 		         TITLE="Kernel: Return to Home Page"
 		         CLASS="navbarlink">Kernel Home Page</A>
-		    </li>
-            <LI>
-		      <a href="http://vista.med.va.gov/kernel/index.asp#toolkit"
-		         TARGET="_top"
-		         TITLE="Toolkit: Return to Home Page"
-		         CLASS="navbarlink" >Toolkit Home Page</a>
 		    </li>
             <LI>
 			  <A HREF="api_intro.shtml"
 			     TARGET="display"
 			     CLASS="navbarlink"
 				 TITLE="APIs Introduction">APIs Introduction</A>
-			</li>
-            <LI>
-			  <A HREF="../xindex/index.shtml"
-			     TARGET="_top"
-			     CLASS="navbarlink"
-				 TITLE="XINDEX: Return to Home Page">XINDEX Home Page</A>
 			</li>
           </UL>
         </TD> 
@@ -3674,11 +3662,64 @@
 			 </TABLE> 
 			 <P></P></TD> 
 		</tr>
-        <tr>
+    <tr><TD><HR></TD> </tr>
+    <tr>
 		  <TD> 
-			 <HR></TD> 
-		</tr>
-        <tr>
+			 <H5><A NAME="xushsh">XUSHSH</A></H5> 
+			 <TABLE WIDTH="100%"> 
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="aesdecr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: $$AESDECR^XUSHSH(): Returns Plaintext String Value for AES Encrypted Ciphertext Entry API."
+				                     class="navbarlink">$$AESDECR^XUSHSH()</A><BR>AES Decrypt</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="aesencr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: $$AESENCR^XUSHSH(): Returns AES Encrypted Ciphertext for String Entry API."
+				                     class="navbarlink">$$AESENCR^XUSHSH()</A><BR>AES Encrypt</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="b64decd^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns Decoded Value for a Base64 String Entry API."
+				                     class="navbarlink">$$B64DECD^XUSHSH()</A><BR>Base64 Decode</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="b64encd^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns Base64 Encoded Value for a String Entry API."
+				                     class="navbarlink">$$B64ENCD^XUSHSH()</A><BR>Base64 Encode</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="rsadecr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns Plaintext String Value for RSA Encrypted Ciphertext Entry API."
+				                     class="navbarlink">$$RSADECR^XUSHSH()</A><BR>RSA Decrypt</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="rsaencr^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns RSA Encrypted Ciphertext for String Entry API."
+				                     class="navbarlink">$$RSAENCR^XUSHSH()</A><BR>RSA Encrypt</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="shahash^xushsh.shtml" TARGET="display"
+				                     title="Kernel API: Returns SHA Hash for a String Entry API."
+				                     class="navbarlink">$$SHAHASH^XUSHSH()</A><BR>SHA Hash</TD> 
+				</TR>
+       </TABLE>
+      </TD>
+    </tr>
+    <tr>
 		  <TD> 
 			 <H5><A NAME="xushshp">XUSHSHP</A></H5> 
 			 <TABLE WIDTH="100%"> 

@@ -1,0 +1,103 @@
+<HTML> 
+  <HEAD>
+<!-- Authored by OSEHRA -->
+<!-- Revised by Sam Habiel, July 2017 -->
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: $$AESDECR^XUSHSH</TITLE>
+    <META NAME="subject" CONTENT="Kernel APIs: $$AESDECR^XUSHSH">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,device handler,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+  <H3><A NAME="navskip">$$AESDECR^XUSHSH</A>: Returns Plaintext String Value
+    for AES Encrypted Ciphertext Entry</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Data Security,
+	<B>Integration Agreement:</B>6189</P> 
+	<H4><A NAME="description">Description</A></H4> 
+  <p>This extrinsic function returns the string value of an Advanced Encryption
+  Standard (AES) encrypted ciphertext entry. AES is a specification for the
+  encryption of electronic data established by the U.S. National Institute of
+  Standards and Technology (NIST) in 2001.
+  <blockquote><strong>NOTE:</strong> This API was released with Kernel patch XU*8.0*655.</blockquote>
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>$$AESDECR^XUSHSH(text,key[,iv])</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+		<TH VALIGN="TOP" WIDTH="15%">text</TH> 
+		<TD VALIGN="TOP" WIDTH="85%">(required) The ciphertext string to be decrypted.</TD> 
+    </TR>
+    <TR>
+		<TH VALIGN="TOP" WIDTH="15%">key</TH> 
+		<TD VALIGN="TOP" WIDTH="85%">(required) The input key material 16, 24, or 32 characters long.</TD> 
+    </TR>
+    <TR>
+		<TH VALIGN="TOP" WIDTH="15%">iv</TH> 
+		<TD VALIGN="TOP" WIDTH="85%">(optional) The initialization vector. If this argument is present, it must be 16 characters long.</TD> 
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output Variables</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TH VALIGN="TOP" WIDTH="15%">Output</TD> 
+      <TD VALIGN="TOP" WIDTH="85%">Returns the plaintext value of the AES encrypted ciphertext entry in the text input parameter.</TD>
+	  </TR> 
+	</TABLE> 
+	<P>&nbsp;</P>
+  <H4>Example</H4>
+  <pre>
+<strong>&gt;W $$AESDECR^XUSHSH($$B64DECD^XUSHSH("STbvalBtOxy754eRo15Bkg=="),"Encr4pt10nK3y")</strong>
+This is a test.
+  </pre>
+	<HR COLOR="003399"> 
+<!-- End Content -->
+  </BODY>
+</HTML>
