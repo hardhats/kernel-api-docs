@@ -58,12 +58,6 @@
 			     CLASS="navbarlink"
 				 TITLE="APIs Introduction">APIs Introduction</A>
 			</li>
-            <LI>
-			  <A HREF="../xindex/index.shtml"
-			     TARGET="_top"
-			     CLASS="navbarlink"
-				 TITLE="XINDEX: Return to Home Page">XINDEX Home Page</A>
-			</li>
           </UL>
         </TD> 
 	  </TR> 
