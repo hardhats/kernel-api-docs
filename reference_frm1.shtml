@@ -765,6 +765,71 @@
                   Hyperbolic Tangent</TD>
 				</TR> 
 			 </TABLE> 
+			 <TABLE WIDTH="100%" ID="table841"> 
+				<TR> 
+				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-address^xlfnslk.shtml" TARGET="display"
+					 TITLE="Kernel API: $$ADDRESS^XLFNSLK, Usage: Conversion (Domain Name to IP Addresses), Category: DNS"
+					 CLASS="navbarlink">$$ADDRESS^XLFNSLK</A><BR>
+                  Conversion (Domain Name to IP Addresses)</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="mail^xlfnslk.shtml" TARGET="display"
+					 TITLE="Kernel API: MAIL^XLFNSLK, Usage: Get IP Addresses for a Domain Name, Category: DNS" 
+					 CLASS="navbarlink">MAIL^XLFNSLK</A><BR>
+                  Get IP Addresses for a Domain Name</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="convert^xlfipv.shtml" TARGET="display"
+					 TITLE="CONVERT^XLFIPV()" 
+					 CLASS="navbarlink">CONVERT^XLFIPV</A><BR>
+                  Convert any IP Address to Standardized IP Address Format</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="forceip4^xlfipv.shtml" TARGET="display"
+					 TITLE="FORCEIP4^XLFIPV()" 
+					 CLASS="navbarlink">FORCEIP4^XLFIPV</A><BR>
+                  Convert any IP Address to IPv4</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="forceip6^xlfipv.shtml" TARGET="display"
+					 TITLE="FORCEIP6^XLFIPV()" 
+					 CLASS="navbarlink">FORCEIP6^XLFIPV</A><BR>
+                  Convert any IP Address to IPv6</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="validate^xlfipv.shtml" TARGET="display"
+					 TITLE="VALIDATE^XLFIPV()" 
+					 CLASS="navbarlink">VALIDATE^XLFIPV</A><BR>
+                  Validate IP Address Format</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="version^xlfipv.shtml" TARGET="display"
+					 TITLE="VERSION^XLFIPV()" 
+					 CLASS="navbarlink">VERSION^XLFIPV</A><BR>
+                  Show System Settings for IPv6</TD> 
+				</TR> 
+			 </TABLE> 
 			 <TABLE WIDTH="100%" ID="table84"> 
 				<TR> 
 				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"

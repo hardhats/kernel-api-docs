@@ -743,6 +743,15 @@
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
 				  <TD></TD> 
+				  <TD><A HREF="convert^xlfipv.shtml" TARGET="display"
+					 TITLE="CONVERT^XLFIPV()" 
+					 CLASS="navbarlink">CONVERT^XLFIPV</A><BR>
+                  Convert any IP Address to Standardized IP Address Format</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
 				  <TD><A HREF="x-cos^xlfmth.shtml" TARGET="display"
 					 TITLE="Kernel API: $$COS^XLFMTH, Usage: Cosine (Radians), Category: XLF Function Library: Math Functions" 
 					 CLASS="navbarlink">$$COS^XLFMTH</A><BR>
@@ -1532,6 +1541,24 @@
 					 TITLE="Kernel API: $$FMTHL7^XLFDT, Usage: Convert VA FileMan Date to HL7 Date, Category: XLF Function Library: Date Functions" 
 					 CLASS="navbarlink">$$FMTHL7^XLFDT</A><BR>
                   Convert FM Date to HL7 Date</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="forceip4^xlfipv.shtml" TARGET="display"
+					 TITLE="FORCEIP4^XLFIPV()" 
+					 CLASS="navbarlink">FORCEIP4^XLFIPV</A><BR>
+                  Convert any IP Address to IPv4</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="forceip6^xlfipv.shtml" TARGET="display"
+					 TITLE="FORCEIP6^XLFIPV()" 
+					 CLASS="navbarlink">FORCEIP6^XLFIPV</A><BR>
+                  Convert any IP Address to IPv6</TD> 
 				</TR> 
 				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
@@ -3678,6 +3705,15 @@
                   Get Recipient Info. for an Alert
                   </TD> 
 				</TR>
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="validate^xlfipv.shtml" TARGET="display"
+					 TITLE="VALIDATE^XLFIPV()" 
+					 CLASS="navbarlink">VALIDATE^XLFIPV</A><BR>
+                  Validate IP Address Format</TD> 
+				</TR> 
                 <TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
@@ -3722,6 +3758,15 @@
 					 TITLE="Kernel API: $$VERCP^XPDUTL, Usage: Verify Checkpoint, Category: KIDS" 
 					 CLASS="navbarlink">$$VERCP^XPDUTL</A><BR>
                   Verify Checkpoint</TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD></TD> 
+				  <TD><A HREF="version^xlfipv.shtml" TARGET="display"
+					 TITLE="VERSION^XLFIPV()" 
+					 CLASS="navbarlink">VERSION^XLFIPV</A><BR>
+                  Show System Settings for IPv6</TD> 
 				</TR> 
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"

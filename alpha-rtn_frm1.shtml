@@ -814,6 +814,61 @@
 		</TR> 
 		<TR ALIGN="LEFT"> 
 		  <TD> 
+			 <H5><A NAME="xlfipv">XLFIPV</A></H5> 
+			 <TABLE WIDTH="100%"> 
+				<TR> 
+				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="convert^xlfipv.shtml" TARGET="display"
+					 TITLE="CONVERT^XLFIPV()" 
+					 CLASS="navbarlink">CONVERT^XLFIPV</A><BR>
+            Convert any IP Address to Standardized IP Address Format</TD> 
+				</TR> 
+				<TR> 
+				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="forceip4^xlfipv.shtml" TARGET="display"
+					 TITLE="FORCEIP4^XLFIPV()" 
+					 CLASS="navbarlink">FORCEIP4^XLFIPV</A><BR>
+                  Convert any IP Address to IPv4</TD> 
+				</TR> 
+				<TR> 
+				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="forceip6^xlfipv.shtml" TARGET="display"
+					 TITLE="FORCEIP6^XLFIPV()" 
+					 CLASS="navbarlink">FORCEIP6^XLFIPV</A><BR>
+                  Convert any IP Address to IPv6</TD> 
+				</TR> 
+				<TR> 
+				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="validate^xlfipv.shtml" TARGET="display"
+					 TITLE="VALIDATE^XLFIPV()" 
+					 CLASS="navbarlink">VALIDATE^XLFIPV</A><BR>
+                  Validate IP Address Format</TD> 
+				</TR> 
+				<TR> 
+				  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="version^xlfipv.shtml" TARGET="display"
+					 TITLE="VERSION^XLFIPV()" 
+					 CLASS="navbarlink">VERSION^XLFIPV</A><BR>
+                  Show System Settings for IPv6</TD> 
+				</TR> 
+			 </TABLE> 
+			 <P></P>
+      </TD> 
+		<TR ALIGN="LEFT"> 
+		  <TD><HR></TD> 
+		</TR> 
+		<TR ALIGN="LEFT"> 
+		  <TD> 
 			 <H5><A NAME="xlfmsmt">XLFMSMT</A></H5> 
 			 <TABLE WIDTH="100%"> 
 				<TR> 
