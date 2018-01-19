@@ -928,6 +928,13 @@
 					 CLASS="navbarlink">$$DECDMS^XLFMTH</A><BR>
                   Conv. Decimals to Degrees:Minutes:Seconds</TD>
 				</TR> 
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="decode^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: DECODE^XLFJSON: Convert a JSON Object into a Closed Array Reference"
+				                     class="navbarlink">DECODE^XLFJSON</A><BR>Convert JSON to M Array</TD> 
+				</TR>
 				<tr>
 			     <TD WIDTH="4%" 
 				     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
@@ -1379,6 +1386,13 @@
                   Navigating Protocols<BR>
                   (Entry/Exit Actions Not Executed)</TD> 
 				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="encode^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: ENCODE^XLFJSON: Convert Closed Array or Global Reference to a JSON Object"
+				                     class="navbarlink">ENCODE^XLFJSON</A><BR>Convert M Array to JSON</TD> 
+				</TR>
 				<tr>
 			     <TD WIDTH="4%" 
 				     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
@@ -1430,6 +1444,13 @@
 					 TITLE="Kernel API: $$ESBLOCK^XUSESIG1, Usage: Electronic Signature Fields Required for Hash, Category: Electronic Signatures"
 					 CLASS="navbarlink">$$ESBLOCK^XUSESIG1</A><BR>
                   E-Sig Fields Required for Hash</TD>
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-esc^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: $$ESC^XLFJSON(): Escape String to JSON"
+				                     class="navbarlink">$$ESC^XLFJSON()</A><BR>Escape String to JSON</TD> 
 				</TR>
 				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
@@ -3656,6 +3677,13 @@
 					 CLASS="navbarlink">$$TZ^XLFDT</A><BR>
                   Time Zone Offset (GMT)</TD> 
 				</TR> 
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-ues^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: $$UES^XLFJSON(): Unescape JSON to String"
+				                     class="navbarlink">$$UES^XLFJSON()</A><BR>Unescape JSON to String</TD> 
+				</TR>
 				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 

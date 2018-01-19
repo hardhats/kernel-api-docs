@@ -187,6 +187,12 @@
 					CLASS="navbarlink">Institution File</A>
 			   </LI>
                <LI>
+                 <A HREF="#json_conversion"
+                    TARGET="toc"
+				    TITLE="JSON Conversion APIs"
+				    CLASS="navbarlink">JSON Conversion</A>
+			   </LI>
+               <LI>
                  <A HREF="#kids"
                     TARGET="toc"
 				    TITLE="KIDS APIs"
@@ -1640,6 +1646,44 @@
 				</TR> 
 				</TABLE> 
 			 <P></P></TD> 
+		</TR> 
+		  <TD><HR></TD> 
+		</TR> 
+		<TR ALIGN="LEFT"> 
+		  <TD> 
+			 <H5><A NAME="json_conversion">JSON Conversion</A></H5> 
+			 <TABLE WIDTH="100%"> 
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="encode^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: ENCODE^XLFJSON: Convert Closed Array or Global Reference to a JSON Object"
+				                     class="navbarlink">ENCODE^XLFJSON</A><BR>Convert M Array to JSON</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="decode^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: DECODE^XLFJSON: Convert a JSON Object into a Closed Array Reference"
+				                     class="navbarlink">DECODE^XLFJSON</A><BR>Convert JSON to M Array</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-esc^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: $$ESC^XLFJSON(): Escape String to JSON"
+				                     class="navbarlink">$$ESC^XLFJSON()</A><BR>Escape String to JSON</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-ues^xlfjson.shtml" TARGET="display"
+				                     title="Kernel API: $$UES^XLFJSON(): Unescape JSON to String"
+				                     class="navbarlink">$$UES^XLFJSON()</A><BR>Unescape JSON to String</TD> 
+				</TR>
+			 </TABLE> 
+			 <P></P>
+			</TD> 
 		</TR> 
 		  <TD><HR></TD> 
 		</TR> 
