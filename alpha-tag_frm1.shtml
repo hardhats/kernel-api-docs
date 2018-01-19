@@ -1460,6 +1460,13 @@
 					 CLASS="navbarlink">F4^XUAF4</A><BR>
                   Inst. Data for a Station Number</TD> 
 				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-file^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$FILE^XLFSHAN(): Returns SHA Hash for Specified FileMan File or Subfile Entry"
+				                     class="navbarlink">$$FILE^XLFSHAN()</A><BR>Fileman Data SHA Hash</TD> 
+				</TR>
 				<tr>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
@@ -1711,6 +1718,13 @@
                   Get VUID (Term/Concept)</TD> 
 				</TR>
 				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-global^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$GLOBAL^XLFSHAN(): Returns SHA Hash for a Global"
+				                     class="navbarlink">$$GLOBAL^XLFSHAN()</A><BR>Global SHA Hash</TD> 
+				</TR>
+				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
 				  <TD></TD> 
@@ -1835,6 +1849,13 @@
 					 TITLE="Kernel API: HOME^%ZIS, Usage: Reset Home Device IO Variables, Category: Device Handler" 
 					 CLASS="navbarlink">HOME^%ZIS</A><BR>
                   Reset Home Device IO Variables</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-hostfile^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$HOSTFILE^XLFSHAN(): Returns SHA Hash for a Specified Host File"
+				                     class="navbarlink">$$HOSTFILE^XLFSHAN()</A><BR>Host File SHA Hash</TD> 
 				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
@@ -2197,6 +2218,13 @@
 					 CLASS="navbarlink">$$LOW^XLFSTR</A><BR>
                   Convert String to Lowercase</TD> 
 				</TR> 
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-lshan^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$LSHAN^XLFSHAN(): Returns SHA Hash for a Long Message"
+				                     class="navbarlink">$$LSHAN^XLFSHAN()</A><BR>Long Message SHA Hash</TD> 
+				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
@@ -2964,6 +2992,13 @@
 					 CLASS="navbarlink">RMDEV^%ZISUTL</A><BR>
                   Delete Data Given a Handle</TD> 
 				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-routine^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$ROUTINE^XLFSHAN(): Returns SHA Hash for a VistA Routine"
+				                     class="navbarlink">$$ROUTINE^XLFSHAN()</A><BR>Routine SHA Hash</TD> 
+				</TR>
 				<tr>
 				  <TD WIDTH="4%" ALIGN="RIGHT">
 					<IMG SRC="http://vhaispwww5.vha.med.va.gov/kernel/apis/images/bullet_black_small.gif"
@@ -3292,6 +3327,13 @@
 				  <TD WIDTH="95%"><A HREF="shahash^xushsh.shtml" TARGET="display"
 				                     title="Kernel API: Returns SHA Hash for a String Entry API."
 				                     class="navbarlink">$$SHAHASH^XUSHSH()</A><BR>SHA Hash</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-shan^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$SHAN^XLFSHAN(): Returns SHA Hash for a Message"
+				                     class="navbarlink">$$SHAN^XLFSHAN()</A><BR>Message SHA Hash</TD> 
 				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"

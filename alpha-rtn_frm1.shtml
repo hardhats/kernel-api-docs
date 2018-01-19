@@ -1463,6 +1463,58 @@
 			 </TABLE> 
 			 <P></P></TD> 
 		</TR> 
+		<TR> 
+		  <TD><HR></TD> 
+		</TR> 
+		<TR ALIGN="LEFT"> 
+		  <TD> 
+			 <H5><A NAME="XLFSHAN">XLFSHAN</A></H5> 
+			 <TABLE WIDTH="100%">
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-file^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$FILE^XLFSHAN(): Returns SHA Hash for Specified FileMan File or Subfile Entry"
+				                     class="navbarlink">$$FILE^XLFSHAN()</A><BR>Fileman Data SHA Hash</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-global^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$GLOBAL^XLFSHAN(): Returns SHA Hash for a Global"
+				                     class="navbarlink">$$GLOBAL^XLFSHAN()</A><BR>Global SHA Hash</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-hostfile^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$HOSTFILE^XLFSHAN(): Returns SHA Hash for a Specified Host File"
+				                     class="navbarlink">$$HOSTFILE^XLFSHAN()</A><BR>Host File SHA Hash</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-lshan^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$LSHAN^XLFSHAN(): Returns SHA Hash for a Long Message"
+				                     class="navbarlink">$$LSHAN^XLFSHAN()</A><BR>Long Message SHA Hash</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-routine^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$ROUTINE^XLFSHAN(): Returns SHA Hash for a VistA Routine"
+				                     class="navbarlink">$$ROUTINE^XLFSHAN()</A><BR>Routine SHA Hash</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"> <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD WIDTH="1%"></TD> 
+				  <TD WIDTH="95%"><A HREF="x-shan^xlfshan.shtml" TARGET="display"
+				                     title="Kernel API: $$SHAN^XLFSHAN(): Returns SHA Hash for a Message"
+				                     class="navbarlink">$$SHAN^XLFSHAN()</A><BR>Message SHA Hash</TD> 
+				</TR>
+			 </TABLE>
+			</TD>
+		</TR>
 		<TR ALIGN="LEFT"> 
 		  <TD><HR></TD> 
 		</TR> 

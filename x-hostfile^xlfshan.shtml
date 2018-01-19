@@ -1,0 +1,115 @@
+<HTML> 
+  <HEAD>
+<!-- Authored by OSEHRA -->
+<!-- Revised by Sam Habiel, July 2017 -->
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel APIs: $$HOSTFILE^XLFSHAN</TITLE>
+    <META NAME="subject" CONTENT="Kernel APIs: $$HOSTFILE^XLFSHAN">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,device handler,supported">
+    <LINK REL="StyleSheet" TYPE="text/css" HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+	       WIDTH="100%"
+	       CELLSPACING="0"
+	       CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+	  <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/kernel_heading_APIs-new.gif"
+			   ALT="Kernel 8.0 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+	    </TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+		</TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+<!-- Content -->
+  <H3><A NAME="navskip">$$HOSTFILE^XLFSHAN</A>: Returns SHA Hash for Specified Host File</H3> 
+	<P>
+  <B>Reference Type:</B> Supported, 
+	<B>Category:</B> Data Security,
+	<B>Integration Agreement:</B> 6157</P> 
+	<H4><A NAME="description">Description</A></H4> 
+  <p>
+	This extrinsic function returns the SHA hash for a specified host file. It
+	uses the <a href="x-ftg^zish.shtml">$$FTG^%ZISH</a> API to load the host file for processing.
+	</p>
+  <blockquote><strong>NOTE:</strong> This API was released with Kernel patch XU*8.0*657.</blockquote>
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>$$HOSTFILE^XLFSHAN(hashlen,path,filename)</PRE> 
+	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+		<TH VALIGN="TOP" WIDTH="15%">hashlen</TH> 
+		<TD VALIGN="TOP" WIDTH="85%">(required) The hash length in bits:
+			<UL>
+			  <li>160 (SHA-1)</li>
+			  <li>224 (SHA-224)</li>
+			  <li>256 (SHA-256)</li>
+			  <li>384 (SHA-384)</li>
+			  <li>512 (SHA-512)</li>
+			</UL>
+			</TD>
+    </TR>
+    <TR>
+			<TH VALIGN="TOP" WIDTH="15%">path</TH> 
+			<TD VALIGN="TOP" WIDTH="85%">(required) Full path, up to but not including the filename.</TD> 
+    </TR>
+    <TR>
+			<TH VALIGN="TOP" WIDTH="15%">filename</TH> 
+			<TD VALIGN="TOP" WIDTH="85%">(required) Name of the file.</TD>
+	  </TR> 
+	</TABLE> 
+	<H4><A NAME="output">Output</A></H4> 
+	<TABLE BORDER="1"
+	       CELLPADDING="5"
+	       BGCOLOR="#F1F2F3"
+	       BORDERCOLORLIGHT="#F1F2F3"
+	       BORDERCOLORDARK="#808080"
+	       WIDTH="100%"> 
+	  <TR> 
+	    <TH VALIGN="TOP" WIDTH="15%">Output</TD> 
+      <TD VALIGN="TOP" WIDTH="85%">
+				<ul>
+					<li>SHA hash if successful.</li>
+					<li>Zero (0) - If the host file could not be opened/found.</li>
+				</ul>
+			</TD>
+	  </TR> 
+	</TABLE> 
+	<P>&nbsp;</P>
+  <H4>Example</H4>
+  <pre>
+<strong>&gt;W $$HOSTFILE^XLFSHAN(160,"Z:\Cache2014\","cache.cpf")</strong>
+F11F3595604296A1F8BCF13AA7F2744FB9EB1675
+  </pre>
+	<HR COLOR="003399"> 
+<!-- End Content -->
+  </BODY>
+</HTML>
