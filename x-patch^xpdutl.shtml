@@ -72,7 +72,7 @@
 	      <B>patch:</B>
 	    </TD> 
 		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
-		  <P>(required) Patch name.</P>
+		  <P>(required) Patch name. Patch name must include the full version number with the decimal point, such as XU*8.0*28.</P>
 		</TD> 
 	  </TR> 
 	</TABLE> 

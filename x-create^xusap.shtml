@@ -67,7 +67,9 @@
     Proxy User created <I>must</I> adhere to the following criteria:</P>
     <UL>
       <LI>
-        The name added to the NEW PERSON file (#200) <I>must</I> be unique.
+       The name added to the NEW PERSON (#200) file <strong>must</strong> be unique and 
+       must be namespaced in accordance with M Programming Standards and Conventions (SAC) 
+       Section 2.6, “Name Requirements.” 
         <BR>
         <BR>
      </LI>
@@ -89,16 +91,44 @@
        <BR>
      </LI>
      <LI>
-       It <I>must</I> have one or more Secondary menu options assigned to it.
+       It must have one or more Secondary menu options assigned to it. The
+       Secondary menu option must be owned by the application that the
+       Application Proxy represents, or the application must have an
+       Integration Control Registration (ICR) with the option owner. The
+       Secondary menu option contains a list of RPCs that the Application Proxy
+       is authorized to call, as described in the “RPC Security” section in the
+       RPC Broker User Guide.
        <BR>
        <BR>
      </LI>
      <LI>
-       The RPCs that the menu options reference <I>must</I> have the APP 
-       PROXY ALLOWED field (#.11) in the REMOTE PROCEDURE file (#8994) set to 
-       &quot;YES.&quot;
+       The RPCs that the menu options reference <I>must</I> have the APP PROXY
+       ALLOWED field (#.11) in the REMOTE PROCEDURE file (#8994) set to
+       &quot;YES.&quot;. The RPCs must be owned by the application that the
+       Application Proxy represents, or the application must have an ICR with
+       the RPC owner.<br><br>
+     </LI>
+     <LI>
+       The use of an Application Proxy must be restricted to accessing non- protected data. Federal laws specify when an actual end-user must be represented when accessing Personally Identifiable Information (PII) and Protected Health Information (PHI). Information regarding user authentication, identity, auditing, and authorization can be found in:
+       <ul>
+	 <li>VA Information Security Handbook 6500 Appendix F</li>
+	 <li>National Institute of Standards and Technology(NIST) e-Authentication Guidelines (800-63-2)</li>
+	 <li>Health Insurance Portability and Accountability Act of 1996 (HIPAA) federal law 45 CFR § 160 &amp; § 164</li>
+       </ul>
      </LI>
     </UL>
+    <H4>Application Proxy Privacy and Auditing</H4>
+    <p>Many VistA data interactions by human end-users must be represented with
+    accurate and unambiguous user identity information, so that VistA audit
+    mechanisms function as intended. Application Proxy user accounts do not
+    identify the user and should be avoided, especially where the interaction
+    is with PHI/PII data (regulated by federal law). The use of Application
+    Proxy user accounts should be limited to background processes and
+    machine-to-machine interactions.</p>
+    <H4>Application Proxy Permission</H4>
+    <p>Permission to use the $$CREATE^XUSAP API should be done early in the
+    development process; as use of Application Proxy user accounts are reviewed
+    by VA management due to security concerns.</p>
     <H4><A NAME="format">Format</A></H4> 
     <PRE>  $$CREATE^XUSAP(proxyusername[,filemanaccesscode][,options])</PRE> 
     <H4><A NAME="input_parameters">Input Parameters</A></H4> 
@@ -188,10 +218,68 @@
 	<H4><A NAME="example">Example</A></H4> 
 	<P>The following example shows a <I>successful</I> creation of an 
     Application Proxy User:</P>
-	<PRE>&gt;<B>IF $$CREATE^XUSAP("FATKAAT,PROXY","","XUS FATKAAT PROXY LOGON")&gt;0 W !,"Proxy Created"</B>
-
+	<PRE>&gt;<B>IF $$CREATE^XUSAP("VPR,APPLICATION PROXY","","VPR APPLICATION PROXY")>0 W !,"Proxy Created"</B>
 Proxy Created</PRE>
-    <P></P>
+        <P>The following is an example of an Application Proxy user account that is provisioned correctly:</P>
+<pre>NAME:                                   DATE ENTERED: SEP 01, 2011
+  CREATOR: XUUSER,ONE
+  SECONDARY MENU OPTIONS: VPR APPLICATION PROXY
+    TIMESTAMP: 62335,62903
+    User Class: APPLICATION PROXY           ISPRIMARY: Yes</pre>
+    	<p>The Proxy User List option [XUSAP PROXY LIST] lists the current Application Proxy user accounts, as shown below</p>
+<pre>
+PROXY USER LIST                                JAN 28,2016  09:44    PAGE 1
+NAME                                 User Class          IsPrimary  Active
+--------------------------------------------------------------------------------
+XOBVTESTER,APPLICATION PROXY         APPLICATION PROXY   Yes
+ANRVAPPLICATION,PROXY USER           APPLICATION PROXY   Yes
+VPFS,APPLICATION PROXY               APPLICATION PROXY   Yes
+RADIOLOGY,OUTSIDE SERVICE            APPLICATION PROXY   Yes
+LRLAB,HL                             APPLICATION PROXY   Yes
+LRLAB,POC                            APPLICATION PROXY   Yes
+TASKMAN,PROXY USER                   APPLICATION PROXY   Yes
+CLINICAL,DEVICE PROXY SERVICE        APPLICATION PROXY   Yes
+NHIN,APPLICATION PROXY               APPLICATION PROXY   Yes
+EDPTRACKING,PROXY                    APPLICATION PROXY   Yes
+KAAJEE,PROXY                         APPLICATION PROXY   Yes
+VPR,APPLICATION PROXY                APPLICATION PROXY   Yes
+AUTHORIZER,IB REG                    APPLICATION PROXY   Yes
+HOWDY,BOT                            APPLICATION PROXY   Yes
+LRLAB,TASKMAN                        APPLICATION PROXY   Yes
+VIABAPPLICATIONPROXY,VIAB            APPLICATION PROXY   Yes
+</pre>
+    <P><b>CAUTION:</b>CAUTION: Some of the listed Application Proxy user
+    accounts do not follow the rules for namespacing. There are other serious
+    infractions in current applications using Application Proxy user accounts,
+    which puts the VA in the position of violating federal privacy laws by
+    accessing PHI/PII information. VA Handbook 6500 Appendix F lists VA System
+    Security Controls that are applicable to Application Proxy user accounts as
+    well as human end-users. An Application Proxy should never be used to
+    circumvent VA System Security Controls. </P>
+    <h4>Application Proxy Example (Bad)</h4>
+    <p>an example of an Application Proxy user account that is not provisioned correctly:</p>
+    <pre>NAME: TASKMAN,PROXY USER                FILE MANAGER ACCESS CODE: #
+      DATE ENTERED: JUN 9,2009              CREATOR: LABTECH,FORTYEIGHT
+        NAME COMPONENTS: 200
+	  SIGNATURE BLOCK PRINTED NAME: PROXY USER TASKMAN
+	    TIMESTAMP: 62362,53550
+	    User Class: APPLICATION PROXY           ISPRIMARY: Yes</pre>
+    <p>If provisioned correctly, the name “TASKMAN,PROXY USER” would be identified
+    by the Kernel (XU) namespace, such as “XUTASKMAN,PROXY USER”. This
+    particular Application Proxy does not require access to any menu options or
+    RPCs, so it does not contain a SECONDARY MENU OPTION.</p>
+    <p>Here's another example of an Application Proxy user account that is not provisioned correctly:</p>
+<pre>NAME: CLINICAL,DEVICE PROXY SERVICE
+  CREATOR: XUUSER,ONE                     ISPRIMARY: Y
+  SECONDARY MENU OPTIONS: MD GUI MANAGER
+  SECONDARY MENU OPTIONS: MD GUI USER
+    TIMESTAMP: 61907,71682
+    User Class: APPLICATION PROXY
+    DATE ENTERED: JUN 30,2010</pre>
+    <p>In this example, the SECONDARY MENU OPTIONs are in the Clinical
+    Procedures (MD) namespace, so that if provisioned correctly,
+    “CLINICAL,DEVICE PROXY SERVICE” would be more appropriately named
+    “MDCLINICAL,DEVICE PROXY SERVICE”.</p>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
 	       SUMMARY="This table for layout purposes only"> 
