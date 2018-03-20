@@ -52,6 +52,9 @@
 	<B>Integration Agreement:</B>6157</P> 
 	<H4><A NAME="description">Description</A></H4> 
   <p>
+	This is one of everal APIs for hashing, encoding/decoding, or encryption/decryption of input of various
+	formats are available for developers to work with data security.
+	These APIs are supported under Integration Control Registration (ICR) #6189
 	This extrinsic function returns the SHA hash for a specified file entry. It
 	uses the VA FileMan GETS^DIQ API to extract the data from the file. The input
 	parameters match the input parameters for GETS^DIQ.
