@@ -3448,6 +3448,15 @@
 				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD>&nbsp;</TD> 
+				  <TD><A HREF="x-detox^xuser.shtml" TARGET="display"
+					 TITLE="Kernel API: $$DETOX^XUSER, Usage: Get DEA Number, Category: User" 
+					 CLASS="navbarlink">$$DETOX^XUSER</A><BR>
+                  Get Detox/Maintenance ID Number</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
 				  <TD></TD> 
 				  <TD><A HREF="div4^xuser.shtml" TARGET="display"
 					 TITLE="Kernel API: DIV4^XUSER, Usage: Get User Divisions, Category: User" 
@@ -3482,6 +3491,24 @@
 					 TITLE="Kernel API: $$PROVIDER^XUSER, Usage: Providers in New Person File, Category: User"
 					 CLASS="navbarlink">$$PROVIDER^XUSER</A><BR>
                   Providers in New Person File</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD>&nbsp;</TD> 
+				  <TD><A HREF="x-sdea^xuser.shtml" TARGET="display"
+					 TITLE="Kernel API: $$SDEA^XUSER, Usage: Get DEA Number, Category: User" 
+					 CLASS="navbarlink">$$SDEA^XUSER</A><BR>
+                  Check for Prescribing Privileges</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD>&nbsp;</TD> 
+				  <TD><A HREF="x-vdea^xuser.shtml" TARGET="display"
+					 TITLE="Kernel API: $$VDEA^XUSER, Usage: Get DEA Number, Category: User" 
+					 CLASS="navbarlink">$$VDEA^XUSER</A><BR>
+                  Check if User Can Sign Controlled Substance Orders</TD> 
 				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"

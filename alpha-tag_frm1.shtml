@@ -917,6 +917,25 @@
 				  <TD><A HREF="x-dec^xlfutl.shtml" TARGET="display"
 					 TITLE="Kernel API: $$DEC^XLFUTL, Usage: Convert Another Base to Base 10, Category: XLF Function Library: Utility Functions" 
 					 CLASS="navbarlink">$$DEC^XLFUTL</A><BR>
+		 Convert Another Base to Base 10</TD>
+                                </TR>
+				<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="x-detox^xuser.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$DETOX^XUSER, Usage: New Person File Lookup, Category: User"
+                                         CLASS="navbarlink">$$DETOX^XUSER</A><BR>
+                 Get Detox/Maintenance ID Number</TD>
+                                </TR>
+                                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="div4^xuser.shtml" TARGET="display"
+                                         TITLE="Kernel API: DIV4^XUSER, Usage: Get User Divisions, Category: User"
+                                         CLASS="navbarlink">DIV4^XUSER</A><BR>
+
                   Convert Another Base to Base 10</TD> 
 				</TR> 
 				<TR> 
@@ -2783,6 +2802,27 @@
 				  <TD><A HREF="x-provider^xuser.shtml" TARGET="display"
 					 TITLE="Kernel API: $$PROVIDER^XUSER, Usage: Providers in New Person File, Category: User"
 					 CLASS="navbarlink">$$PROVIDER^XUSER</A><BR>
+
+		Providers in New Person File</TD>
+                                </TR>
+                                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD>&nbsp;</TD>
+                                  <TD><A HREF="x-sdea^xuser.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$SDEA^XUSER, Usage: Get DEA Number, Category: User"
+                                         CLASS="navbarlink">$$SDEA^XUSER</A><BR>
+                  Check for Prescribing Privileges</TD>
+                                </TR>
+                                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD>&nbsp;</TD>
+                                  <TD><A HREF="x-vdea^xuser.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$VDEA^XUSER, Usage: Get DEA Number, Category: User"
+                                         CLASS="navbarlink">$$VDEA^XUSER</A><BR>
+
+
                   Providers in New Person File</TD> 
 				</TR> 
 				<TR> 

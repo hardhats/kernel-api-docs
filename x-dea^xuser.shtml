@@ -5,10 +5,10 @@
 <!--Authored by Thom Blom and Susan Strack, 01/01/01-->
 <!--Revised by Thom Blom, 12/14/05-->
 	 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
-	 <TITLE>Kernel APIs: DIV4^XUSER</TITLE>
+	 <TITLE>Kernel APIs: DEA^XUSER</TITLE>
 	 <META NAME="subject" CONTENT="Kernel APIs: DIV4^XUSER">
 	 <META NAME="keywords"
-	  CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,DIV4^XUSER,DIV4.XUSER,user,controlled subscription">
+	  CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,user,controlled subscription">
 	 <LINK REL="StyleSheet" TYPE="text/css" HREF="common/programmer.css"> 
   </HEAD> 
   <BODY> 
@@ -57,10 +57,18 @@
 		number, if it exists in the DEA# field (#53.2) of the NEW PERSON file (#200).
 		If the DEA# field value is null, the value returned depends on the optional
 		FLAG input parameter (see <A HREF="#input_parameters" TITLE="Input Parameters" CLASS="Bodylink">Input Parameters</A>). 
-     This API was requested as part of the Public Key Infrastructure (PKI) 
-     Project.</P> 
+     		</P>
+	<P>  <b>NOTE:</b>Fee Basis and C&A providers only return DEA# or <b>NULL</b></br>
+    	  <br><b>NOTE:</b>This API was originally requested as part of the Public Key
+			Infrastructure (PKI) Project. This API was updated with Kernel Patch
+			XU*8.0*580, which was created in support of the Drug Enforcement
+			Agency (DEA) e-Prescribing of Controlled Substances (ePCS) Utility.
+			This utility uses Public Key Infrastructure (PKI) and meets the
+			requirements proposed by the DEA Interim Final Rule (IFR) for
+			Electronic Prescriptions for Controlled Substances effective as of June 1,2010.
+	</P> 
 	 <H4><A NAME="format">Format</A></H4> 
-	 <PRE>  $$DEA^XUSER([flag][,userien])</PRE> 
+	 <PRE>  $$DEA^XUSER([flag],ien) </PRE> 
 	 <H4><A NAME="input_parameters">Input Parameters</A></H4> 
 	 <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
 	 BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
@@ -70,23 +78,21 @@
 			 <P>(optional) This flag controls what is returned when the user does
 				not have a value in the DEA# field (#53.2) of the NEW PERSON file (#200).</P>
 			 <UL>
+				<LI>NULL or 0&#151;This routine will check to see if the user has
+                                  values in the VA# field (#53.3) of the NEW PERSON file (#200) and the (new)
+                                  FACILITY DEA NUMBER field (#52) of the INSTITUTION file (#4). If values are
+                                  found in both of those fields, this routine will return the following:<BR>
+                                  <PRE>FACILITY DEA NUMBER (#52) field_"-"_VA# (#53.3) field</PRE></LI>
+
 				<LI>1&#151;This routine will check to see if the user has a value
 				  in the VA# field (#53.3) of the NEW PERSON file (#200). If a value is found in
 				  that field, this routine will return that field value. Otherwise, this routine
 				  returns an empty string.<BR><BR></LI>
-				<LI>NULL or 0&#151;This routine will check to see if the user has
-				  values in the VA# field (#53.3) of the NEW PERSON file (#200) and the (new)
-				  FACILITY DEA NUMBER field (#52) of the INSTITUTION file (#4). If values are
-				  found in both of those fields, this routine will return the following:<BR>
-				  <PRE>FACILITY DEA NUMBER field (#52)_"-"_VA# field(#53.3)</PRE></LI>
-			 </UL> </TD> 
-		</TR> 
+			 </UL> 	</TD>
 		<TR> 
-		  <TD VALIGN="TOP"><B>userien:</B></TD> 
+		  <TD VALIGN="TOP"><B>ien:</B></TD> 
 		  <TD VALIGN="TOP" COLSPAN="2"> 
-			 <P>(optional) This value can be used to get the DEA# of some user
-				besides the one that signed in. In CPRS, to check that a student's teacher has
-				the required DEA#.</P></TD> 
+			 <P>This is the NEW PERSON (#200) file IEN for the entry to be checked.</P></TD> 
 		</TR> 
 	 </TABLE> 
 	 <H4><A NAME="output">Output</A></H4> 
@@ -101,24 +107,14 @@
 	 </TABLE> 
 	 <H4><A NAME="example">Example 1</A></H4> 
 	 <P>The following are the data values for this example:</P> 
-	 <UL> 
-		<LI>IEN = "1000118"<BR> <BR> </LI> 
+	 <UL>  
 		<LI>DEA# (#53.2) field = "AB1234567"<BR> <BR> </LI> 
 		<LI>FACILITY DEA NUMBER field (#52) = "VA7654321"<BR> <BR> </LI> 
 		<LI>VA# field (#53.3) = "789"</LI> 
 	 </UL> 
 	 <P>If the FLAG input parameter is null or "0", this API would return
-		"AB1234567," since the user has a DEA#:</P> 
-	 <PRE>&gt;<B>S X=$$DEA^XUSER(0,1000118)</B>
-
-&gt;<B>W X</B>
-AB1234567</PRE> 
-	 <P> If the FLAG input parameter is "1", this API would return "AB1234567,"
-		since the user has a DEA#:</P> 
-	 <PRE>&gt;<B>S X=$$DEA^XUSER(1,1000118)</B>
-
-&gt;<B>W X</B>
-AB1234567</PRE> 
+		"AB1234567,"</P>  
+	 <P> If the FLAG input parameter is "1", this API would return "AB1234567,"</P> 
 	 <H4>Example 2</H4> 
 	 <P>The following are the data values for this example:</P> 
 	 <UL> 
@@ -127,16 +123,8 @@ AB1234567</PRE>
 		<LI>VA# field (#53.3) = "789"</LI> 
 	 </UL> 
 	 <P>If the FLAG input parameter is NULL or "0", this API would return
-		"VA7654321-789":</P> 
-	 <PRE>&gt;<B>S X=$$DEA^XUSER(0,)</B>
-
-&gt;<B>W X</B>
-VA7654321-789</PRE> 
+		"VA7654321-789":</P>  
 	 <P> If the FLAG input parameter is "1", this API would return "789":</P> 
-	 <PRE>&gt;<B>S X=$$DEA^XUSER(1,)</B>
-
-&gt;<B>W X</B>
-789</PRE> 
 	 <H4>Example 3</H4> 
 	 <P>The following are the data values for this example:</P> 
 	 <UL> 
@@ -146,16 +134,26 @@ VA7654321-789</PRE>
 	 </UL> 
 	 <P>If the FLAG input parameter is NULL or "0", this API would return
 		"":</P> 
-	 <PRE>&gt;<B>S X=$$DEA^XUSER(0,)</B>
-
-&gt;<B>W X</B>
-</PRE> 
+ 
 	 <P> If the FLAG input parameter is "1", this API would return "":</P> 
-	 <PRE>&gt;<B>S X=$$DEA^XUSER(1,)</B>
-
-&gt;<B>W X</B>
-</PRE> 
+	 </PRE> 
 	 <P> In both cases, it returns an empty string.</P> 
+
+
+ <H4>Example 4</H4>
+         <P>The following are the data values for this example:</P>
+         <UL>
+                <LI>DEA# (#53.2) field = NULL<BR> <BR> </LI>
+                <LI>FACILITY DEA NUMBER field (#52) = "VA7654321"<BR> <BR> </LI>
+                <LI>VA# field (#53.3) = 789<BR><BR></LI>
+		<LI>PROVIDER TYPE (#53.6) field = FEE BASIS or C&A.</LI>
+         </UL>
+         <P>If the FLAG input parameter is NULL or "0", this API would return
+                "":</P>
+
+         <P> If the FLAG input parameter is "1", this API would return "":</P>
+         </PRE>
+         <P> In both cases, it returns an empty string.</P>
 	 <P>&nbsp;</P> <HR COLOR="003399"> 
 	 <TABLE WIDTH="100%" SUMMARY="This table for layout purposes only"
 	 CLASS="white"> 
@@ -210,7 +208,7 @@ VA7654321-789</PRE>
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
              <!--webbot bot="Timestamp"
-             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->April 19, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 				<BR><BR>If you have questions, need more information, or are having
 				accessibility problems with this website, please contact us by E-Mail:
 				<A

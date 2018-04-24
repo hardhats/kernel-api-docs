@@ -5,10 +5,10 @@
 <!--Authored by Thom Blom and Susan Strack, 01/01/01-->
 <!--Revised by Thom Blom, 12/14/05-->
 	 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
-	 <TITLE>Kernel APIs: $$NAME^XUSER</TITLE>
-	 <META NAME="subject" CONTENT="Kernel APIs: $$NAME^XUSER">
+	 <TITLE>Kernel APIs: DETOX^XUSER</TITLE>
+	 <META NAME="subject" CONTENT="Kernel APIs: DETOX^XUSER">
 	 <META NAME="keywords"
-	  CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$NAME^XUSER,$$NAME,XUSER,institution file,supported">
+	  CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,DIV4^XUSER,DIV4.XUSER,user,controlled subscription">
 	 <LINK REL="StyleSheet" TYPE="text/css" HREF="common/programmer.css"> 
   </HEAD> 
   <BODY> 
@@ -50,58 +50,66 @@
      --><P></P> 
 	  
 	 <!-- Content -->
-	 <H3><A NAME="navskip">$$NAME^XUSER</A>(): Get Name of User </H3> 
-	 <P><B>Reference Type:</B> Supported, <B>Category:</B> User,
-		<B>Integration Agreement:</B> 2343</P> 
+	 <H3><A NAME="navskip">$$DETOX^XUSER</A>()-Get Detox/Maintenance ID Number</H3> 
+	 <P><B>Reference Type:</B> Supported, <B>Category:</B> User: DEA ePCS Utility <B>Integration Agreement:</B> 2343</P> 
 	 <H4><A NAME="description">Description</A></H4> 
-	 <P>This extrinsic function returns the full name of the specified user in a
-		mixed case displayable format. The user's given name (i.e., First Last) is
-		returned unless a second parameter of "F" is passed in to get the Family name
-		(i.e., Last,First).</P> 
+	 <P>	The $$DETOX^XUSER extrinsic function obtains the value stored in the
+		DETOX/MAINTENANCE ID NUMBER (#53.11) field in the NEW PERSON
+		(#200) file. It returns one of the following:  
+     		</P>
+ 	<UL>
+                <LI> 	User's DETOX/MAINTENANCE ID number-If it exists in the
+			DETOX/MAINTENANCE ID NUMBER (#53.11) field of the NEW
+			PERSON (#200) file.  <BR> <BR> </LI>
+                <LI>  	NULL-If DETOX/MAINTENANCE ID number is NULL or the DEA
+			EXPERATION DATE (#747.44) field in the NEW PERSON (#200) file
+			is unpopulated. <BR> <BR> </LI>
+                <LI>  	DEA EXPIRATION DATE (#747.44)-This date is returned when the
+			DETOX/MAINTENANCE ID number is valid but the DEA
+			EXPIRATION DATE has expired.</LI>
+         </UL>
+
+
+	<P>  
+    	  <br><b>NOTE:</b>	This API was released with Kernel Patch XU*8.0*580, which
+				was created in support of the Drug Enforcement Agency (DEA) ePrescribing
+				of Controlled Substances (ePCS) Utility. This utility uses 
+				Kernel 8.0 & Kernel Toolkit 7.3
+				Developer's Guide 505 April 2018
+				Public Key Infrastructure (PKI) and meets the requirements proposed by
+				the DEA Interim Final Rule (IFR) for Electronic Prescriptions for
+				Controlled Substances effective as of June 1, 2010. 
+	</P> 
 	 <H4><A NAME="format">Format</A></H4> 
-	 <PRE>  $$NAME^XUSER(ien[,format])</PRE> 
+	 <PRE>  $$DETOX^XUSER(ien) </PRE> 
 	 <H4><A NAME="input_parameters">Input Parameters</A></H4> 
 	 <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
 	 BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
 		<TR> 
 		  <TD VALIGN="TOP" WIDTH="15%"><B>ien:</B> </TD> 
 		  <TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
-			 <P>(required) Internal Entry Number (IEN) of the provider to be
-				checked in the NEW PERSON file (#200).</P> </TD> 
-		</TR> 
-		<TR> 
-		  <TD VALIGN="TOP"><B>format:</B></TD> 
-		  <TD VALIGN="TOP" COLSPAN="2"> 
-			 <P>(optional) This parameter indicates if the user's name should be
-				returned formatted by Family or Given name, respectively. Possible values
-				are:</P>
-			 <UL>
-				<LI>F&#151;Family (e.g., "Doe,John").<BR><BR></LI>
-				<LI>G (default)&#151;Given (e.g., "John Doe").</LI>
-			 </UL> </TD> 
+			 <P>(required) The IEN of the user in NEW PERSON (#200)file.</P></TD> 
 		</TR> 
 	 </TABLE> 
 	 <H4><A NAME="output">Output</A></H4> 
 	 <TABLE BORDER="1" CELLPADDING="5" BGCOLOR="#F1F2F3"
-	  BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
+	 BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
 		<TR> 
 		  <TD VALIGN="TOP" WIDTH="15%"><B>returns:</B></TD> 
 		  <TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
-			 <P>Returns user's family or given name.</P> </TD> 
-		</TR> 
-	 </TABLE> 
-	 <H4><A NAME="example">Example 1</A></H4> 
-	 <P>Retrieving the user name in Given format:</P> 
-	 <PRE>&gt;<B>S X=$$NAME^XUSER(1529)</B>
-
-&gt;<B>W X</B>
-Thomas E. Blue</PRE> 
-	 <H4>Example 2</H4> 
-	 <P>Retrieving the user name in Family format:</P> 
-	 <PRE>&gt;<B>S X=$$NAME^XUSER(1529,"F")</B>
-
-&gt;<B>W X</B>
-Blue,Thomas E.</PRE> 
+			 <P>Returns one of the following</P>
+			 		<UL>
+                <LI>    User's DETOX/MAINTENANCE ID number-If valid.   <BR> <BR> </LI>
+                <LI>    NULL-DETOX/MAINTENANCE ID number is NULL or the DEA EXPERATION DATE
+			(#747.44) field in the NEW PERSON (#200) file is unpopulated. <BR> <BR> </LI>
+                <LI>    DEA EXPIRATION DATE (#747.44)-When the DETOX/MAINTENANCE ID number is valid
+			but the DEA EXPIRATION DATE has expired.</LI>
+		</UL>
+		</TD>
+ 		</TR>
+ 
+	 </TABLE>
+ 
 	 <P>&nbsp;</P> <HR COLOR="003399"> 
 	 <TABLE WIDTH="100%" SUMMARY="This table for layout purposes only"
 	 CLASS="white"> 
@@ -156,11 +164,11 @@ Blue,Thomas E.</PRE>
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
              <!--webbot bot="Timestamp"
-             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->April 23, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->April 19, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 				<BR><BR>If you have questions, need more information, or are having
 				accessibility problems with this website, please contact us by E-Mail:
 				<A
-				HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-name^xuser.shtml"
+				HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-dea^xuser.shtml"
 				TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
 				510-768-6800, or FAX: 510-768-6850.</P> 
 			 <P>&nbsp; </P></TD> 
