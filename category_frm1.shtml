@@ -228,6 +228,12 @@
 				    TITLE="OS Interface APIs"
 			        CLASS="navbarlink">OS Interface</A>
 			   </LI>
+		<LI>
+                 <A HREF="#parameter_tools"
+                    TARGET="toc"
+                                    TITLE="Parameter Tools APIs"
+                                CLASS="navbarlink">Parameter Tools</A>
+                           </LI>
                <LI>
                  <A HREF="#security_keys"
                     TARGET="toc"
@@ -2432,9 +2438,239 @@
 				</TABLE> 
 			 <P></P></TD> 
 		</TR> 
-		<TR ALIGN="LEFT"> 
+		  <TR ALIGN="LEFT"> 
 		  <TD><HR></TD> 
 		</TR> 
+              <TR ALIGN="LEFT">
+                  <TD>
+                         <H5><A NAME="parameter_tools">Parameter Tools</A></H5>
+                         <TABLE WIDTH="100%">
+                                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="add^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$ADD^XPAR, Usage: Add Parameter Value , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$ADD^XPAR</A><BR>
+                  Add Parameter Value </TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="chg^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$CHG^XPAR, Usage: Change Parameter Value , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$CHG^XPAR</A><BR>
+                  Change Parameter Value </TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="del^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$DEL^XPAR, Usage: Delete Parameter Value , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$DEL^XPAR</A><BR>
+                  Delete Parameter Value </TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="en^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$EN^XPAR, Usage: Add, Change, Delete Parameters"
+                                         CLASS="navbarlink">$$EN^XPAR</A><BR>
+                  Add, Change, Delete Parameters </TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="enval^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$ENVAL^XPAR, Usage: Return all Parameter Instance , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$ENVAL^XPAR</A><BR>
+                  Return all Parameter Instance</TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="get^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$GET^XPAR, Usage: Return an Instance of a Parameter , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$GET^XPAR</A><BR>
+                  Return an Instance of a Parameter</TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="getlst^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$GETLST^XPAR, Usage: Return All Instances of a Parameter, Category: Parameter Tools"
+                                         CLASS="navbarlink">$$GETLST^XPAR</A><BR>
+                  Return All Instances of a Parameter</TD>
+                                </TR>
+
+		   <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="getwp^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$GETWP^XPAR, Usage: Return Word-Processing Text, Category: Parameter Tools"
+                                         CLASS="navbarlink">$$GETWP^XPAR</A><BR>
+                  Return Word-Processing Text</TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="ndel^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$NDEL^XPAR, Usage: Delete All Instances of a Parameter, Category: Parameter Tools"
+                                         CLASS="navbarlink">$$NDEL^XPAR</A><BR>
+                  Delete All Instances of a Parameter</TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="rep^xpar.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$REP^XPAR, Usage: Replace Parameter Value , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$REP^XPAR</A><BR>
+                  Replace Parameter Value </TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="bldlst^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$BLDLST^XPAREDIT, Usage: Return All Entities of a Parameter , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$BLDLST^XPAREDIT</A><BR>
+                  Return All Entities of a Parameter</TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="edit^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$EDIT^XPAREDIT, Usage: Edit Instance and Value of a Parameter , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$EDIT^XPAREDIT</A><BR>
+                  Edit Instance and Value of a Parameter</TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="editpar^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$EDITPAR^XPAREDIT, Usage: Add Parameter Value , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$EDITPAR^XPAREDIT</A><BR>
+                  Edit Single Parameter</TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="en^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$EN^XPAREDIT, Usage: Parameter Edit Prompt , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$EN^XPAREDIT</A><BR>
+                  Parameter Edit Prompt</TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="getent^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$GETENT^XPAREDIT, Usage: Prompt for Entity Based on Parameter, Category: Parameter Tools"
+                                         CLASS="navbarlink">$$GETENT^XPAREDIT</A><BR>
+                  Prompt for Entity Based on Parameter </TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="getpar^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$GETPAR^XPAREDIT, Usage:  Select Parameter Definition File , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$GETPAR^XPAREDIT</A><BR>
+                   Select Parameter Definition File</TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="ted^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$TED^XPAREDIT, Usage: Edit Template Parameters (No Dash Dividers) , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$TED^XPAREDIT</A><BR>
+                  Edit Template Parameters (No Dash Dividers) </TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="tedh^xparedit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$TEDH^XPAREDIT, Usage: Edit Template Parameters (with Dash Dividers) , Category: Parameter Tools"
+                                         CLASS="navbarlink">$$TEDH^XPAREDIT</A><BR>
+                  Edit Template Parameters (with Dash Dividers) </TD>
+                                </TR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </TABLE>
+                         <P></P></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD><HR></TD>
+                </TR>
+
+
+
+
+
+
+
+
+
 		<TR ALIGN="LEFT"> 
 		  <TD> 
 			 <H5><A NAME="security_keys">Security Keys</A></H5> 
@@ -3448,6 +3684,15 @@
 				<TR>
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD>&nbsp;</TD> 
+				  <TD><A HREF="x-detox^xuser.shtml" TARGET="display"
+					 TITLE="Kernel API: $$DETOX^XUSER, Usage: Get DEA Number, Category: User" 
+					 CLASS="navbarlink">$$DETOX^XUSER</A><BR>
+                  Get Detox/Maintenance ID Number</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
 				  <TD></TD> 
 				  <TD><A HREF="div4^xuser.shtml" TARGET="display"
 					 TITLE="Kernel API: DIV4^XUSER, Usage: Get User Divisions, Category: User" 
@@ -3482,6 +3727,24 @@
 					 TITLE="Kernel API: $$PROVIDER^XUSER, Usage: Providers in New Person File, Category: User"
 					 CLASS="navbarlink">$$PROVIDER^XUSER</A><BR>
                   Providers in New Person File</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD>&nbsp;</TD> 
+				  <TD><A HREF="x-sdea^xuser.shtml" TARGET="display"
+					 TITLE="Kernel API: $$SDEA^XUSER, Usage: Get DEA Number, Category: User" 
+					 CLASS="navbarlink">$$SDEA^XUSER</A><BR>
+                  Check for Prescribing Privileges</TD> 
+				</TR>
+				<TR>
+				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
+				  <TD>&nbsp;</TD> 
+				  <TD><A HREF="x-vdea^xuser.shtml" TARGET="display"
+					 TITLE="Kernel API: $$VDEA^XUSER, Usage: Get DEA Number, Category: User" 
+					 CLASS="navbarlink">$$VDEA^XUSER</A><BR>
+                  Check if User Can Sign Controlled Substance Orders</TD> 
 				</TR>
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
