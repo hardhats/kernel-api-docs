@@ -55,22 +55,14 @@
 	<P><B>Reference Type:</B> Supported, <B>Category:</B> TaskMan,
 	<B>Integration Agreement:</B> 10063</P> 
 	<H4><A NAME="description">Description</A></H4> 
-	<P>This API unschedules, edits, and reschedules a task. Unscheduling
-	ensures the task is not pending but does not stop it from running. Editing is
-	limited to the API, start time, description, and I/O device. Rescheduling is
-	optional. However, if the task is not rescheduled, it is vulnerable to the Task
-	File Cleanup option. The entire procedure is referred to as
-	requeuing.
+	<P>The REQ^%ZTLOAD API unschedules, edits, and reschedules a task. Unscheduling ensures the task is not pending but does not stop it from running. Editing is limited to the API, start time, description, and I/O device. Rescheduling is optional. However, if the task is not rescheduled, it is vulnerable to the Task File Cleanup option. The entire procedure is referred to as requeuing.</P>
 	<BR>
-	<BR>
-	<B>CAUTION: Because requeuing does not involve stopping a
-	running task, it is possible to wind up with the same task running in two
-	different partitions if the algorithm is not designed carefully. This is not
-	supported by TaskMan; thus, programmers should use requeuing very carefully.
-	Queuing a new task is usually a better way to accomplish the same
-	goals.</B>
-	<BR>
-	<BR>
+	<BR><B>
+	<CAUTION: Because requeuing does not involve stopping a running task, it is possible to wind up with the
+		 same task running in two different partitions if the algorithm is not designed carefully.
+		 This is not supported by TaskMan; thus, developers should use requeuing very carefully.
+		 Queuing a new task is usually a better way to accomplish the same goals.BR>
+	</B><BR>
 	NOTE: Tasks can reschedule themselves through use of the ZTREQ output variable.</P> 
 	<H4><A NAME="format">Format</A></H4> 
 	<PRE>  REQ^%ZTLOAD</PRE> 
@@ -245,10 +237,10 @@
     <B>NOTE:</B> This process is made easier by using the
     <A HREF="x-qq^xutmdevq.shtml"
        CLASS="bodylink"
-       TITLE="$$QQ^XUTMDEVQ API">$$QQ^XUTMDEVQ</A> and 
+       TITLE="$$QQ^XUTMDEVQ API: Double Queue—Direct Queuing in a Single Call ">$$QQ^XUTMDEVQ</A> and 
     <A HREF="x-reqq^xutmdevq.shtml"
        CLASS="bodylink"
-       TITLE="$$REQQ^XUTMDEVQ API">$$REQQ^XUTMDEVQ</A> APIs.</P>
+       TITLE="$$REQQ^XUTMDEVQ API">$$REQQ^XUTMDEVQ():Schedule Second Part of a Task </A> APIs.</P>
 	<P><B>Sample Code:</B></P>
     <PRE>ARHBQQ   ;SFVAMC/GB - Demo of 'gather' and 'print' in 2 tasks ;1/19/06  08:31
          ;;1.1
@@ -421,7 +413,7 @@ Enter message action (in IN basket): Ignore//</PRE>
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 6, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having

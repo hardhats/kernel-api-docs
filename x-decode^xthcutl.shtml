@@ -57,31 +57,22 @@
 	Helper,
 	<B>Integration Agreement:</B> 5555</P> 
 	<H4><A NAME="description">Description</A></H4> 
-	<P>The Kernel Toolkit Hypertext Transfer Protocol (HTTP) Client Helper software 
-	release adds a new tool in a set of Infrastructure software tools that 
-	developers can use. HTTP is a fast and reliable way for an application to 
-	collect data from another source. Kernel Toolkit Patch XT*7.3*123 allows VistA to tap into this information and retrieve Web data.</P>
-    <P>This code was developed by another VistA application that had a pressing need 
-    for this capability. The Kernel Toolkit development team is providing it as 
-    generic tool so that other developers may use its functionality for their needs. For example:</P>
-    <ul>
-	  <li>
-	    KIDS: Uses it to get the checksums from FORUM of patches that are sent in a Host File System (HFS) file.
-	    <br>
-	    <br>
-      </li>
-	  <li>
-	    Pharmacy: Uses it to request the printing of FDA data sheets.
-	  </li>
-    </ul>
-    <P>This extrinsic function returns a decoded string using the HTTP Client 
-	Helper 1.0 software. This API was introduced with Kernel Toolkit Patch XT*7.3*123.
-	<br>
-	<br>
-	<b>NOTE:</b> XTHC* routines are part of the HTTP Client Helper application for 
-	developers.</P> 
+
+	<P>The $$DECODE^XTHCUTL extrinsic function is used with the HTTP/1.1 Client. It decodes one string replacing the following:</P>
+	<UL>
+	<LI>&lt; with <</LI>
+	<LI>&gt; with ></LI>
+	<LI>&amp; with &</LI>
+	<LI>&nbsp; with "" (a space)</LI>
+	<LI> &os; with '</LI>
+	<LI>&quot; with " &#65;</LI> 
+	<LI>with A</LI>
+	</UL>	
+	<P><B>NOTE:</B>XTHC* routines are part of the HTTP Client Helper application for developers.</P>
+	<P><B>NOTE:</B> This API was released with Kernel Toolkit patch XT*7.3*123.</P>
+
 	<H4><A NAME="format">Format</A></H4> 
-	<PRE>  $$DECODE^XTHCUTL(string)</PRE> 
+	<PRE>  $$DECODE^XTHCUTL(str)</PRE> 
 	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
 	<TABLE BORDER="1"
 	       CELLPADDING="5"
@@ -112,33 +103,24 @@
 	    </TD> 
 		<TD VALIGN="TOP"
 		    WIDTH="85%"> 
-	      <P>Returns decoded string. It replaces the following characters:</P>
+	      
 		  <ul>
 		    <li>
-		      &amp;lt; with &lt;
+		      Success: Decoded string.
 		    </li>
 			<li>
-			  &amp;gt; with &gt;
-			</li>
-			<li>
-			  &amp;amp; with &amp;
-			</li>
-			<li>
-			  &amp;nbsp; with &quot; &quot;
-			</li>
-			<li>
-			  &amp;apos; with '
-			</li>
-			<li>
-			  &amp;quot; with &quot;
-			</li>
-			<li>
-			  &amp;#65; with A
+			  Fail: -1^String not defined (if missing str parameter).
 			</li>
 		  </ul>
 	    </TD>
 	  </TR>
 	</TABLE>
+
+
+<P><b>Example:</b></P>
+<PRE><b>$$DECODE^XTHCUTL("123%2Bmain%2Bst.%2CAnytown%2CCA")</b>
+<br>
+<PRE>123%2Bmain%2Bst.%2CAnytown%2CCA</PRE>
 	<P>&nbsp;</P>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
@@ -198,7 +180,7 @@
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 6, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having
