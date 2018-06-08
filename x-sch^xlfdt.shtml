@@ -272,7 +272,21 @@
 	<PRE>&gt;<b>S X=$$SCH^XLFDT(&quot;3M(L@6PM)&quot;,X)</b>
 
 &gt;<B>W X</B>
-2931231.18</PRE> 
+2931231.18</PRE>
+ <H4>Example 4</H4>
+        <P>The $$SCH^XLFDT API can return a date that is closer to the date the API is run if the user does not use the force_future_flag parameter and the base_date parameter is set to a date in the past. In this example, the base_date parameter is set to a date in the past, 11/17/2014 at 8:00, and the interval is set to find the date 2 months out on the second Monday of the month. The date that is returned is the date that the API was run, 1/12/15, which happens to be the second Monday of the month and two months out from the base_date.</P>
+        <h5>Not Using Future flag</h5>
+        <PRE><B>&gt;S X=$$SCH^XLFDT("2M(2M@0800)",3141117.0800)</B>
+
+&gt;<B>W X</B>
+3150112.08</PRE>
+        <h5>Using Future Flag</h5>
+        <PRE>&gt;<b>S X=$$SCH^XLFDT("2M(2M@0800)",3141117.0800,1)</b>
+
+&gt;<B>W X</B>
+3150309.08</PRE>
+<h5><B>NOTE:</B> The<B> base_date</B> must be passed correctly. The<B> base_date</B> parameter is compared to the<B> schedule_string</B>
+ parameter in the interval to return the correct output.<h5> 
 	<P>&nbsp;</P>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
@@ -329,7 +343,7 @@
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
              <!--webbot bot="Timestamp"
-             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 6, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having

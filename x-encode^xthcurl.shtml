@@ -57,31 +57,10 @@
 	Helper,
 	<B>Integration Agreement:</B> 5554</P> 
 	<H4><A NAME="description">Description</A></H4> 
-	<P>The Kernel Toolkit Hypertext Transfer Protocol (HTTP) Client Helper software 
-	release adds a new tool in a set of Infrastructure software tools that 
-	developers can use. HTTP is a fast and reliable way for an application to 
-	collect data from another source. Kernel Toolkit Patch XT*7.3*123 allows VistA to tap into this information and retrieve Web data.</P>
-    <P>This code was developed by another VistA application that had a pressing need 
-    for this capability. The Kernel Toolkit development team is providing it as 
-    generic tool so that other developers may use its functionality for their needs. For example:</P>
-    <ul>
-	  <li>
-	    KIDS: Uses it to get the checksums from FORUM of patches that are sent in a Host File System (HFS) file.
-	    <br>
-	    <br>
-      </li>
-	  <li>
-	    Pharmacy: Uses it to request the printing of FDA data sheets.
-	  </li>
-    </ul>
-    <P>This extrinsic function returns an encoded query string used by the 
-	<a href="x-makeurl^xthcurl.shtml"
-	   title="$$MAKEURL^XTHCURL API">$$MAKEURL^XTHCURL</a> 
-	API using the HTTP Client Helper 1.0 software. This API was introduced with Kernel Toolkit Patch XT*7.3*123.
-	<br>
-	<br>
-	<b>NOTE:</b> XTHC* routines are part of the HTTP Client Helper application for 
-	developers.</P> 
+
+	<P>The $$ENCODE^XTHCURL extrinsic function encodes the query string. The $$MAKEURL^XTHCURL: Creates a URL from Components API uses this extrinsic function.</P
+	<P>NOTE: This API was released with Kernel Toolkit patch XT*7.3*123.</P>
+	<P> NOTE: XTHC* routines are part of the HTTP Client Helper application for developers.</P>
 	<H4><A NAME="format">Format</A></H4> 
 	<PRE>  $$ENCODEURL^XTHCURL(string)</PRE> 
 	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
@@ -94,14 +73,11 @@
 	  <TR> 
 	    <TD VALIGN="TOP"
 	        WIDTH="15%">
-	      <B>string:</B>
+	      <B>str:</B>
 	    </TD> 
 		<TD VALIGN="TOP"
 		    WIDTH="85%"> 
-		  <P>(required) Query string used by the 
-	<a href="x-makeurl^xthcurl.shtml"
-	   title="$$MAKEURL^XTHCURL API">$$MAKEURL^XTHCURL</a> 
-			API.</P>
+		  <P>(required) String of data to be encoded</P>
         </TD> 
 	  </TR> 
 	  </TABLE><H4><A NAME="output">Output</A></H4><TABLE BORDER="1"
@@ -117,7 +93,12 @@
 	    </TD> 
 		<TD VALIGN="TOP"
 		    WIDTH="85%"> 
-	      <P>Returns encoded string.</P>
+	      <P>Returns</P>
+		<UL>
+		<LI><B>Success</B>:Encoded Query String</LI>
+		<LI><B>Fail</B>1^ String not defined(if missing str parameter)</LI>
+		</UL>
+
 	    </TD>
 	  </TR>
 	</TABLE>
@@ -182,7 +163,7 @@
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 6, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having

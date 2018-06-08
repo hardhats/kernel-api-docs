@@ -57,29 +57,11 @@
 	Helper,
 	<B>Integration Agreement:</B> 5554</P> 
 	<H4><A NAME="description">Description</A></H4> 
-	<P>The Kernel Toolkit Hypertext Transfer Protocol (HTTP) Client Helper software 
-	release adds a new tool in a set of Infrastructure software tools that 
-	developers can use. HTTP is a fast and reliable way for an application to 
-	collect data from another source. Kernel Toolkit Patch XT*7.3*123 allows VistA to tap into this information and retrieve Web data.</P>
-    <P>This code was developed by another VistA application that had a pressing need 
-    for this capability. The Kernel Toolkit development team is providing it as 
-    generic tool so that other developers may use its functionality for their needs. For example:</P>
-    <ul>
-	  <li>
-	    KIDS: Uses it to get the checksums from FORUM of patches that are sent in a Host File System (HFS) file.
-	    <br>
-	    <br>
-      </li>
-	  <li>
-	    Pharmacy: Uses it to request the printing of FDA data sheets.
-	  </li>
-    </ul>
-    <P>This extrinsic function returns a URL created from input components using 
-	the HTTP Client Helper 1.0 software. This API was introduced with Kernel Toolkit Patch XT*7.3*123.
-	<br>
-	<br>
-	<b>NOTE:</b> XTHC* routines are part of the HTTP Client Helper application for 
-	developers.</P> 
+
+	<P>The $$MAKEURL^XTHCURL extrinsic function creates a URL from components.</P>
+	<P>NOTE:XTHC* routines are part of the HTTP Client Helper application for developers.</P>
+	<P>NOTE: This API is IPv6 compliant as of Kernel Toolkit patch XT*7.3*138.</P>
+	<P>NOTE: This API was released with Kernel Toolkit patch XT*7.3*123.</P>
 	<H4><A NAME="format">Format</A></H4> 
 	<PRE>  $$MAKEURL^XTHCURL(host[,port][,path][,.query])</PRE> 
 	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
@@ -107,7 +89,10 @@
 	    </TD> 
 		<TD VALIGN="TOP"
 		    WIDTH="85%"> 
-		  <P>(optional) The port to use is if not Port 80.</P>
+		  <P>(optional) The port to use </P>
+			<UL>
+			<LI>HTTP-Port 80.</LI>
+			<LI>HTTPS-Port 443.</LI></UL>
         </TD> 
 	  </TR> 
 	  <TR> 
@@ -117,7 +102,7 @@
 	    </TD> 
 		<TD VALIGN="TOP"
 		    WIDTH="85%"> 
-		  <P>(optional) The path to the page.</P>
+		  <P>(optional) The path to the Web page on the called server.</P>
         </TD>
       </TR>
       <TR> 
@@ -140,13 +125,17 @@
 	    </TD> 
 		<TD VALIGN="TOP"
 		    WIDTH="85%"> 
-	      <P>Returns URL.</P>
+	      <P>Returns</P>
+		<UL>
+		<LI>Success: Normalized path (see Example).</LI>
+		<LI>Fail: -1^Host not defined (if missing host
+parameter).</LI>
 	    </TD>
 	  </TR>
 	</TABLE>
 	<P><b>Example:</b></P>
-<PRE><b>S host=&quot;http://maps.google.com&quot;<br>S path=&quot;maps/api/staticmap&quot;<br>S query(&quot;center&quot;)=&quot;1301+clay+st.,Oakland,CA&quot;<br>S query(&quot;zoom&quot;)=14<br>S query(&quot;size&quot;)=&quot;512x512&quot;<br>S query(&quot;maptype&quot;)=&quot;roadmap&quot;<br>S query(&quot;sensor&quot;)=&quot;false&quot;<br>W $$MAKEURL^XTHCURL(host,,path,.query)</b><br>
-http://maps.google.com/maps/api/staticmap?center=1301%2Bclay%2Bst.%2COakland%2CCA&amp;maptype=roadmap&amp;sensor=false&amp;size=512x512&amp;zoom=14</PRE>
+<PRE><b>S host=&quot;http://maps.google.com&quot;<br>S path=&quot;maps/api/staticmap&quot;<br>S query(&quot;center&quot;)=&quot;1301+clay+st.,Oakland,CA&quot;S query(&quot;sensor&quot;)=&quot;false&quot;<br>W $$MAKEURL^XTHCURL(host,,path,.query)</b><br>
+http://www.map.com/api/staticmap?center=main%2Bst.%2CAnycity%2CCA&sensor=false</PRE>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
 	       SUMMARY="This table for layout purposes only"
@@ -205,7 +194,7 @@ http://maps.google.com/maps/api/staticmap?center=1301%2Bclay%2Bst.%2COakland%2CC
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 6, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having

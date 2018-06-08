@@ -76,7 +76,13 @@
 	 <B>NOTE:</B> For a discussion of form feeds, please refer to the "Form Feeds" topic in the
 	 "Special Device Issues" chapter in the <I>Kernel Developer's Guide</I>.</P> 
 	 <H4><A NAME="format">Format</A></H4> 
-	 <PRE>  ^%ZIS</PRE> 
+	 <PRE>  ^%ZIS</PRE>
+	<P>Make sure to perform the following steps before calling this API:</P>
+	<UL>
+	<LI> NEW all non-namespaced variables.</LI>
+	<LI> Set all input variables.</LI>
+	<LI>Call the API.</LI>
+	</UL>
 	 <H4><A NAME="input_parameters">Input Variables</A></H4> 
 	 <TABLE BORDER="1"
 	        CELLPADDING="5"
@@ -869,7 +875,7 @@ EXIT     S:$D(ZTQUEUED) ZTREQ="@" K VAR1,VAR2,VAR3 Q</PRE>
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 23, 2012<!--webbot bot="Timestamp" endspan i-checksum="21850" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 06, 2018<!--webbot bot="Timestamp" endspan i-checksum="21850" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having
