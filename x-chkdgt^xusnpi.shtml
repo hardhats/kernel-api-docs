@@ -132,7 +132,19 @@
 	<P>The following example shows the result when checking an invalid NPI (not 
     10 digits):</P>
 	<PRE>&gt;<B>W $$CHKDGT^XUSNPI(123456789)</B>
-0</PRE> 
+0</PRE>
+
+
+<H4>Example 3</H4>
+        <P>The following example shows the result when checking an invalid NPI (invalid digit):</P>
+        <PRE>&gt;<B>>W $$CHKDGT^XUSNPI(1234567892)</B>
+0</PRE>
+
+
+
+
+
+ 
 	<P>&nbsp;</P>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
@@ -190,7 +202,7 @@
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 17, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having

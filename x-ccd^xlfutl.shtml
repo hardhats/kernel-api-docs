@@ -64,8 +64,20 @@
 	  BORDERCOLORLIGHT="#F1F2F3" BORDERCOLORDARK="#808080" WIDTH="100%"> 
 		<TR> 
 		  <TD VALIGN="TOP" WIDTH="15%"><B>x:</B> </TD> 
-		  <TD VALIGN="TOP" WIDTH="85%"><P>(required) Integer for which the check 
-          digit is computed.</P>
+		  <TD VALIGN="TOP" WIDTH="85%"><P>
+
+
+		(required) Integer for which the check digit is computed.
+		<BR>REF: See "The Taylor Report" in Computerworld magazine, 1975, for the algorithm.
+		<BR>NOTE: This Check Digit algorithm is considered obsolete. Developers are advised to consider other alternatives to validate data integrity. Alternatives include using:
+		<UL><LI>AES Encryption/Decryption: $$AESENCR^XUSHSH and $$AESDECR^XUSHSH.</LI>
+		<LI>Secure Hash Algorithm (SHA) hashing: $$SHAHASH^XUSHSH or $$SHAN^XLFSHAN for strings.</LI>
+		<LI>Other SHA hash APIs can be used to validate data integrity for:
+		files: $$FILE^XLFSHAN or $$HOSTFILE^XLFSHAN;
+		routines: $$ROUTINE^XLFSHAN; globals: $$GLOBAL^XLFSHAN;
+		and messages: $$LSHAN^XLFSHAN.</LI></UL>
+
+		</P>
           <P><B>NOTE:</B> Please refer to &quot;The Taylor Report&quot; in <I>
           Computerworld</I> magazine, 1975, for the algorithm.</P></TD> 
 		</TR> 
@@ -144,7 +156,7 @@
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
              <!--webbot bot="Timestamp"
-             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+             S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 16, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 				<BR><BR>If you have questions, need more information, or are having
 				accessibility problems with this website, please contact us by E-Mail:
 				<A

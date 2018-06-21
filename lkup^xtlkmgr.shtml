@@ -1,0 +1,261 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 10/18/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Toolkit APIs:LKUP^XTLKMGR</TITLE>
+    <META NAME="subject"
+          CONTENT="XTLKKWL^XTLKKWL: Perform Supported VA FileMan Calls on Files Configured for MTLU">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">LKUP^XTLKMGR(): General Lookup Facility for MTLU</H3> 
+	<P><B>Reference Type:</B> Supported, <B>Category:</B> Toolkit-Multi-Term Look-Up (MTLU),
+	<B>Integration Agreement:</B> 10153</P> 
+	<H4><A NAME="description">Description</A></H4> 
+	<P>The LKUP^XTLKMGR API adds terms and synonyms to the LOCAL SYNONYM (#8984.3) file.</P>
+	<H4><A NAME="format">Format</A></H4> 
+	<PRE>LKUP^XTLKMGR(fil,xtlkx[,xtlksay][,xtlkhlp][,xtlkmore])</PRE>
+	<P>Make sure to perform the following steps before calling this API:</P>
+	<UL>
+	<LI>NEW all non-namespaced variables.</LI>
+	<LI>Set all input variables.</LI>
+	<LI>Call the API.</LI>
+	</UL>
+	 <P><B>Input Parameters:</B>  </P>
+        <UL>
+        <P><B>fil:</B>(required) Target file (must be defined in the LOCAL LOOKUP (#8984.4) file.</P>
+	<P><B>xtlkx:</B>(required) Word or phrase to use in lookup.</P>
+	<P><B>xtlksay:</B>(optional) Set to any of the following:</P>
+		<UL>
+		<LI><B>1 (default)</B> or ""-Full screen (normal) display.</LI>
+		<LI><B>-1</B>-Prevents screen display.</LI>
+		<LI> <B>0</B>-Minimize screen display.</LI>
+		<P>NOTE: The purpose of xtlksay is to control the degree of output to the screen, not the amount of “file information” displayed.</P>
+		<P>f screen displays are turned off, MTLU matches can be processed by checking the count in</P>
+		<P><B>^TMP("XTLKHITS",$J).</B></P>
+		<P><B>^TMP("XTLKHITS",$J,count)=IEN</B> of the entry in the target file. ^TMP(“XTLKHITS”) should be killed after processing. </P>
+		</UL>
+	<P><B>xtlkhlp:</B>(optional) The lookup was successful.</P>
+        <P><B>xtlkmore:</B>(optional) Set to 1 to continue with VA FileMan search (default=1).</P>
+	</UL>
+	<P><B>Output Variables</B>  </P>
+        <UL>
+        <P><B>y=-1:</B>File not defined in the LOCAL LOOKUP (#8984.4) file.</P>
+        <P><B>Y=N^S:</B>N is the internal entry number (IEN) of the entry in the file and S is the value of the .01 field for that entry.</P>
+        <P><B>Y=N^S^1:</B>N and S are defined as above and the 1 indicates that this entry has just been added to the file.</P>
+        </UL>
+	<h4>Examples:</h4>
+	<P>Example 1</P>
+	
+	<h3>LKUP^XTLKMGR API-Example 1: Standard Lookup; Single Term Entered</h3>
+        <HR>
+     	<PRE>
+VAH,MTL>D LKUP^XTLKMGR(80,"MALIG")
+( MALIG/MALIGNANT )
+..........................................................................
+..........................................................................
+...........................................
+The following 443 matches were found:
+   1: 140.1 (MAL NEO LOWER VERMILION)
+       MALIGNANT NEOPLASM OF LOWER LIP, VERMILION BORDER
+   2: 140.3 (MAL NEO UPPER LIP, INNER)
+       MALIGNANT NEOPLASM OF UPPER LIP, INNER ASPECT
+   3: 140.4 (MAL NEO LOWER LIP, INNER)
+       MALIGNANT NEOPLASM OF LOWER LIP, INNER ASPECT
+   4: 140.5 (MAL NEO LIP, INNER NOS)
+       MALIGNANT NEOPLASM OF LIP, UNSPECIFIED, INNER ASPECT
+   5: 140.6 (MAL NEO LIP, COMMISSURE)
+       MALIGNANT NEOPLASM OF COMMISSURE OF LIP
+Press <RET> or Select 1-5: ^
+...Nothing selected. Attempting Fileman lookup.
+	</PRE>
+<P><B>NOTE:</B> Pressing the <Enter> key continues listing the MTLU matches. If no selection is made, MTLU initiates a standard VA FileMan lookup (using all available cross-references).</P>
+<br>
+<br>
+
+<P>Example 2</P>
+
+        <h3>LKUP^XTLKMGR API-Example 2: Standard Lookup; Multiple Terms Entered</h3>
+        <HR>
+        <PRE>
+        VAH,MTL>D LKUP^XTLKMGR(80,"MALIGNANCY OF THE LIP") (LIP/LIPIDOSES/LIPODYSTROPHY/LIPOID/LIPOMA/LIPOPROTEIN/LIPOTROPIC/LIPS
+The following words were not used in this search:
+     OF
+     THE
+............
+The following 12 matches were found:
+   1: 140.1 (MAL NEO LOWER VERMILION)
+       MALIGNANT NEOPLASM OF LOWER LIP, VERMILION BORDER
+   2: 140.3 (MAL NEO UPPER LIP, INNER)
+       MALIGNANT NEOPLASM OF UPPER LIP, INNER ASPECT
+   3: 140.4 (MAL NEO LOWER LIP, INNER)
+       MALIGNANT NEOPLASM OF LOWER LIP, INNER ASPECT
+   4: 140.5 (MAL NEO LIP, INNER NOS)
+       MALIGNANT NEOPLASM OF LIP, UNSPECIFIED, INNER ASPECT
+   5: 140.6 (MAL NEO LIP, COMMISSURE)
+       MALIGNANT NEOPLASM OF COMMISSURE OF LIP
+Press <RET> or Select 1-5: ^
+...Nothing selected. Attempting Fileman lookup. ??
+	</PRE>
+<br>
+<br>
+<P>Example 3</P>
+
+        <h3>LKUP^XTLKMGR API-Example 3: Display Minimized by Setting the 3rd Parameter = 0</h3>
+        <HR>
+        <PRE>
+        VAH,MTL>S XTLKX=“MALIGNANCY OF THE LIP” VAH,MTL>D LKUP^XTLKMGR(80,XTLKX,0)
+The following 12 matches were found:
+   1: 140.1 (MAL NEO LOWER VERMILION)
+       MALIGNANT NEOPLASM OF LOWER LIP, VERMILION BORDER
+   2: 140.3 (MAL NEO UPPER LIP, INNER)
+       MALIGNANT NEOPLASM OF UPPER LIP, INNER ASPECT
+   3: 140.4 (MAL NEO LOWER LIP, INNER)
+       MALIGNANT NEOPLASM OF LOWER LIP, INNER ASPECT
+   4: 140.5 (MAL NEO LIP, INNER NOS)
+       MALIGNANT NEOPLASM OF LIP, UNSPECIFIED, INNER ASPECT
+   5: 140.6 (MAL NEO LIP, COMMISSURE)
+       MALIGNANT NEOPLASM OF COMMISSURE OF LIP
+Press <RET> or Select 1-5: ^ <Enter> ?? VAH,MTL>
+	</PRE>
+<br>
+<br>
+<P>Example 4</P>
+
+        <h3>LKUP^XTLKMGR API-Example 4: MTLU with Screen Display Turned Off</h3>
+        <HR>
+        <PRE>
+	VAH,MTL>D LKUP^XTLKMGR(80,XTLKX,-1) VAH,MTL>D ^%G
+Global ^TMP("XTLKHITS",$J
+        TMP("XTLKHITS",$J
+^TMP("XTLKHITS",591795907) = 12
+^TMP("XTLKHITS",591795907,1) = 167
+^TMP("XTLKHITS",591795907,2) = 168
+^TMP("XTLKHITS",591795907,3) = 169
+^TMP("XTLKHITS",591795907,4) = 170
+^TMP("XTLKHITS",591795907,5) = 171
+^TMP("XTLKHITS",591795907,6) = 172
+^TMP("XTLKHITS",591795907,7) = 173
+^TMP("XTLKHITS",591795907,8) = 220
+^TMP("XTLKHITS",591795907,9) = 221
+^TMP("XTLKHITS",591795907,10) = 8595
+^TMP("XTLKHITS",591795907,11) = 8623
+^TMP("XTLKHITS",591795907,12) = 8624
+        </PRE>
+<br>
+<br>
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 8, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY></HTML>

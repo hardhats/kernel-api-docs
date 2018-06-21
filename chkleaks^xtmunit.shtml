@@ -3,33 +3,33 @@
 <!--Office of Information & Technology (OI&T)-->
 <!--Oakland OIFO-->
 <!--Authored by Thom Blom and Susan Strack, 01/01/01-->
-<!--Revised by Thom Blom, 08/13/09-->
+<!--Revised by Thom Blom, 10/18/10-->
     <META HTTP-EQUIV="Content-Type"
           CONTENT="text/html; charset=iso-8859-1"> 
-    <TITLE>Kernel APIs: $$PKGPAT^XPDIP</TITLE>
+    <TITLE>Kernel Toolkit APIs: CHKLEAKS^XTMUNIT</TITLE>
     <META NAME="subject"
-          CONTENT="Kernel APIs: $$PKGPAT^XPDIP">
+          CONTENT="XTLKKWL^XTLKKWL: Perform Supported VA FileMan Calls on Files Configured for MTLU">
     <META NAME="keywords"
-	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$PKGPAT^XPDIP,$$PKGPAT,XPDIP,kids,supported">
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
     <LINK REL="StyleSheet"
           TYPE="text/css"
           HREF="common/programmer.css"> 
   </HEAD> 
   <BODY> 
-<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
 <!--Title Banner (image)-->
     <TABLE BORDER="0"
-	       WIDTH="100%"
-	       CELLSPACING="0"
-	       CELLPADDING="6"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
 	       SUMMARY="This table is for formatting purposes only"
 	       HEIGHT="65"> 
-	  <TR> 
+      <TR> 
 	    <TD VALIGN="middle"
 	        ALIGN="left"
 	        HEIGHT="30"> 
-		  <IMG SRC="images/kernel_heading_APIs-new.gif"
-			   ALT="Kernel 8.0 APIs Banner"
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
 			   BORDER="0" width="429" height="29">
 		  <A HREF="#navskip">
 		  <IMG SRC="images/clr_pxl.gif"
@@ -41,86 +41,66 @@
 		  <IMG SRC="images/oitbanner.gif"
 			   ALT="Office of Information & Technology (OIT) Banner"
 			   BORDER="0" width="429" height="30">
-	    </TD> 
+			 </P>
+		</TD> 
 		<TD ALIGN="right"
 		    VALIGN="middle"
 		    HEIGHT="30"> 
 		  <P></P>
-		</TD> 
+        </TD> 
 	  </TR> 
     </TABLE> 
-  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
 <!-- Content -->
-	<H3><A NAME="navskip">$$PKGPAT^XPDIP</A>(): Update Patch History</H3> 
-	<P><B>Reference Type:</B> Supported, <B>Category:</B> KIDS, <B>Integration
-	Agreement:</B> 2067</P> 
+    <H3><A NAME="navskip">CHKLEAKS^XTMUNIT(): Check for Variable Leaks</H3> 
+	<P><B>Reference Type:</B> Not callable from outside a unit test, <B>Category:</B> Toolkit-M Unit Utility,
+	<B>Integration Agreement:</B> N/A</P> 
 	<H4><A NAME="description">Description</A></H4> 
-	<P>This extrinsic function updates the PATCH APPLICATION HISTORY field
-	(#1105, Multiple) of the VERSION field (#22, Multiple) in the PACKAGE file (#9.4). This
-	function can be used during the Pre- or Post-Install routine.</P> 
+	<P>The CHKLEAKS^XTMUNIT API runs a test that can be used within:
+	<LI>Unit tests. </LI>
+	<LI>Standalone test for variable leaks; those created within called code that
+are allowed to leak into the calling environment, unintentionally. </LI>
+	</P>
 	<H4><A NAME="format">Format</A></H4> 
-	<PRE>  $$PKGPAT^XPDIP(software_ien,version,.x)</PRE> 
-	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
-	<TABLE BORDER="1"
-	       CELLPADDING="5"
-	       BGCOLOR="#F1F2F3"
-	       BORDERCOLORLIGHT="#F1F2F3"
-	       BORDERCOLORDARK="#808080"
-	       WIDTH="100%"> 
-	  <TR> 
-	    <TD VALIGN="TOP" WIDTH="15%">
-	      <B>package_ien:</B>
-	    </TD> 
-		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%">
-		  <P>(required) The software file entry Internal Entry Number (IEN) in
-		  the PACKAGE file (#9.4).</P>
-		</TD> 
-	  </TR> 
-      <TR> 
-	    <TD VALIGN="TOP">
-	      <B>version:</B>
-	    </TD> 
-		<TD VALIGN="TOP" COLSPAN="2"> 
-		  <P>(required) This is the software version number. It must contain a
-		  decimal (e.g., 8.0).</P>
-		</TD> 
-	  </TR>
-	  <TR>
-	    <TD VALIGN="TOP">
-	    <B>.x</B>
-	    </TD>
-		<TD VALIGN="TOP" COLSPAN="2">
-		  <P>(required)</P>
-		</TD>
-	  </TR> 
-	</TABLE> 
-	<H4><A NAME="output">Output</A></H4> 
-	<TABLE BORDER="1"
-	       CELLPADDING="5"
-	       BGCOLOR="#F1F2F3"
-	       BORDERCOLORLIGHT="#F1F2F3"
-	       BORDERCOLORDARK="#808080"
-	       WIDTH="100%"> 
-	  <TR> 
-	    <TD VALIGN="TOP" WIDTH="15%">
-	      <B>returns:</B>
-	    </TD> 
-		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
-		  <P>Returns:</P>
-		  <PRE>  version ien^patch ien</PRE>
-		</TD> 
-	  </TR> 
-	</TABLE> 
+	<PRE>D CHKLEAKS^XTMUNIT(code,testloc,.nameinpt)</PRE>
+	 <P><B>Input Parameters:</B>  </P>
+        <UL>
+        <P><B>code:</B>(required) Contains a command to be executed in the test for leaks. For example:
+  		<PRE> S X=$$NOW^XLFDT()</PRE></P>
+	<P><B>testloc:</B> (required) Indicates the location under test. For example:
+   	<PRE>$$NOW^XLFDT() leak test</PRE>
+	Or simply:
+	<PRE>$$NOW^XLFDT</PRE> </P>
+	<P><B>.nameinpt.</B>(required) This parameter is passed by reference, and is an array that contains a list of all variables that the user is passing in and/or expects to be present when the code is finished. The variable X would be in the latter category, since it would then be present. The input is in the form of an array:
+  	<UL><PRE> NAMEINPT("VARNAME")="VARVALUE"</PRE></UL>
+	Where:
+	<UL>
+	<LI>VARNAME-Name of a variable.</LI>
+	<LI> VARVALUE-Value that is to be assigned to the variable before the contents of the code input parameter is to be executed.</LI>
+        </UL>
+	</UL>
+
+	 <P><B>Output Variables</B>     returns </P>
+	<UL>Returns
+	<UL>
+	<LI>Inside a unit test environment-When run in a unit test environment, variables that are present after the
+	 contents of the code input parameter is executed that were not included in NAMEINPT array as variables, are listed as failures.</LI>
+	<LI>Outside a unit test environment-When called outside of a unit test environment; any leaked variables are listed on the current device.
+	</LI>
+	</UL>
+	</UL>
 	<P>&nbsp;</P>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
 	       SUMMARY="This table for layout purposes only"
 	       CLASS="white"> 
 	  <TR> 
-	    <TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
 <!--Bottom Navigation Links-->
 <!--webbot bot="Include" U-Include="common/bottom_links.htm"
-          TAG="BODY" startspan -->
+             TAG="BODY" startspan -->
     <P ALIGN="CENTER">
 	<A HREF="http://www.va.gov/"
 	   CLASS="bodylink"
@@ -166,18 +146,17 @@
        TARGET="_top"
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 16, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 8, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having
 		  accessibility problems with this website, please contact us by E-Mail:
-		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-pkgpat^xpdip.shtml"
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
 			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
-		  510-768-6800, or FAX: 510-768-6850.</P> 
-		  <P>&nbsp;</P>
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
 	    </TD> 
       </TR> 
     </TABLE>
-  </BODY>
-</HTML>
+  </BODY></HTML>

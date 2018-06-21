@@ -1,0 +1,318 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 10/18/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Toolkit APIs: Merge Capability</TITLE>
+    <META NAME="subject"
+          CONTENT="XTLKKWL^XTLKKWL: Perform Supported VA FileMan Calls on Files Configured for MTLU">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">Developing a File Merge Capability</H3>
+<p> This section provides developers with a set of instructions to follow in building a merge capability for a file. After a developer identifies a file that has a substantial number of duplicates and that the nature and use of the file warrants a merge utility, he/she then follows the steps outlined in this section in developing that merge capability.</p>
+<p>For demonstration purposes, the rest of this section uses a specific example of developing a Patient Merge using the Duplicate Resolution Utilities.</p> 
+	
+	<H4>Step 1</H4> 
+	
+	<P>Notify the Kernel Toolkit developers of the perceived need for a duplicate checking/merge capability for a particular file. They will do the following:</p>
+<ul>
+<p>1. Assists the developer in deciding whether there is indeed a need for a Duplicate Resolution Utility for this particular file.</p>
+
+<p>2. Add the file to the .01 and .02 VARIABLE POINTER field definitions in the DUPLICATE RECORD (#15) file.</p>
+<p>3. Notifies the application developer when the modified dictionary is to be released to the field.</p>
+</ul>
+<H4>Step 2</H4>
+<p>The developer needs to now communicate to the larger development community his/her intention to develop a merge capability for this file. All developers need to determine if the merging and deleting of records in this file affects their package in such a way that they need to have their own unique merge routine that deals with only their package's files. A developer usually has to write their own unique merge routine if any of the following conditions exist:
+<ul>
+<li>Patient pointer field is defined as a NUMERIC or FREE TEXT field rather than a POINTER.
+</li>
+<li>
+Developer wants their end users to complete some task prior to the merge occurring.</li>
+<li>There are compound cross-references that include the patient pointer on another field but the cross-reference is not triggered by the changing of the patient pointer.</li>
+<li> Merge (Duplicate Resolution Utilities) does not do what the package developer desires.</li></p>
+</ul>
+<H4>Description of What Occurs during the Merge</H4>
+<p>The following is a brief description of what occurs during the merge process:</p>
+<ul>
+<p>
+1. The base file (e.g., PATIENT file, #2) is checked to see if it exists.</p>
+
+<p>2. The PT nodes (e.g., ^DD(2,0,"PT",) are checked and any false positives are removed.</p>
+<p>3. Creates a list of files and fields within those files that point to the file being merged (e.g., in this example the file being merged is the PATIENT file, #2).</p>
+<p>4. If a file is pointing to the file being merged by its .01 field, and if that .01 field is DINUM, then all files/fields that point to that file are also gathered. The DINUM rule also applies to that file and any files pointing to it, to any depth.</p>
+<p>5. Each file/field is checked and re-pointed/merged as follows:	</p>
+<UL> <li>
+If the field pointing is not a .01 field, the FROM entry is changed to the TO entry.
+</li>
+<li>
+If the field pointing is the .01 field but not DINUM, the FROM entry is changed to the TO entry.
+</li>
+<li>
+Each pointing .01 DINUM field is handled as follows:
+</li>
+<ul>
+<li>f the .01 DINUM field is at the file level, ^DIT0 is called to merge the FROM
+entry to the TO entry and then the FROM entry is deleted.
+<p>
+^DIT0 merges field by field but does not change any value in the TO entry. That means that NULL fields in the TO entry get the value from the same field in the FROM entry if it is not NULL, and valued fields in the TO entry remain the same.</p>
+<p>
+^DIT0 also merges Multiples. If a Multiple entry in the FROM entry cannot be found in the TO entry, it is added to the TO entry. If a Multiple entry in the FROM entry can be found in the TO entry, then that Multiple entry is merged field by field.</p>
+<li>
+If the .01 DINUM field is at the subfile level (in a Multiple), it is handled as follows:
+
+- If there is a FROM entry but no TO entry, the FROM entry is added to the TO entry, changing the .01 field value in the process, and the FROM entry is deleted.
+- If there is a FROM entry and also a TO entry, the FROM entry is deleted and the TO entry remains unchanged.</li>
+</ul>
+</ul>
+</ul>
+<p>
+If it is determined that a developer must have their own unique merge that deals with their files, they must make the appropriate entries in the PACKAGE (#9.4) file. If they have to have some sort of action taken by end-users prior to the merging of the records, they must update the MERGE PACKAGES (#1101) Multiple field in the DUPLICATE RECORD (#15) file for that pair of records.
+
+</p>
+<H4>
+Entries Needed in the PACKAGE (#9.4) File
+</H4>
+<p>
+In the PACKAGE (#9.4) file make entries in the following fields:</p>
+<ul>
+<li>
+ AFFECTS RECORD MERGE (#20) field
+</li>
+<li>
+NAME (#.01) field-Enter the file affected (e.g., PATIENT [#2] file)
+</li>
+<li>
+NAME OF MERGE ROUTINE (#9.402,3) field-Enter the name of the merge routine, which is executed via indirection by Duplicate Resolution Utilities.
+</li></ul>
+<p>
+If you leave this field blank but still place an entry in the PACKAGE (#9.4) file, Duplicate Resolution Utilities assumes that you have some sort of interactive merge process that your end- users must complete prior to the main merging of the two records. It also assumes that this interactive merge process is on a separate option within the developer's package options. The values of the two records being merged are placed in:
+</p>
+<ul>
+<li>
+<PRE>
+^TMP("XDRMRGFR",$J,XDRMRG("FR"),
+</PRE></li>
+
+<li><PRE>
+^TMP("XDRMRGTO",$J,XDRMRG("TO"),
+</PRE></li>
+</ul>
+<p>
+These should be referenced by the developer if they need any certain field values since the values
+might have been changed prior to the execution of their merge routine.</p>
+<li>
+RECORD HAS PACKAGE DATA (#9.402,4) field-Enter a string of M executable code that is passed the variable XDRMRG("FR") (the FROM record IEN) and set XDRZ to 0. The code should set XDRZ=1 if XDRMRG("FR") has data within your package files.
+</li>
+<p>
+Remember to only make these entries in the PACKAGE (#9.4) file if the normal merge does not suffice for your package. If you have an entry in the PACKAGE (#9.4) file, the repointing and merging as described above does not take place for those files within your Package entry.
+</p>
+<p>
+At the completion of your interactive merge process, the developer must set the STATUS (#15.01101,.02) field of the MERGE PACKAGES (#1101) Multiple field for their package in the DUPLICATE RECORD (#15) file entry to Ready. This must be done using VA FileMan, because of the trigger that is on the STATUS field. Once all of the MERGE PACKAGE entries have a STATUS of Ready, the main merging of the two records can occur.
+</p>
+<H4>
+Step 3
+</H4>
+<p>
+The developer needs to add an entry in the DUPLICATE RESOLUTION (#15.1) file for the file being built. The following fields need to be updated in the DUPLICATE RESOLUTION (#15.1) file and data should be entered by the developer:
+</p>
+<ul>
+<li>
+.01 FILE TO BE CHECKED (required)
+</li>
+<li>
+.06 CROSS-REF FOR NEW SEARCH (optional)
+</li>
+<li>
+.09 CANDIDATE COLLECTION ROUTINE (required)
+</li>
+<li>
+.11 DUPLICATE MANAGER MAIL GROUP (optional)
+</li>
+<li>
+.15 POTENTIAL DUPLICATE THRESHOLD% (required)
+</li>
+<li>
+.16 VERIFIED DUPLICATE MAIL GROUP (optional)
+</li>
+<li>
+.17 VERIFIED DUPLICATE MSG ROUTINE (optional)
+</li>
+<li>
+.18 VERIFIED DUPLICATE THRESHOLD% (optional)
+</li>
+<li>
+.25 MERGE STYLE (required)
+</li>
+<li>
+.26 DELETE FROM ENTRY (optional)
+</li>
+<li>
+.27 PRE-MERGE ROUTINE (optional)
+</li>
+<li>
+.28 POST-MERGE ROUTINE (optional)
+</li>
+<li>
+.29 MERGE MAIL GROUP (optional)
+</li>
+<li>
+.31 MERGE MSG ROUTINE (optional)
+</li>
+<li>
+.33 MERGE DIRECTION INP TRANSFORM (optional)
+</li>
+<li>
+1100 DUPLICATE TESTS (required)
+</li>
+<ul>
+<li>
+.01 DUPLICATE TEST (required)
+</li>
+<li>
+.02 ORDER OF TEST (required)
+</li>
+<li>
+.03 DUPLICATE TEST ROUTINE (required)
+</li>
+<li>
+.04 FILE FOR INFORMATION (optional)
+</li>
+<li>
+.05 FIELD TO BE CHECKED (required)
+</li>
+<li>
+ .06 SUCCESSFUL MATCH WEIGHT (required)
+</li>
+<li>
+.07 UNSUCCESSFUL MATCH WEIGHT (required)
+</li>
+
+</ul>
+</ul>
+
+<li>
+1200 DINUM FILES FOR MERGE (optional)
+</li>
+<ul>
+<li>
+ .01 DINUM FILES FOR MERGE (optional)
+</li>
+</ul>
+
+
+
+<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+   <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 18, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY></HTML>

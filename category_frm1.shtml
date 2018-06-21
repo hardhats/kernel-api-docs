@@ -150,6 +150,7 @@
 					TITLE="DNS APIs"
 					CLASS="navbarlink">DNS</A>
 			   </LI>
+
                <LI>
                  <A HREF="#electronic_signature"
                     TARGET="toc"
@@ -198,8 +199,14 @@
 				    TITLE="KIDS APIs"
 				    CLASS="navbarlink">KIDS</A>
 			   </LI>
-               <LI>
-                 <A HREF="#menu_manager"
+		<LI>
+                 <A HREF="#M_UnitUtility"
+                    TARGET="toc"
+                                    TITLE="M Unit Utility"
+                                    CLASS="navbarlink">M Unit Utility</A>
+                           </LI>
+		<LI>
+		 <A HREF="#menu_manager"
                     TARGET="toc"
 				    TITLE="Menu Manager APIs"
 				    CLASS="navbarlink">Menu Manager</A>
@@ -210,6 +217,13 @@
 				    TITLE="Miscellaneous APIs"
 				    CLASS="navbarlink">Miscellaneous</A>
 			   </LI>
+
+		 <LI>
+                 <A HREF="#Multi-Term-Look-Up"
+                    TARGET="toc"
+                                    TITLE="Multi Term Look Up (MTLU) APIs"
+                                    CLASS="navbarlink">Multi Term Look Up (MTLU) APIs</A>
+                           </LI>
                <LI>
                  <A HREF="#name_standardization"
                     TARGET="toc"
@@ -259,17 +273,40 @@
 					CLASS="navbarlink">TaskMan</A>  
 			   </LI>
                <LI>
-                 <a HREF="#toolkit_data_standardization"
+                 <a HREF="#toolkit_dns"
                     TARGET="toc"
-                    TITLE="Toolkit&#8212;Data Standardization APIs"
-                    CLASS="navbarlink">Toolkit&#8212;Data Standardization</a> 
+                    TITLE="Toolkit&#8212;DNS"
+                    CLASS="navbarlink">Toolkit&#8212;DNS</a> 
                </li>
+
+		<LI>
+                 <a HREF="#toolkit_duplicate_record_merge"
+                    TARGET="toc"
+                    TITLE="Toolkit&#8212;Duplicate Record Merge"
+                    CLASS="navbarlink">Toolkit&#8212;Duplicate Record Merge</a>
+               </li>
+
+
+
+
                <LI>
                  <a HREF="#toolkit_http_client_helper"
                     TARGET="toc"
                     TITLE="Toolkit&#8212;Data Standardization APIs"
                     CLASS="navbarlink">Toolkit&#8212;HTTP Client Helper</a>
                 </li>
+
+
+		   <LI>
+                 <a HREF="#kermit"
+                    TARGET="toc"
+                    TITLE="Toolkit&#8212;KERMIT"
+                    CLASS="navbarlink">Toolkit&#8212;KERMIT</a>
+               </li>
+
+
+
+
 				<LI>
                  <A HREF="#toolkit_vha_unique_id_vuid"
                     TARGET="toc"
@@ -1069,6 +1106,9 @@
 		<TR ALIGN="LEFT"> 
 		  <TD><HR></TD> 
 		</TR> 
+
+
+
 		<TR ALIGN="LEFT"> 
 		  <TD> 
 			 <H5><A NAME="electronic_signature">Electronic Signature</A></H5> 
@@ -1724,6 +1764,18 @@
 					 CLASS="navbarlink">$$PKGPAT^XPDIP</A><BR>
                   Update Patch History</TD> 
 				</TR>
+
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="x-pkgver^xpdip.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$PKGVER^XPDIP, Usage: Update Patch Version, Category: KIDS"
+                                         CLASS="navbarlink">$$PKGVER^XPDIP</A><BR>
+                  Update Patch Version</TD>
+                                </TR>
+		
+
                 <TR>
 				  <TD ALIGN="RIGHT">
 					 <IMG SRC="images/bullet_black_small.gif" ALT="bullet item" WIDTH="4"
@@ -1891,7 +1943,108 @@
 		</TR> 
 		<TR ALIGN="LEFT"> 
 		  <TD><HR></TD> 
-		</TR> 
+		</TR>
+
+
+
+
+  <TR ALIGN="LEFT">
+                  <TD>
+                         <H5><A NAME="M_UnitUtility">M Unit Utility Toolkit</A></H5>
+                         <TABLE WIDTH="100%">
+                                <TR>
+                                  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD WIDTH="1%"></TD>
+                                  <TD WIDTH="95%"><A HREF="munit_introduction.shtml" TARGET="display"
+                                         TITLE="Kernel API: Introduction to M Unit Testing, Usage: Category: Toolkit-M Unit Utility"
+                                         CLASS="navbarlink">Introduction to M Unit Testing</A><BR>
+                  </TD>
+                                </TR>
+
+		   <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="en^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API:EN^XTMUNIT, Usage:Run Unit Tests , Category:Toolkit-M Unit Utility "
+                                         CLASS="navbarlink">EN^XTMUNIT </A><BR>Run Unit Tests  </TD>
+                                </TR>
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="chkeq^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API:CHKEQ^XTMUNIT , Usage:Check Two Values for Equivalence , Category:Toolkit-M Unit Utility"
+                                         CLASS="navbarlink">CHKEQ^XTMUNIT  </A><BR>Check Two Values for Equivalence </TD>
+                                </TR>
+
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="chkleaks^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API: CHKLEAKS^XTMUNIT, Usage:Check for Variable Leaks , Category:Toolkit-M Unit Utility"
+                                         CLASS="navbarlink"> CHKLEAKS^XTMUNIT</A><BR>Check for Variable Leaks  </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="chktf^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API:CHKTF^XTMUNIT, Usage:Test Conditional Values , Category:Toolkit-M Unit Utility
+"
+                                         CLASS="navbarlink"> CHKTF^XTMUNIT</A><BR>Test Conditional Values</TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="fail^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API:FAIL^XTMUNIT , Usage:Generate an Error Message , Category:Toolkit-M Unit Utility"
+                                         CLASS="navbarlink"> FAIL^XTMUNIT </A><BR>Generate an Error Message </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="isutest^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API:ISUTEST^XTMUNIT, Usage:Evaluate if Unit Test is Running , Category:Toolkit-M Unit Utility"
+                                         CLASS="navbarlink">ISUTEST^XTMUNIT</A><BR>Evaluate if Unit Test is Running </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="succeed^xtmunit.shtml" TARGET="display"
+                                         TITLE="Kernel API:SUCCEED^XTMUNIT , Usage:Increment Test Counter , Category:Toolkit-M Unit Utility"
+                                         CLASS="navbarlink">SUCCEED^XTMUNIT</A><BR> Increment Test Counter </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="sample_unit_utility_output.shtml" TARGET="display"
+                                         TITLE="Kernel API:Sample M Unit Utility Output , Usage: Define a File in the Local Lookup File , Category:Toolkit-M Unit Utility"
+                                         CLASS="navbarlink">Sample M Unit Utility Output</A><BR>   </TD>
+                                </TR>
+
+			       </TABLE>
+                         <P></P></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD><HR></TD>
+                </TR>
+
+
+
+
+ 
 		<TR ALIGN="LEFT"> 
 		  <TD> 
 			 <H5><A NAME="menu_manager">Menu Manager</A></H5> 
@@ -2156,7 +2309,169 @@
 		</TR> 
 		<TR> 
 		  <TD><HR></TD> 
-		</TR> 
+
+
+
+		</TR>
+ <TR ALIGN="LEFT">
+                  <TD>
+                         <H5><A NAME="Multi-Term-Look-Up">Multi-Term Look-Up (MTLU) APIs</A></H5>
+                         <TABLE WIDTH="100%">
+                                <TR>
+                                  <TD WIDTH="4%" ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD WIDTH="1%"></TD>
+                                  <TD WIDTH="95%"><A HREF="mtlu_override.shtml" TARGET="display"
+                                         TITLE="Kernel API: How to Override, Usage:, Category: Multi-Term Look-Up (MTLU) APIs"
+                                         CLASS="navbarlink">How to Override</A><BR>
+                  </TD>
+                                </TR>
+
+                   <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="mtlu_apis.shtml" TARGET="display"
+                                         TITLE="Kernel API:Application Programming Interfaces (APIs) , Usage: , Category:Multi-Term Look-Up (MTLU) APIs "
+                                         CLASS="navbarlink"> Application Programming Interfaces (APIs) </A><BR>  </TD>
+                                </TR>
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="xtlkkwl^xtlkkwl.shtml" TARGET="display"
+                                         TITLE="Kernel API:XTLKKWL^XTLKKWL , Usage:Perform Supported VA FileMan Calls on Files Configured for MTLU , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink">XTLKKWL^XTLKKWL  </A><BR>Perform Supported VA FileMan Calls on Files Configured for MTLU  </TD>
+                                </TR>
+
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="dk^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API: DK^XTLKMGR, Usage:Delete Keywords from the Local Keyword File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink"> DK^XTLKMGR </A><BR>Delete Keywords from the Local Keyword File  </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="dll^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:DLL^XTLKMGR , Usage:Delete an Entry from the Local Lookup File , Category:Multi-Term Look-Up (MTLU)
+"
+                                         CLASS="navbarlink"> DLL^XTLKMGR </A><BR>Delete Keywords from the Local Keyword File  </TD>
+                                </TR>
+
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="dsh^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:DSH^XTLKMGR , Usage:Delete Shortcuts from the Local Shortcut File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink"> DSH^XTLKMGR </A><BR> Delete Shortcuts from the Local Shortcut </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="dsy^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:DSY^XTLKMGR , Usage:Delete Synonyms from the Local Synonym File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink">DSY^XTLKMGR  </A><BR>Delete Synonyms from the Local Synonym File  </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="k^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:K^XTLKMGR , Usage:Add Keywords to the Local Keyword File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink">K^XTLKMGR  </A><BR> Add Keywords to the Local Keyword File </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="l^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:L^XTLKMGR , Usage: Define a File in the Local Lookup File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink">L^XTLKMGR  </A><BR> Define a File in the Local Lookup File  </TD>
+                                </TR>
+
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="lkup^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:LKUP^XTLKMGR , Usage:General Lookup Facility for MTLU , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink"> LKUP^XTLKMGR </A><BR> General Lookup Facility for MTLU </TD>
+                                </TR>
+<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="sh^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:SH^XTLKMGR , Usage:Add Shortcuts to the Local Shortcut File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink"> SH^XTLKMGR </A><BR>Add Shortcuts to the Local Shortcut File  </TD>
+                                </TR>
+				<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="sy^xtlkmgr.shtml" TARGET="display"
+                                         TITLE="Kernel API:SY^XTLKMGR , Usage:Add Terms and Synonyms to the Local Synonym File , Category:Multi-Term Look-Up (MTLU)"
+                                         CLASS="navbarlink">SY^XTLKMGR  </A><BR>Add Terms and Synonyms to the Local Synonym File  </TD>
+                                </TR>
+                               </TABLE>
+                         <P></P></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD><HR></TD>
+                </TR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 		<TR ALIGN="LEFT"> 
 		  <TD> 
 			 <H5><A NAME="name_standardization">Name Standardization</A></H5> 
@@ -2276,7 +2591,28 @@
 					 TITLE="Kernel API: $$NPI^XUSNPI, Usage: Get NPI from Files #200 or #4, Category: National Provider Identifier (NPI)" 
 					 CLASS="navbarlink">$$NPI^XUSNPI</A><BR>
                   Get NPI from Files #200 or #4</TD> 
-				</TR> 
+				</TR>
+
+
+
+		<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="x-npiused^xusnpi1.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$NPIUSED^XUSNPI1, Usage:  Returns an Error or Warning if an NPI is in Use, Category: National Provider Identifier (NPI)"
+                                         CLASS="navbarlink">$$NPIUSED^XUSNPI</A><BR>
+                   Returns an Error or Warning if an NPI is in Use</TD>
+                                </TR>
+
+
+
+
+
+
+
+
+ 
 				<TR> 
 				  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
 					 ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD> 
@@ -3367,7 +3703,109 @@
 					<a TARGET="display" TITLE="Toolkit API: $$SETRPLC^XTIDTRM, Usage: Set Replacement Term (Term/Concept), Category: Toolkit&#8212;Data Standardization" CLASS="navbarlink" href="http://vhaispwww5.vha.med.va.gov/kernel/apis/x-SETRPLC^XTIDTRM.shtml">$$SETRPLC^XTIDTRM</a><br>
 					 Set Replacement Term (Term/Concept)</TD> 
 				</tr>
-				</TABLE> 
+				</TABLE>
+			<P></P></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD><HR></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD>
+                         <H5><A NAME="toolkit_duplicate_record_merge">Toolkit&#8212;Duplicate Record Merge</A></H5>
+                         <TABLE WIDTH="100%">
+
+
+
+			<TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF=" mergecapability.shtml" TARGET="display"
+                                         TITLE="Developing a File Merge Capability"
+                                         CLASS="navbarlink">Developing a File Merge Capability</A><BR>
+                  </TD>
+                                </TR>
+
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="overview.shtml" TARGET="display"
+                                         TITLE="Overview"
+                                         CLASS="navbarlink">Overview</A><BR>
+                  </TD>
+                                </TR>
+
+
+                <TR>
+                                  <TD ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item" WIDTH="4" HEIGHT="4" BORDER="0"></TD>
+                                  <TD></TD>
+                                  <TD><A HREF="special_processing_routines.shtml" TARGET="display"
+                                         TITLE="Special Processing Routine Examples"
+                                         CLASS="navbarlink">Special Processing Routine Examples</A><BR>
+                  </TD>
+                                </TR>
+
+
+
+
+                       <TR>
+                             <TD WIDTH="4%"
+                                     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item"
+                                         WIDTH="4"
+                                         HEIGHT="4"
+                                         BORDER="0"></TD>
+                                 <TD WIDTH="1%"></TD>
+                                 <TD WIDTH="95%">
+				<A HREF="en^xdrmerg.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$EN^XDRMERG, Usage: Merge File Entries"
+                                         CLASS="navbarlink">$$EN^XDRMERG</A><BR>
+                  Merge File Entries </TD>
+
+				
+                           </TR>
+
+			<tr>
+                             <TD WIDTH="4%"
+                                     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item"
+                                         WIDTH="4"
+                                         HEIGHT="4"
+                                         BORDER="0"></TD>
+                                 <TD WIDTH="1%">&nbsp;</TD>
+                                 <TD WIDTH="95%">
+                           <A HREF="restart^xdrmerg.shtml" TARGET="display"
+                                         TITLE="Kernel API: RESTART^XDRMERG, Usage: Restart Merge, Category: Toolkit-Duplicate Record Merge"
+                                         CLASS="navbarlink">RESTART^XDRMERG</A><BR>
+                  Restart Merge</TD>
+                           
+                           
+                           
+   
+                           </tr>
+			
+			<tr>
+                             <TD WIDTH="4%"
+                                     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item"
+                                         WIDTH="4"
+                                         HEIGHT="4"
+                                         BORDER="0"></TD>
+                                 <TD WIDTH="1%">&nbsp;</TD>
+                                 <TD WIDTH="95%">
+
+				<A HREF="savemerg^xdrmergb.shtml" TARGET="display"
+                                         TITLE="Kernel API: SAVEMERG^XDRMERGB, Usage: Save Image of Existing and Merged Data, Category: Toolkit-Duplicate Record Merge"
+                                         CLASS="navbarlink">SAVEMERG^XDRMERGB</A><BR>
+                  Save Image of Existing and Merged Data</TD>
+
+
+
+                           </tr>
+
+			</TABLE>
 			 <P></P></TD> 
 		</TR>
 		<TR ALIGN="LEFT"> 
@@ -3462,6 +3900,94 @@
                  </TD> 
 			   </TR> 
 			 </TABLE> 
+
+
+
+
+
+
+
+
+			<P></P></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD><HR></TD>
+                </TR>
+                <TR ALIGN="LEFT">
+                  <TD>
+                         <H5><A NAME="toolkit_kermit">Toolkit&#8212;KERMIT</A></H5>
+                         <TABLE WIDTH="100%">
+                       <TR>
+                             <TD WIDTH="4%"
+                                     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item"
+                                         WIDTH="4"
+                                         HEIGHT="4"
+                                         BORDER="0"></TD>
+                                 <TD WIDTH="1%"></TD>
+                                 <TD WIDTH="95%">
+
+				<A HREF="rfile^xtkerm4.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$RFILE^XTKERM4, Usage: Add Entries to Kermit Holding File, Category: Toolkit-KERMIT"
+                                         CLASS="navbarlink">$$RFILE^XTKERM4</A><BR>
+                  Add Entries to Kermit Holding File</TD>
+
+                           </TR>
+
+
+			<TR>
+                             <TD WIDTH="4%" 
+                                     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item"
+                                         WIDTH="4"
+                                         HEIGHT="4"
+                                         BORDER="0"></TD>
+                                 <TD WIDTH="1%"></TD>
+                                 <TD WIDTH="95%">
+
+				<A HREF="receive^xtkermit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$RECEIVE^XTKERMIT, Usage: Load a File into the Host, Category:Toolkit-KERMIT"
+                                         CLASS="navbarlink">$$RECEIVE^XTKERMIT</A><BR>
+                  Load a File into the Host</TD>
+
+                           </TR>
+		
+			<TR>
+                             <TD WIDTH="4%" 
+                                     ALIGN="RIGHT"><IMG SRC="images/bullet_black_small.gif"
+                                         ALT="bullet item"
+                                         WIDTH="4"
+                                         HEIGHT="4"
+                                         BORDER="0"></TD>
+                                 <TD WIDTH="1%"></TD>
+                                 <TD WIDTH="95%">
+
+				   <A HREF="send^xtkermit.shtml" TARGET="display"
+                                         TITLE="Kernel API: $$SEND^XTKERMIT, Usage:  Send Data from Host, Category: Toolkit-KERMIT"
+                                         CLASS="navbarlink">$$SEND^XTKERMIT</A><BR>
+                   Send Data from Host</TD>
+
+                           </TR>
+
+
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+
+
+
 			 <P></P>
 		   </TD> 
 		</TR> 

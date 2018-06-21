@@ -52,21 +52,11 @@
   <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
 <!-- Content -->
 	<H3><A NAME="navskip">^XUWORKDY</A>: Workday Calculation (Obsolete)</H3> 
-	<P><B>NOTE:</B> This API is obsolete; see 
-	<A HREF="x-en^xuworkdy.shtml"
-	   TITLE="$$EN^XUWORKDY API">$$EN^XUWORKDY</A>, 
-	<A HREF="x-workday^xuworkdy.shtml"
-	   TITLE="$$WORKDAY^XUWORKDY API">$$WORKDAY^XUWORKDY</A>, 
-	or 
-	<A HREF="x-workplus^xuworkdy.shtml"
-	   TITLE="$$WORKPLUS^XUWORKDY API">$$WORKPLUS^XUWORKDY</a>.</P>
+	<P><B>NOTE: </B>Calling the XUWORKDY routine from the top is obsolete. The ^XUWORKDY API was replaced by the $$EN^XUWORKDY API. This API is dependent on the HOLIDAY (#40.5) file being updated by the sites. </P>
 	<P><B>Reference Type:</B> Supported, <B>Category:</B> Miscellaneous,
 	<B>Integration Agreement:</B> 10046</P> 
 	<H4><A NAME="description">Description</A></H4> 
-	<P><B>NOTE:</B> The XUWORKDY routine is maintained for code that might still use
-	it.
-	<BR>
-	<BR>
+	<P>
 	To use the ^XUWORKDY API, you <I>must</I> make sure that the HOLIDAY file (#40.5) is populated with each
 	year's holidays for the workday calculation to work correctly. If it is not
 	populated, you need to populate it yourself (Kernel distributes this file
@@ -78,30 +68,37 @@
 	X&gt;X1. If either date is imprecisely specified, or if the HOLIDAY global is 
 	empty, then ^XUWORKDY returns a NULL string.<BR>
 	<BR>
+	<UL>
+	<LI>
 	The first FOR loop in ^XUWORKDY checks the HOLIDAY global
 	and sets %H equal to the number of holidays between the two dates. It is
 	assumed that the HOLIDAY global contains only weekday holidays.
-	<BR>
-	<BR>
+	</LI><BR>
+	<BR><LI>
 	The second FOR loop (F %J=%J:1 ... ) steps forward from the earliest date and stops
 	at the first Sunday or at the ending date (whichever comes first) counting the
-	number of workdays.
+	number of workdays.</LI>
 	<BR>
-	<BR>
+	<BR><LI>
 	The third FOR loop (F %K=%K:-1 ... ) steps backward
 	from the latest date and stops at the first Sunday or at the beginning date
-	(whichever comes first), counting the workdays.
+	(whichever comes first), counting the workdays.</LI>
 	<BR>
-	<BR>
+	<BR><LI>
 	Then %I is set equal to
 	the number of days between the two Sundays.
-	<BR>
-	<BR>
+	</LI><BR>
+	<BR><LI>
 	Finally, X is set equal to
 	the total counted days minus the number of weekend days between the two Sundays
-	( -(%I\7*2) ).</P> 
+	( -(%I\7*2) ).</P> </LI></UL>
 	<H4><A NAME="format">Format</A></H4> 
 	<PRE>  ^XUWORKDY</PRE> 
+	<P>Make sure to perform the following steps before calling this API:</P>
+	<UL>
+	<LI>NEW all non-namespaced variables.</LI>
+	<LI>Set all input variables.</LI>
+	<LI>Call the API.</LI></UL>
 	<H4><A NAME="input_parameters">Input Variables</A></H4> 
 	<TABLE BORDER="1"
 	       CELLPADDING="5"
@@ -211,7 +208,7 @@
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->July 18, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having

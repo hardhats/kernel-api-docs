@@ -1,0 +1,185 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 10/18/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Toolkit APIs: Sample M Unit Utility Output</TITLE>
+    <META NAME="subject"
+          CONTENT="XTLKKWL^XTLKKWL: Perform Supported VA FileMan Calls on Files Configured for MTLU">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3>Sample M Unit Utility Output</H3>
+
+<HR>
+        <PRE>
+
+VISTA>D ^XTMZZUT1
+  T1 - - Make sure Start-up Ran.-----------------------------------------  [OK]
+  T2 - - Make sure Set-up runs.------------------------------------------  [OK]
+  T3 - - Make sure Teardown runs.----------------------------------------  [OK]
+  T4 - Entry point using XTMENT------------------------------------------  [OK]
+  T5 - Error count check
+  T5^XTMZZUT1 - Error count check - This is an intentional failure.
+  .
+  T5^XTMZZUT1 - Error count check - Intentionally throwing a failure
+  .----------------------------------------------------------------------  [FAIL]
+  T6 - Succeed Entry Point...--------------------------------------------  [OK]
+  T7 - Make sure we write to principal even though we are on another device[OK]
+  T8 - If IO starts with another device, write to that device as if it’s the princi
+  pal device-------------------------------------------------------------  [OK]
+  T11 - An @TEST Entry point in Another Routine invoked through XTROU offsets.[OK]
+  T12 - An XTENT offset entry point in Another Routine invoked through XTROU offse
+  ts.--------------------------------------------------------------------  [OK]
+  MAIN - - Test coverage calculations------------------------------------  [OK]
+  NEWSTYLE - identify new style test indicator functionality.------------  [OK]
+  OLDSTYLE -  identify old style test indicator functionality..----------  [OK]
+  OLDSTYL1 -  identify old style test indicator 2.-----------------------  [OK]
+  BADCHKEQ -  CHKEQ should fail on unequal value
+  BADCHKEQ^XTMZZUT5 -  CHKEQ should fail on unequal value - <4> vs <3> - SET UNEQU
+  AL ON PURPOSE - SHOULD FAIL
+  -----------------------------------------------------------------------  [FAIL]
+  BADCHKTF -  CHKTF should fail on false value
+  BADCHKTF^XTMZZUT5 -  CHKTF should fail on false value - SET FALSE (0) ON PURPOSE
+   - SHOULD FAIL
+  -----------------------------------------------------------------------  [FAIL]
+  BADERROR -  throws an error on purpose
+  BADERROR^XTMZZUT5 -  throws an error on purpose - Error: <UNDEFINED>BADERROR+6^X
+  TMZZUT5 *Q
+  -----------------------------------------------------------------------  [FAIL]
+  CALLFAIL -  called FAIL to test it
+  CALLFAIL^XTMZZUT5 -  called FAIL to test it - Called FAIL to test it
+  -----------------------------------------------------------------------  [FAIL]
+  LEAKSOK - check leaks should be ok-------------------------------------  [OK]
+  LEAKSBAD - check leaks with leak
+  LEAKSBAD^XTMZZUT5 - check leaks with leak - LEAKSBAD TEST - X NOT SPECIFIED VARI
+  ABLE LEAK: X
+  -----------------------------------------------------------------------  [FAIL]
+  NVLDARG1 - check invalid arg in CHKEQ
+  NVLDARG1^XTMZZUT5 - check invalid arg in CHKEQ - NO VALUES INPUT TO CHKEQ^XTU -
+  no evaluation possible
+  -----------------------------------------------------------------------  [FAIL]
+  ISUTEST - check ISUTEST inside unit test.------------------------------  [OK]
+  CHKCMDLN - check command line processing of XTMZZUT5-------------------  [OK]
+  CHKGUI - check GUI processing of XTMZZUT5------------------------------  [OK]
+  CKGUISET - check list of tests returned by GUISET----------------------  [OK]
+  NEWSTYLE - test return of valid new style or @TEST indicators...-------  [OK]
+  Ran 5 Routines, 26 Entry Tags
+  Checked 25 tests, with 7 failures and encountered 1 error.
+
+</PRE>
+</HR>
+	<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 8, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY></HTML>

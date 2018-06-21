@@ -63,11 +63,12 @@
 	year's holidays for the workday calculation to work correctly. If it is not
 	populated, you need to populate it yourself (Kernel distributes this file
 	without data). Only enter holidays that fall on weekdays, however.</P>
-	<P>The $$EN^XUWORKDY extrinsic function is used to calculate the number of workdays between two
-	dates (date1, date2). It returns a positive value if date1&lt;date2 and a 
-	negative value if date1&gt;date2. If either date is imprecisely
-	specified, or if the HOLIDAY global is empty, then $$EN^XUWORKDY returns a 
-	NULL string.
+
+	The $$EN^XUWORKDY extrinsic function calculates the number of workdays between two dates (date1, date2). It returns:
+	<UL><LI>Positive Value-If date1<date2.</LI>
+	<LI>Negative Value-If date1>date2.</LI>
+	<LI>NULL String-If either date is imprecisely specified, or if the HOLIDAY global is empty.</LI>
+	</UL>
 	<BR>
 	<BR>
 	The first FOR loop in ^XUWORKDY checks the HOLIDAY global
@@ -204,7 +205,7 @@
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->August 26, 2011<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 16, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 	      <BR>
 	      <BR>
 	      If you have questions, need more information, or are having

@@ -1,0 +1,157 @@
+<HTML> 
+  <HEAD>
+<!--Office of Information & Technology (OI&T)-->
+<!--Oakland OIFO-->
+<!--Authored by Thom Blom and Susan Strack, 01/01/01-->
+<!--Revised by Thom Blom, 10/18/10-->
+    <META HTTP-EQUIV="Content-Type"
+          CONTENT="text/html; charset=iso-8859-1"> 
+    <TITLE>Kernel Toolkit APIs: Application Programming Interfaces (APIs)</TITLE>
+    <META NAME="subject"
+          CONTENT="Kernel Toolkit APIs: Application Programming Interfaces (APIs)">
+    <META NAME="keywords"
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
+    <LINK REL="StyleSheet"
+          TYPE="text/css"
+          HREF="common/programmer.css"> 
+  </HEAD> 
+  <BODY> 
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
+<!--Title Banner (image)-->
+    <TABLE BORDER="0"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
+	       SUMMARY="This table is for formatting purposes only"
+	       HEIGHT="65"> 
+      <TR> 
+	    <TD VALIGN="middle"
+	        ALIGN="left"
+	        HEIGHT="30"> 
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
+			   BORDER="0" width="429" height="29">
+		  <A HREF="#navskip">
+		  <IMG SRC="images/clr_pxl.gif"
+			   ALT="[skip navigation]"
+			   WIDTH="25"
+			   HEIGHT="1"
+			   BORDER="0"></A>
+		  <BR>
+		  <IMG SRC="images/oitbanner.gif"
+			   ALT="Office of Information & Technology (OIT) Banner"
+			   BORDER="0" width="429" height="30">
+			 </P>
+		</TD> 
+		<TD ALIGN="right"
+		    VALIGN="middle"
+		    HEIGHT="30"> 
+		  <P></P>
+        </TD> 
+	  </TR> 
+    </TABLE> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
+<!-- Content -->
+    <H3><A NAME="navskip">MTLU and VA FileMan Supported Calls</H3> 
+	<P>Developers can perform any supported VA FileMan calls on files fully configured for MTLU.<br>
+	<br>The preferred method of performing lookups from Programmer mode is to add the target file to the LOCAL LOOKUP
+ 	(#8984.4) file and call LKUP^XTLKMGR. However, Multi-Term Look-Ups can be performed on any VA FileMan file,
+	 even if it has not been configured for use by MTLU. Using the developer API, the lookup can be performed
+	 using any index contained within the file, such as a VA FileMan KWIC cross-reference.</P>
+	<P><B>Entry Point</B> XTLKKWL </P> 
+	<H4><A NAME="description">Required Input Variables:</A></H4> 
+	<UL>
+	<P><B>(XTLKGBL, XTLKKSCH("GBL")):</B> This is the global root (same as DIC). </P>
+	 <P><B>XTLKKSCH("DSPLY"):</B>This variable displays the routine.For example:<PRE>DGEN^XTLKKWLD</PRE></P>
+	 <P><B>XTLKKSCH("INDEX"):</B> Cross-reference selected by the developer for performing a multi-term lookup.</P>
+	 <P><B>XTLKX:</B> This is the user input.</P>
+ 
+	</UL>	
+
+	<H4><A NAME="description">Optional Input Variables:</A></H4>
+        <UL>
+	 <P><B>XTLKSAY:</B> This variable equals 1 or 0. If XTLKSAY = 1, MTLU displays details during the lookup.
+	<br><B>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NOTE:</B> The purpose of XTLKSAY is to control the degree of output to the screen, not the amount of “file information” displayed. </P>
+	 <P><B>XTLKHLP::</B> Executable code to display custom help. </P>
+	</UL>
+
+
+<P><b>Example:</b></P>
+<P>Programmer calls to MTLU-configured files return all standard VA FileMan variables (i.e., Y, DTOUT, DUOUT, DIROUT, and DIRUT).
+</P>
+<P>The programmer's API for performing a lookup has been enhanced functionally, simplified, and converted to a procedure call.</P>
+<P>Procedure calls provide full, non-interactive management of the following MTLU control files: LOCAL KEYWORD (#8984.1), LOCAL SHORTCUT (#8984.2), LOCAL SYNONYM (#8984.3), and LOCAL LOOKUP (#8984.4).</P>
+<P>All procedure calls are contained in the routine ^XTLKMGR.</P>
+<P>Errors are returned in the XTLKER() array. KILL this array before calling any of these new procedure calls, and check the array after returning from the calls. All calls require that the target file be defined in the LOCAL LOOKUP (#8984.4) file. If removing an entry from the LOCAL LOOKUP (#8984.4) file, all shortcuts, synonyms, and keywords associated with that file must be deleted first.
+</P>	
+<P>&nbsp;</P>
+	<HR COLOR="003399"> 
+	<TABLE WIDTH="100%"
+	       SUMMARY="This table for layout purposes only"
+	       CLASS="white"> 
+	  <TR> 
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
+<!--Bottom Navigation Links-->
+<!--webbot bot="Include" U-Include="common/bottom_links.htm"
+             TAG="BODY" startspan -->
+    <P ALIGN="CENTER">
+	<A HREF="http://www.va.gov/"
+	   CLASS="bodylink"
+	   TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM> (Internet)</A> /
+				 
+    <A HREF="http://vaww.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Intranet Home Page">
+	   <ACRONYM TITLE="Department of Veterans Affairs">VA</ACRONYM>(Intranet)</A> /
+				 
+    <A HREF="http://vaww.vhaco.va.gov/vhacio/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Office of Information Home Page">
+	   <ACRONYM TITLE="Office of Information">OI</ACRONYM></A> /
+				 
+    <A HREF="http://vista.med.va.gov/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Home Page">
+	   <ACRONYM TITLE="Product Development">PD</ACRONYM></A> /
+
+    <A HREF="http://vista.med.va.gov/iss/site_map.asp"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Infrastructure & Security Services (ISS) Site Map">Site Map</A> /
+
+    <A HREF="http://vista.med.va.gov/termsofuse.htm"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Product Development (PD) Terms of Use Page">Terms of Use</A> /
+
+    <A HREF="http://www.va.gov/privacy/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Privacy Policy">VA Privacy Policy</A> /
+
+    <A HREF="http://www1.va.gov/accessible/"
+       CLASS="bodylink"
+       TARGET="_top"
+	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
+  <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
+          <!--webbot bot="Timestamp"
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 8, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+		  <BR>
+		  <BR>
+		  If you have questions, need more information, or are having
+		  accessibility problems with this website, please contact us by E-Mail:
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
+			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
+	    </TD> 
+      </TR> 
+    </TABLE>
+  </BODY></HTML>

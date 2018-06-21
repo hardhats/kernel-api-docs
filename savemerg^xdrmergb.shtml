@@ -3,33 +3,33 @@
 <!--Office of Information & Technology (OI&T)-->
 <!--Oakland OIFO-->
 <!--Authored by Thom Blom and Susan Strack, 01/01/01-->
-<!--Revised by Thom Blom, 08/13/09-->
+<!--Revised by Thom Blom, 10/18/10-->
     <META HTTP-EQUIV="Content-Type"
           CONTENT="text/html; charset=iso-8859-1"> 
-    <TITLE>Kernel APIs: $$PKGPAT^XPDIP</TITLE>
+    <TITLE>Kernel Toolkit APIs: SAVEMERG^XDRMERGB</TITLE>
     <META NAME="subject"
-          CONTENT="Kernel APIs: $$PKGPAT^XPDIP">
+          CONTENT="XTLKKWL^XTLKKWL: Perform Supported VA FileMan Calls on Files Configured for MTLU">
     <META NAME="keywords"
-	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$PKGPAT^XPDIP,$$PKGPAT,XPDIP,kids,supported">
+	      CONTENT="Infrastructure and Security Services,Information Infrastructure Service,ISS,IIS,VISTA,kernel,toolkit,programmer,developer,programmer manual,apis,application programming interface,application,programming,interface,entry point,$$DECODE^XTHCUTL,$$DECODE,XTHCUTL,http,supported">
     <LINK REL="StyleSheet"
           TYPE="text/css"
           HREF="common/programmer.css"> 
   </HEAD> 
   <BODY> 
-<!--webbot bot="Include" U-Include="common/banner_api_page-kernel.htm" TAG="BODY" startspan -->
+<!--webbot bot="Include" U-Include="common/banner_api_page-toolkit.htm" TAG="BODY" startspan -->
 <!--Title Banner (image)-->
     <TABLE BORDER="0"
-	       WIDTH="100%"
-	       CELLSPACING="0"
-	       CELLPADDING="6"
+           WIDTH="100%"
+           CELLSPACING="0"
+           CELLPADDING="6"
 	       SUMMARY="This table is for formatting purposes only"
 	       HEIGHT="65"> 
-	  <TR> 
+      <TR> 
 	    <TD VALIGN="middle"
 	        ALIGN="left"
 	        HEIGHT="30"> 
-		  <IMG SRC="images/kernel_heading_APIs-new.gif"
-			   ALT="Kernel 8.0 APIs Banner"
+		  <IMG SRC="images/toolkit_heading_APIs-new.gif"
+			   ALT="Toolkit 7.3 APIs Banner"
 			   BORDER="0" width="429" height="29">
 		  <A HREF="#navskip">
 		  <IMG SRC="images/clr_pxl.gif"
@@ -41,86 +41,57 @@
 		  <IMG SRC="images/oitbanner.gif"
 			   ALT="Office of Information & Technology (OIT) Banner"
 			   BORDER="0" width="429" height="30">
-	    </TD> 
+			 </P>
+		</TD> 
 		<TD ALIGN="right"
 		    VALIGN="middle"
 		    HEIGHT="30"> 
 		  <P></P>
-		</TD> 
+        </TD> 
 	  </TR> 
     </TABLE> 
-  <!--webbot bot="Include" endspan i-checksum="43655" --><P></P> 
+  <!--webbot bot="Include" endspan i-checksum="4890" --><P></P> 
 <!-- Content -->
-	<H3><A NAME="navskip">$$PKGPAT^XPDIP</A>(): Update Patch History</H3> 
-	<P><B>Reference Type:</B> Supported, <B>Category:</B> KIDS, <B>Integration
-	Agreement:</B> 2067</P> 
-	<H4><A NAME="description">Description</A></H4> 
-	<P>This extrinsic function updates the PATCH APPLICATION HISTORY field
-	(#1105, Multiple) of the VERSION field (#22, Multiple) in the PACKAGE file (#9.4). This
-	function can be used during the Pre- or Post-Install routine.</P> 
-	<H4><A NAME="format">Format</A></H4> 
-	<PRE>  $$PKGPAT^XPDIP(software_ien,version,.x)</PRE> 
-	<H4><A NAME="input_parameters">Input Parameters</A></H4> 
-	<TABLE BORDER="1"
-	       CELLPADDING="5"
-	       BGCOLOR="#F1F2F3"
-	       BORDERCOLORLIGHT="#F1F2F3"
-	       BORDERCOLORDARK="#808080"
-	       WIDTH="100%"> 
-	  <TR> 
-	    <TD VALIGN="TOP" WIDTH="15%">
-	      <B>package_ien:</B>
-	    </TD> 
-		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%">
-		  <P>(required) The software file entry Internal Entry Number (IEN) in
-		  the PACKAGE file (#9.4).</P>
-		</TD> 
-	  </TR> 
-      <TR> 
-	    <TD VALIGN="TOP">
-	      <B>version:</B>
-	    </TD> 
-		<TD VALIGN="TOP" COLSPAN="2"> 
-		  <P>(required) This is the software version number. It must contain a
-		  decimal (e.g., 8.0).</P>
-		</TD> 
-	  </TR>
-	  <TR>
-	    <TD VALIGN="TOP">
-	    <B>.x</B>
-	    </TD>
-		<TD VALIGN="TOP" COLSPAN="2">
-		  <P>(required)</P>
-		</TD>
-	  </TR> 
-	</TABLE> 
-	<H4><A NAME="output">Output</A></H4> 
-	<TABLE BORDER="1"
-	       CELLPADDING="5"
-	       BGCOLOR="#F1F2F3"
-	       BORDERCOLORLIGHT="#F1F2F3"
-	       BORDERCOLORDARK="#808080"
-	       WIDTH="100%"> 
-	  <TR> 
-	    <TD VALIGN="TOP" WIDTH="15%">
-	      <B>returns:</B>
-	    </TD> 
-		<TD VALIGN="TOP" COLSPAN="2" WIDTH="85%"> 
-		  <P>Returns:</P>
-		  <PRE>  version ien^patch ien</PRE>
-		</TD> 
-	  </TR> 
-	</TABLE> 
+    <H3><A NAME="navskip"> SAVEMERG^XDRMERGB(): Save Image of Existing and Merged Data</H3> 
+	<P><B>Reference Type:</B> Controlled Subscription, <B>Category:</B> Toolkit-Duplicate Record Merge,
+	<B>Integration Agreement:</B> 2338</P> 
+	<H4><A NAME="description">Description:</A></H4> 
+<UL>	<P>During special processing related to the Patient Merge, the IBAXDR routine needs to
+ call the SAVEMERG^XDRMERGB API. The SAVEMERG^XDRMERGB API saves the file image of an entry involved 
+in the merge process when only one of the entries (the entry being merged or the entry being merged into)
+ is present in the filenum input parameter. Normally, the merge process would handle when it can identify
+ a FROM or a TO entry that is not present based on the DINUMed values. For filenum,
+ however, the internal entry numbers are determined from the "B"-cross-reference, and missing entries need to be handled separately.
+	
+	</P>
+<P>
+This API acts to save an image of the currently existing data for the merge entry and merged into entry in the MERGE IMAGE (#15.4) file.
+</P></UL>
+
+	<H4><A NAME="format">Format:</A></H4> 
+<ul>
+	<PRE>D SAVEMERG^XDRMERGB(filenum,ienfrom[,iento])</PRE></UL>
+	 <P><B>Input Parameters:</B>  </P>
+        <UL>
+        <P><B>filenum:</B> (required)  This is the file number for the file that is being merged and for which the images are to be saved.</P>
+	<P><B>ienfrom:</B> (required) The internal entry number of the FROM entry (the entry being merged into another entry).</P>
+   
+	<P> <B> iento:</B>  (optional) The internal entry number of the TO entry (the entry into which the entry is being merged).</P>
+</UL> 
+	 <P><B>Output: </B> Stored image. </P>
+
 	<P>&nbsp;</P>
 	<HR COLOR="003399"> 
 	<TABLE WIDTH="100%"
 	       SUMMARY="This table for layout purposes only"
 	       CLASS="white"> 
 	  <TR> 
-	    <TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+		<TD ALIGN="CENTER"
+		    VALIGN="TOP"
+		    COLSPAN="2">
 <!--Bottom Navigation Links-->
 <!--webbot bot="Include" U-Include="common/bottom_links.htm"
-          TAG="BODY" startspan -->
+             TAG="BODY" startspan -->
     <P ALIGN="CENTER">
 	<A HREF="http://www.va.gov/"
 	   CLASS="bodylink"
@@ -166,18 +137,17 @@
        TARGET="_top"
 	   TITLE="Department of Veterans Affairs Internet Accessibility">Accessibility</A></P> 
   <!--webbot bot="Include" endspan i-checksum="53201" --><!--Date content was reviewed or updated--><P ALIGN="CENTER"> Reviewed/Updated: 
+          
           <!--webbot bot="Timestamp"
-          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 16, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
+          S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->June 18, 2018<!--webbot bot="Timestamp" endspan i-checksum="21789" -->
 		  <BR>
 		  <BR>
 		  If you have questions, need more information, or are having
 		  accessibility problems with this website, please contact us by E-Mail:
-		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-pkgpat^xpdip.shtml"
+		  <A HREF="mailto:VHAISFCVTECH@med.va.gov?subject=Web page comments from: /kernel/apis/x-decode^xthcutl.shtml"
 			 TITLE="Send mail to the Webmasters regarding this page">Webmasters</A>, Phone:
-		  510-768-6800, or FAX: 510-768-6850.</P> 
-		  <P>&nbsp;</P>
+		  510-768-6800, or FAX: 510-768-6850.</P><P>&nbsp;</P>
 	    </TD> 
       </TR> 
     </TABLE>
-  </BODY>
-</HTML>
+  </BODY></HTML>
